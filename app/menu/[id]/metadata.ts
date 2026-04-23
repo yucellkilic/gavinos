@@ -3,7 +3,7 @@ import menuData from '@/data/menu.json';
 import { MenuItem } from '@/types/menu';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const menuItem = (menuData.menuItems as MenuItem[]).find((item) => item.id === params.id);
+  const menuItem = (menuData as MenuItem[]).find((item) => item.id === params.id);
 
   if (!menuItem) {
     return {
