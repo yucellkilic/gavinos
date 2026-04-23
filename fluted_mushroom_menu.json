@@ -1,0 +1,385 @@
+{
+  "company": {
+    "name": "The Fluted Mushroom",
+    "tagline": "Where Entertaining Is An Art",
+    "description": "Pittsburgh's preferred caterer, specializing in custom events with tasteful simplicity and elegant design.",
+    "address": "109 S. 12th Street, Pittsburgh, PA 15203",
+    "phone": "412.381.1899",
+    "website": "www.theflutedmushroom.com",
+    "notes": "All prices are subject to change. Additional menu items and seasonal selections are available. Custom pricing may apply."
+  },
+
+  "menu": {
+
+    "butlered_hot_hors_doeuvres": {
+      "label": "Butlered Hot Hors d'Oeuvres",
+      "pricing_unit": "per piece",
+      "items": [
+        { "name": "Watermelon Shrimp", "price": 6.50, "description": "Half a shrimp on cubed watermelon with vanilla yogurt dressing and fresh mint" },
+        { "name": "Artichoke Romano", "price": 3.75, "description": null },
+        { "name": "Asparagus and Gruyère Beignet", "price": 2.50, "description": null },
+        { "name": "Asparagus Tip Wrapped in Puff Pastry", "price": 3.25, "description": "Topped with grated asiago" },
+        { "name": "Stuffed Mushroom", "price": 4.25, "description": "Assortment of three flavors" },
+        { "name": "Bacon Wrapped Scallop", "price": 5.25, "description": null },
+        { "name": "Beef, Pork or Chicken Empanada", "price": 4.95, "description": null },
+        { "name": "Cherry Tomato and Boursin Cheese Tartlet", "price": 3.95, "description": "With fine herbs and aged cheddar" },
+        { "name": "Chicken and Waffle Bite", "price": 3.75, "description": "Boneless breast of chicken deep fried in waffle tempura batter with Thai chili maple syrup dipping sauce" },
+        { "name": "Chinese Spring Roll", "price": 3.75, "description": null },
+        { "name": "Chicken Quesadilla", "price": 4.25, "description": null },
+        { "name": "Chicken Wrapped in Prosciutto and Fresh Sage", "price": 4.25, "description": null },
+        { "name": "Chipotle Pepper Encrusted Shrimp", "price": 6.95, "description": "With lime dipping sauce" },
+        { "name": "Corn and Crab Fritter", "price": 3.95, "description": "With sweet tomato jam and scallion marmalade" },
+        { "name": "Crispy Pork Belly", "price": 4.50, "description": "With cranberry blood orange chutney" },
+        { "name": "Flank Steak Roulade", "price": 5.95, "description": null },
+        { "name": "Loaded Potato Croquette", "price": 3.95, "description": "With cheddar cheese and bacon, topped with chive sour cream" },
+        { "name": "Lollipop of Herb Encrusted Lamb Chop", "price": 9.75, "description": null },
+        { "name": "Miniature Beef Wellington", "price": 6.25, "description": "Diced filet and mushroom duxelle in puff pastry with cognac demi-glace" },
+        { "name": "Miniature Cheeseburger Slider", "price": 4.95, "description": null },
+        { "name": "Miniature Crab Cake", "price": 4.95, "description": "With chili lime aioli or chive remoulade" },
+        { "name": "Miniature Pizza", "price": 3.75, "description": "With wild mushroom and fontina cheese" },
+        { "name": "Miniature Reuben", "price": 4.25, "description": null },
+        { "name": "Potato Pancake", "price": 3.25, "description": "With crème fraîche and chives" },
+        { "name": "Potato Pancake with Smoked Salmon", "price": 5.50, "description": "With crème fraîche and chives" },
+        { "name": "Puff Pastry Pinwheel", "price": 2.75, "description": "With kale, wild mushrooms and Boursin cheese" },
+        { "name": "Petit Quiche", "price": 3.75, "description": null },
+        { "name": "Saffron Rice and Fontina Risotto Ball", "price": 2.95, "description": "With roasted tomato dipping sauce" },
+        { "name": "Seasonal Arancini", "price": 3.25, "description": null },
+        { "name": "Slow Cooked Ratatouille in a Savory Tart Shell", "price": 3.25, "description": null },
+        { "name": "Spanakopita", "price": 3.75, "description": null },
+        { "name": "Thai Chicken Skewer", "price": 3.95, "description": "With peanut dipping sauce" },
+        { "name": "Tomato and Basil Brioche Square", "price": 3.25, "description": null }
+      ]
+    },
+
+    "butlered_cold_hors_doeuvres": {
+      "label": "Butlered Cold Hors d'Oeuvres",
+      "pricing_unit": "per piece",
+      "items": [
+        { "name": "Ahi Tuna Tartar on Lotus Root Chip", "price": 5.25, "description": "With sesame, soy and cilantro" },
+        { "name": "BLT Bite", "price": 3.50, "description": "Cherry tomato stuffed with ranch mousse, micro iceberg lettuce and bacon bits" },
+        { "name": "Chicken Waldorf Salad", "price": 3.95, "description": "On Belgian endive spear" },
+        { "name": "Chip and Dip", "price": 3.95, "description": "Crispy fingerling potato with truffled goat cheese mousse and fresh chives" },
+        { "name": "Crispy Duck Tartlet", "price": 5.50, "description": "With curry walnuts and cranberry blood orange marmalade" },
+        { "name": "Curried Chicken Tartlet", "price": 3.95, "description": null },
+        { "name": "Focaccia with Olive Tapenade", "price": 3.95, "description": null },
+        { "name": "Foie Gras Pate on Toasted Brioche", "price": 6.95, "description": "With macadamia butter and blueberry compote" },
+        { "name": "Heart of Palm Wrapped with Serrano Ham", "price": 4.25, "description": "With crispy sage, roasted red pepper and manchego cheese" },
+        { "name": "Lobster Roll", "price": "market price", "description": "Miniature potato roll stuffed with classic lobster salad, garnished with fresh scallions" },
+        { "name": "Miniature Caprese Skewer", "price": 3.75, "description": "Pearl mozzarella and grape tomato, drizzled with pesto and balsamic reduction" },
+        { "name": "Seasonal Crostini", "price": 2.95, "description": null },
+        { "name": "Shrimp Cocktail", "price": 7.25, "description": null },
+        { "name": "Sliced Filet on Toasted Crostini", "price": 4.95, "description": "With artichoke aioli and chiffonade of arugula" },
+        { "name": "Smoked Salmon", "price": 4.95, "description": "On bite-size toast point with lemon chive cream cheese, micro dill and diced pickled red onion" },
+        { "name": "Smoked White Fish Salad", "price": 4.95, "description": "On Belgian endive spear" },
+        { "name": "Smoked White Fish Salad Puff", "price": 4.95, "description": null },
+        { "name": "Sun-Dried Tomato and Goat Cheese Bite", "price": 3.25, "description": null },
+        { "name": "Quail Egg", "price": 5.50, "description": "With caviar and crème fraîche" },
+        { "name": "Vegetarian Stuffed Grape Leaf", "price": 3.25, "description": null },
+        { "name": "Vietnamese Summer Roll", "price": 4.25, "description": "Wrapped in rice paper with orange soy dipping sauce" }
+      ]
+    },
+
+    "stationary_hors_doeuvres": {
+      "label": "Stationary Hors d'Oeuvres",
+      "items": [
+        {
+          "name": "Domestic Cheese Display",
+          "price": 16.95,
+          "pricing_unit": "per person",
+          "description": "A selection of sliced domestic cheeses, garnished with clusters of grapes, served with assorted crackers and mustard dip"
+        },
+        {
+          "name": "Gourmet Cheese Display",
+          "price": 17.50,
+          "pricing_unit": "per person",
+          "description": "A selection of domestic and imported cheeses, sliced fresh fruit, crab, artichoke and jalapeño dip, and pesto Parmesan soufflé, served with crackers, toasted pita triangles, baguette slices and mustard dip"
+        },
+        {
+          "name": "Mediterranean Table",
+          "price": 16.95,
+          "pricing_unit": "per person",
+          "description": "Housemade chickpea hummus with grape leaves, baba ganoush, marinated roasted peppers, feta cheese, artichokes and kalamata olives, served with pita and flat breads"
+        },
+        {
+          "name": "Antipasto Station",
+          "price": 16.95,
+          "pricing_unit": "per person",
+          "description": "Italian-cured meats and cheeses, assorted grilled and marinated vegetables and imported olives, served with focaccia sticks and crostini"
+        },
+        {
+          "name": "Sliced Filet of Beef",
+          "price": 19.25,
+          "pricing_unit": "per person",
+          "description": "The finest cut of beef sliced and served with silver dollar rolls, housemade horseradish mousse and caramelized onions"
+        },
+        {
+          "name": "Miniature Sandwiches",
+          "price": 9.95,
+          "pricing_unit": "per person",
+          "quantity_per_person": 2,
+          "description": "Roast beef and provolone, turkey and havarti, ham and swiss"
+        },
+        {
+          "name": "Gourmet Miniature Sandwiches",
+          "price": 15.50,
+          "pricing_unit": "per person",
+          "quantity_per_person": 2,
+          "description": "Sliced filet of beef with horseradish mousse, smoked turkey with cranberry mayonnaise, brie with sun-dried tomatoes and fresh basil"
+        },
+        {
+          "name": "Smoked Salmon Display",
+          "price": 275.00,
+          "pricing_unit": "flat",
+          "serves": 25,
+          "description": "Presented with capers, red onion, lemon wedges, chopped egg, pink peppercorn sauce and black bread triangles"
+        },
+        {
+          "name": "Poached Salmon Display",
+          "price": 275.00,
+          "pricing_unit": "flat",
+          "serves": 25,
+          "description": "Presented with crème fraîche, cucumber, lemon, capers, red onion, egg whites and pumpernickel toast"
+        }
+      ]
+    },
+
+    "sit_down_selections": {
+      "label": "Sit-Down Selections",
+      "includes": ["choice of salad", "starch", "vegetable", "rolls", "butter"],
+      "categories": {
+        "seafood": {
+          "label": "Seafood Selections",
+          "items": [
+            { "name": "Grilled Salmon", "price": 45.50, "description": "With maple-mustard glaze" },
+            { "name": "Macadamia Nut-Crusted Mahi Mahi", "price": 49.25, "description": "With lemon beurre blanc" },
+            { "name": "Roulade of Sole", "price": 45.50, "description": "With shrimp and watercress mousse, lemon beurre blanc" },
+            { "name": "Black Sesame-Crusted Salmon", "price": 45.50, "description": "With orange-soy beurre blanc" },
+            { "name": "Maryland Style Crab Cakes", "price": 58.75, "description": "Topped with roasted tomato remoulade" }
+          ]
+        },
+        "meat": {
+          "label": "Meat Selections",
+          "items": [
+            { "name": "Stuffed Pork Loin (dried fruit)", "price": 41.95, "description": "With dried fruit and bourbon jus" },
+            { "name": "Crusted Pork Loin", "price": 41.95, "description": "Of mustard, rosemary and sage with roasted garlic jus" },
+            { "name": "Stuffed Pork Loin (spinach feta)", "price": 43.25, "description": "With spinach, feta and pine nuts, natural pork jus" },
+            { "name": "Medallions of Pork Tenderloin", "price": 43.25, "description": "Crusted with mango chutney and almonds, apple butter-cider pork reduction" },
+            { "name": "Filet (6 oz.)", "price": 58.95, "description": "With leeks and balsamic-thyme reduction or sautéed wild mushrooms and natural jus" },
+            { "name": "Stuffed Filet (6 oz.)", "price": 59.95, "description": "With roasted tomatoes, fresh basil and gorgonzola, red wine sauce" },
+            { "name": "Oregano Chicken", "price": 42.50, "description": "With artichoke hearts, grilled tomato and fresh basil" },
+            { "name": "Chicken Roulade (bread stuffing)", "price": 42.50, "description": "With savory bread stuffing and velouté sauce" },
+            { "name": "Chicken Roulade (wild mushrooms)", "price": 44.25, "description": "With wild mushrooms, spinach and fontina, pesto cream sauce" },
+            { "name": "Panko-Crusted Chicken Breast", "price": 44.25, "description": "Stuffed with Boursin cheese" },
+            { "name": "Pierre Chicken Breast", "price": 43.25, "description": "With roasted red pepper farce and balsamic-chicken reduction" },
+            { "name": "Chicken Romano", "price": 39.50, "description": "In a rich egg and romano cheese batter" },
+            { "name": "Chicken Marsala", "price": 42.50, "description": "With mushrooms in a Marsala wine sauce" },
+            { "name": "Roasted Baby Rock Hen", "price": 49.25, "description": "Semi-boneless, with blackberry glaze" },
+            { "name": "Chicken Saltimbocca", "price": 44.25, "description": "Pierre chicken breast with prosciutto and sage, fontina cream sauce" },
+            { "name": "Lavender Chicken", "price": 44.25, "description": "Lavender, orange and panko-crusted chicken breast with rosemary beurre blanc" }
+          ]
+        },
+        "vegetarian": {
+          "label": "Vegetarian Selections",
+          "items": [
+            { "name": "Parmesan Encrusted Eggplant", "price": 39.50, "dietary": ["gluten_free", "vegan_option"], "description": "With gluten free rotini and pistachio pesto (can also be made vegan)" },
+            { "name": "Risotto", "price": 39.50, "dietary": ["gluten_free", "vegan"], "description": "With asparagus, wild mushrooms, avocado, red onion, roasted tomatoes and balsamic reduction" }
+          ]
+        }
+      }
+    },
+
+    "duet_sit_down_selections": {
+      "label": "Duet Sit-Down Selections",
+      "includes": ["choice of salad", "starch", "vegetable", "rolls", "butter"],
+      "notes": ["Petit filet is 4 oz.", "Center cut 8 oz. filet additional $8.50", "Additional menu items and seasonal selections are available. Custom pricing may apply."],
+      "items": [
+        { "name": "Jumbo Shrimp with Sautéed Petit Breast of Chicken", "price": 51.50, "description": "Served with Provençal sauce" },
+        { "name": "Shrimp Scampi with Chicken Romano", "price": 51.50, "description": null },
+        { "name": "Petit Filet of Beef Tenderloin with Chicken Romano", "price": 55.95, "description": null },
+        { "name": "Petit Filet of Beef Tenderloin with Grilled Fillet of Salmon", "price": 58.95, "description": "Served with pinot noir sauce" },
+        { "name": "Pork Tenderloin Medallion with Petit Breast of Chicken", "price": 47.95, "description": "Served with cranberry and mandarin orange compote" },
+        { "name": "Petit Filet of Beef Tenderloin with Panko-Crusted Chicken Breast Stuffed with Boursin Cheese", "price": 55.00, "description": "Served with roasted shallot sauce" },
+        { "name": "Seared Salmon with Petit Chicken Breast Stuffed with Spinach, Fontina and Sun-Dried Tomatoes", "price": 52.95, "description": "Served with tomato tarragon coulis" },
+        { "name": "Petit Filet of Beef Tenderloin with Maryland Style Crab Cake", "price": 71.95, "description": "Served with wild mushroom demi-glace" }
+      ]
+    },
+
+    "sit_down_salads": {
+      "label": "Sit-Down Salads",
+      "notes": "Choose one. Additional seasonal selections are available.",
+      "items": [
+        { "name": "Caesar Salad", "surcharge": 0, "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing" },
+        { "name": "Baby Spinach Salad", "surcharge": 0, "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing" },
+        { "name": "Tossed Garden Salad", "surcharge": 0, "description": "Tomatoes, cucumbers and carrots with choice of dressing" },
+        { "name": "Mediterranean Salad", "surcharge": 0, "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette" },
+        { "name": "Signature Salad", "surcharge": 5.95, "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette" },
+        { "name": "Roasted Beet and Truffle Salad", "surcharge": 7.00, "description": "Arugula, honey and local goat cheese, with truffle vinaigrette" },
+        { "name": "Blueberry and Ricotta Salad", "surcharge": 7.00, "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette" },
+        { "name": "Heirloom Tomato Salad", "surcharge": 5.95, "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette" },
+        { "name": "Watermelon Radish Salad", "surcharge": 5.95, "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette" }
+      ]
+    },
+
+    "sit_down_accompaniments": {
+      "label": "Sit-Down Accompaniments",
+      "starches": {
+        "label": "Plated Starches",
+        "selection": "choose one",
+        "items": [
+          "Wild Mushroom Risotto Cake",
+          "Herbed Long Grain and Wild Rice",
+          "Saffron Basmati Rice",
+          "Duchess Potatoes (Piped Whipped Potatoes)",
+          "Dauphinoise Potatoes",
+          "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+          "Yukon Gold Whipped Potatoes"
+        ]
+      },
+      "vegetables": {
+        "label": "Plated Vegetables",
+        "selection": "choose one",
+        "items": [
+          "Poached Asparagus",
+          "Haricot Vert with garlic and basil",
+          "Seasonal Baby Vegetables",
+          "Roasted Root Vegetables",
+          "Broccolini",
+          "Sautéed Sugar Snap Peas with toasted sesame seeds",
+          "Sautéed Sugar Snap Peas and Baby Carrots"
+        ]
+      }
+    },
+
+    "buffet_dinner_selections": {
+      "label": "Buffet Dinner Selections",
+      "includes": ["choice of salad", "starch", "vegetable", "rolls", "butter"],
+      "notes": "Custom pricing may apply.",
+      "packages": [
+        {
+          "id": "package_one",
+          "label": "Package One",
+          "price": 45.95,
+          "pricing_unit": "per person",
+          "selection_count": 2,
+          "items": [
+            { "name": "Grilled Breast of Chicken", "description": "Marinated with lemon and rosemary" },
+            { "name": "Oregano Chicken", "description": "With artichoke hearts, grilled tomato and fresh basil" },
+            { "name": "Chicken Roulade", "description": "With savory bread stuffing and velouté sauce" },
+            { "name": "Panko-Crusted Baked Tilapia", "description": "With fresh pineapple salsa" },
+            { "name": "Herb-Crusted Pork Loin", "description": "With roasted garlic jus" },
+            { "name": "Sliced Top Round of Beef", "description": "With mushroom jus" }
+          ]
+        },
+        {
+          "id": "package_two",
+          "label": "Package Two",
+          "price": 52.50,
+          "pricing_unit": "per person",
+          "selection_count": 2,
+          "items": [
+            { "name": "Grilled Salmon", "description": "With maple-mustard glaze" },
+            { "name": "Marinated and Roasted Beef Brisket", "description": "With Pommery mustard-horseradish sauce" },
+            { "name": "Chicken Roulade", "description": "With wild mushrooms, spinach and fontina, pesto cream sauce" },
+            { "name": "Medallions of Pork Tenderloin", "description": "Roasted with orange marmalade glaze" },
+            { "name": "Breaded Boneless Chicken Breast", "description": "Stuffed with Boursin cheese" },
+            { "name": "Shrimp Scampi", "description": "With angel hair pasta and Parmigiano-Reggiano" },
+            { "name": "Chicken Romano", "description": "In a rich egg and romano cheese batter" },
+            { "name": "Chicken Marsala", "description": "Sautéed with mushrooms in a Marsala wine sauce" }
+          ]
+        },
+        {
+          "id": "package_three",
+          "label": "Package Three",
+          "price": 65.95,
+          "pricing_unit": "per person",
+          "selection_count": 2,
+          "items": [
+            { "name": "Seared Tenderloin", "description": "With leeks and balsamic-thyme reduction" },
+            { "name": "Macadamia Nut-Crusted Mahi Mahi", "description": "With lemon beurre blanc" },
+            { "name": "Roasted Baby Rock Hen", "description": "Semi-boneless, with blackberry glaze" },
+            { "name": "Grilled Tournedos of Beef", "description": "With port wine reduction sauce" },
+            { "name": "Medallions of Pork Tenderloin", "description": "With granny smith apples and brandy-calvados cream sauce" }
+          ]
+        }
+      ]
+    },
+
+    "buffet_accompaniments": {
+      "label": "Buffet Accompaniments",
+      "salads": {
+        "selection": "choose one",
+        "items": [
+          { "name": "Caesar Salad", "description": "With romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing" },
+          { "name": "Baby Spinach Salad", "description": "With mushrooms, hard-cooked egg and red onion, with poppyseed dressing" },
+          { "name": "Tossed Garden Salad", "description": "With tomatoes, cucumbers and carrots. Dressing options: ranch, French, raspberry, balsamic or champagne vinaigrette" }
+        ]
+      },
+      "vegetables": {
+        "selection": "choose one",
+        "items": [
+          "Fresh Green Beans, Yellow Wax Beans and Carrots in compound herb butter",
+          "Corn Pudding Soufflé",
+          "Grilled Marinated Vegetables (served at room temperature)",
+          "Sautéed Sliced Carrots with fresh dill",
+          "Fresh Vegetable Medley",
+          "Haricot Vert with garlic and basil",
+          "Zucchini and Yellow Squash Provençal",
+          "Broccoli and Cheddar Cheese Soufflé",
+          "Summer Vegetable Gratin (seasonal)"
+        ]
+      },
+      "starches": {
+        "selection": "choose two",
+        "categories": {
+          "rice": [
+            "Herbed Long Grain and Wild Rice",
+            "Saffron Basmati Rice"
+          ],
+          "pasta": [
+            { "name": "Penne", "description": "With sun-dried tomato cream sauce" },
+            { "name": "Bow Tie", "description": "With tomato-basil pesto sauce" },
+            { "name": "Tortellini", "description": "With marinara sauce" },
+            { "name": "Orzo", "description": "With wild mushrooms" }
+          ],
+          "potatoes": [
+            "Red Skin Potatoes with Fines Herbs (steamed or roasted)",
+            "Smashed Potatoes with Cheddar Cheese",
+            "Chive Whipped Potatoes",
+            "Au Gratin Potatoes with aged cheddar cheese",
+            "Baked Yams with cinnamon, nutmeg and brown sugar",
+            "Red Bliss Potatoes with garlic cream sauce"
+          ]
+        }
+      }
+    },
+
+    "chefs_carving_stations": {
+      "label": "Chef's Carving Stations",
+      "items": [
+        { "name": "Top Round of Beef", "price": 395.00, "pricing_unit": "flat", "serves": 25, "description": "Marinated and slow roasted, served with horseradish mousse and natural jus" },
+        { "name": "Prime Rib of Beef", "price": 495.00, "pricing_unit": "flat", "serves": 25, "description": "With horseradish mousse and natural jus" },
+        { "name": "Beef Tenderloin", "price": 525.00, "pricing_unit": "flat", "serves": 25, "description": "The most tender cut of beef served with bearnaise sauce and horseradish mousse" },
+        { "name": "Roasted Loin of Pork", "price": 350.00, "pricing_unit": "flat", "serves": 25, "description": "Marinated center-cut pork loin, rubbed with dijon mustard, served with fresh apple chutney" },
+        { "name": "Herb Roasted Turkey", "price": 325.00, "pricing_unit": "flat", "serves": 25, "description": "Slow roasted with Herbes de Provence, served with cranberry mayonnaise and dijon mustard" },
+        { "name": "Bourbon-Glazed Almond Crusted Bone-In Ham", "price": 275.00, "pricing_unit": "flat", "serves": 40, "description": "With whole grain mustard sauce" }
+      ]
+    },
+
+    "professional_service": {
+      "label": "Professional Service",
+      "description": "Coordinators and catering staff execute your plan with grace. Service begins and ends at load-in/load-out at The Fluted Mushroom. All linens and rentals are the client's responsibility.",
+      "notes": "All prices are subject to change.",
+      "staff": [
+        { "role": "Servers", "hourly_rate": 40.00, "minimum_hours": 4 },
+        { "role": "Bartenders", "hourly_rate": 40.00, "minimum_hours": 4 },
+        { "role": "Chefs", "hourly_rate": 40.00, "minimum_hours": 4 },
+        { "role": "Supervisor", "hourly_rate": 50.00, "minimum_hours": 4 }
+      ],
+      "bar_services": [
+        { "name": "Full Bar Service", "description": "Including alcohol, charged according to client's request", "price": null },
+        { "name": "Bar Service with Soda, Mixers and Bar Fruit", "description": "If client provides alcohol", "price": 3.95, "pricing_unit": "per person" },
+        { "name": "Bar Service", "description": "If client provides alcohol and non-alcoholic beverages", "price": null }
+      ]
+    }
+  }
+}

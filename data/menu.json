@@ -1,0 +1,985 @@
+[
+  {
+    "id": "watermelon-shrimp",
+    "name": "Watermelon Shrimp",
+    "description": "Half a shrimp on cubed watermelon with vanilla yogurt dressing and fresh mint",
+    "base_price": 6.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍤",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "artichoke-romano",
+    "name": "Artichoke Romano",
+    "description": "Classic Italian appetizer with artichoke and romano cheese",
+    "base_price": 3.75,
+    "meal_type": ["dinner"],
+    "image_url": "🌿",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "asparagus-gruyere-beignet",
+    "name": "Asparagus and Gruyère Beignet",
+    "description": "Light and crispy beignet with asparagus and Gruyère cheese",
+    "base_price": 2.50,
+    "meal_type": ["dinner"],
+    "image_url": "🥐",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "asparagus-puff-pastry",
+    "name": "Asparagus Tip Wrapped in Puff Pastry",
+    "description": "Topped with grated asiago",
+    "base_price": 3.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥖",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "stuffed-mushroom",
+    "name": "Stuffed Mushroom",
+    "description": "Assortment of three flavors",
+    "base_price": 4.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍄",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "bacon-wrapped-scallop",
+    "name": "Bacon Wrapped Scallop",
+    "description": "Premium scallop wrapped in crispy bacon",
+    "base_price": 5.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥓",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "empanada",
+    "name": "Beef, Pork or Chicken Empanada",
+    "description": "Choose your protein for this savory pastry",
+    "base_price": 4.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥟",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "cherry-tomato-tartlet",
+    "name": "Cherry Tomato and Boursin Cheese Tartlet",
+    "description": "With fine herbs and aged cheddar",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍅",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "chicken-waffle-bite",
+    "name": "Chicken and Waffle Bite",
+    "description": "Boneless breast of chicken deep fried in waffle tempura batter with Thai chili maple syrup dipping sauce",
+    "base_price": 3.75,
+    "meal_type": ["dinner"],
+    "image_url": "🧇",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "chinese-spring-roll",
+    "name": "Chinese Spring Roll",
+    "description": "Crispy spring roll with traditional filling",
+    "base_price": 3.75,
+    "meal_type": ["dinner"],
+    "image_url": "🥢",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "chicken-quesadilla",
+    "name": "Chicken Quesadilla",
+    "description": "Grilled chicken with cheese in a crispy tortilla",
+    "base_price": 4.25,
+    "meal_type": ["dinner"],
+    "image_url": "🌮",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "chicken-prosciutto-sage",
+    "name": "Chicken Wrapped in Prosciutto and Fresh Sage",
+    "description": "Tender chicken with Italian prosciutto and aromatic sage",
+    "base_price": 4.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "chipotle-shrimp",
+    "name": "Chipotle Pepper Encrusted Shrimp",
+    "description": "With lime dipping sauce",
+    "base_price": 6.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍤",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "corn-crab-fritter",
+    "name": "Corn and Crab Fritter",
+    "description": "With sweet tomato jam and scallion marmalade",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🌽",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "crispy-pork-belly",
+    "name": "Crispy Pork Belly",
+    "description": "With cranberry blood orange chutney",
+    "base_price": 4.50,
+    "meal_type": ["dinner"],
+    "image_url": "🥓",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "flank-steak-roulade",
+    "name": "Flank Steak Roulade",
+    "description": "Rolled flank steak with savory filling",
+    "base_price": 5.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "loaded-potato-croquette",
+    "name": "Loaded Potato Croquette",
+    "description": "With cheddar cheese and bacon, topped with chive sour cream",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥔",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "lamb-chop-lollipop",
+    "name": "Lollipop of Herb Encrusted Lamb Chop",
+    "description": "Premium lamb chop with herb crust",
+    "base_price": 9.75,
+    "meal_type": ["dinner"],
+    "image_url": "🍖",
+    "badges": ["Hot Hors d'Oeuvres", "Premium"]
+  },
+  {
+    "id": "mini-beef-wellington",
+    "name": "Miniature Beef Wellington",
+    "description": "Diced filet and mushroom duxelle in puff pastry with cognac demi-glace",
+    "base_price": 6.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "mini-cheeseburger",
+    "name": "Miniature Cheeseburger Slider",
+    "description": "Classic mini burger with cheese",
+    "base_price": 4.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍔",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "mini-crab-cake",
+    "name": "Miniature Crab Cake",
+    "description": "With chili lime aioli or chive remoulade",
+    "base_price": 4.95,
+    "meal_type": ["dinner"],
+    "image_url": "🦀",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "mini-pizza",
+    "name": "Miniature Pizza",
+    "description": "With wild mushroom and fontina cheese",
+    "base_price": 3.75,
+    "meal_type": ["dinner"],
+    "image_url": "🍕",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "mini-reuben",
+    "name": "Miniature Reuben",
+    "description": "Classic Reuben sandwich in miniature form",
+    "base_price": 4.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥪",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "potato-pancake",
+    "name": "Potato Pancake",
+    "description": "With crème fraîche and chives",
+    "base_price": 3.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥔",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "potato-pancake-salmon",
+    "name": "Potato Pancake with Smoked Salmon",
+    "description": "With crème fraîche and chives",
+    "base_price": 5.50,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "puff-pastry-pinwheel",
+    "name": "Puff Pastry Pinwheel",
+    "description": "With kale, wild mushrooms and Boursin cheese",
+    "base_price": 2.75,
+    "meal_type": ["dinner"],
+    "image_url": "🥐",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "petit-quiche",
+    "name": "Petit Quiche",
+    "description": "Miniature quiche with savory filling",
+    "base_price": 3.75,
+    "meal_type": ["dinner"],
+    "image_url": "🥧",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "risotto-ball",
+    "name": "Saffron Rice and Fontina Risotto Ball",
+    "description": "With roasted tomato dipping sauce",
+    "base_price": 2.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍙",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "seasonal-arancini",
+    "name": "Seasonal Arancini",
+    "description": "Italian rice balls with seasonal ingredients",
+    "base_price": 3.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍙",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "ratatouille-tart",
+    "name": "Slow Cooked Ratatouille in a Savory Tart Shell",
+    "description": "French vegetable stew in crispy tart",
+    "base_price": 3.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥧",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "spanakopita",
+    "name": "Spanakopita",
+    "description": "Greek spinach and feta pastry",
+    "base_price": 3.75,
+    "meal_type": ["dinner"],
+    "image_url": "🥟",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "thai-chicken-skewer",
+    "name": "Thai Chicken Skewer",
+    "description": "With peanut dipping sauce",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍢",
+    "badges": ["Hot Hors d'Oeuvres"]
+  },
+  {
+    "id": "tomato-basil-brioche",
+    "name": "Tomato and Basil Brioche Square",
+    "description": "Fresh tomato and basil on buttery brioche",
+    "base_price": 3.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍅",
+    "badges": ["Hot Hors d'Oeuvres"]
+  }
+,
+  {
+    "id": "ahi-tuna-tartar",
+    "name": "Ahi Tuna Tartar on Lotus Root Chip",
+    "description": "With sesame, soy and cilantro",
+    "base_price": 5.25,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "blt-bite",
+    "name": "BLT Bite",
+    "description": "Cherry tomato stuffed with ranch mousse, micro iceberg lettuce and bacon bits",
+    "base_price": 3.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍅",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "chicken-waldorf",
+    "name": "Chicken Waldorf Salad",
+    "description": "On Belgian endive spear",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥗",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "chip-and-dip",
+    "name": "Chip and Dip",
+    "description": "Crispy fingerling potato with truffled goat cheese mousse and fresh chives",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥔",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "crispy-duck-tartlet",
+    "name": "Crispy Duck Tartlet",
+    "description": "With curry walnuts and cranberry blood orange marmalade",
+    "base_price": 5.50,
+    "meal_type": ["dinner"],
+    "image_url": "🦆",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "curried-chicken-tartlet",
+    "name": "Curried Chicken Tartlet",
+    "description": "Savory tartlet with curried chicken filling",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥧",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "focaccia-tapenade",
+    "name": "Focaccia with Olive Tapenade",
+    "description": "Italian flatbread with olive spread",
+    "base_price": 3.95,
+    "meal_type": ["dinner"],
+    "image_url": "🫒",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "foie-gras-pate",
+    "name": "Foie Gras Pate on Toasted Brioche",
+    "description": "With macadamia butter and blueberry compote",
+    "base_price": 6.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥖",
+    "badges": ["Cold Hors d'Oeuvres", "Premium"]
+  },
+  {
+    "id": "heart-of-palm",
+    "name": "Heart of Palm Wrapped with Serrano Ham",
+    "description": "With crispy sage, roasted red pepper and manchego cheese",
+    "base_price": 4.25,
+    "meal_type": ["dinner"],
+    "image_url": "🌿",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "lobster-roll",
+    "name": "Lobster Roll",
+    "description": "Miniature potato roll stuffed with classic lobster salad, garnished with fresh scallions",
+    "base_price": 12.00,
+    "meal_type": ["dinner"],
+    "image_url": "🦞",
+    "badges": ["Cold Hors d'Oeuvres", "Premium", "Market Price"]
+  },
+  {
+    "id": "caprese-skewer",
+    "name": "Miniature Caprese Skewer",
+    "description": "Pearl mozzarella and grape tomato, drizzled with pesto and balsamic reduction",
+    "base_price": 3.75,
+    "meal_type": ["dinner"],
+    "image_url": "🍅",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "seasonal-crostini",
+    "name": "Seasonal Crostini",
+    "description": "Toasted bread with seasonal toppings",
+    "base_price": 2.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥖",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "shrimp-cocktail",
+    "name": "Shrimp Cocktail",
+    "description": "Classic chilled shrimp with cocktail sauce",
+    "base_price": 7.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍤",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "sliced-filet-crostini",
+    "name": "Sliced Filet on Toasted Crostini",
+    "description": "With artichoke aioli and chiffonade of arugula",
+    "base_price": 4.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "smoked-salmon",
+    "name": "Smoked Salmon",
+    "description": "On bite-size toast point with lemon chive cream cheese, micro dill and diced pickled red onion",
+    "base_price": 4.95,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "smoked-whitefish-endive",
+    "name": "Smoked White Fish Salad",
+    "description": "On Belgian endive spear",
+    "base_price": 4.95,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "smoked-whitefish-puff",
+    "name": "Smoked White Fish Salad Puff",
+    "description": "Light puff pastry with smoked whitefish salad",
+    "base_price": 4.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥐",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "sundried-tomato-goat-cheese",
+    "name": "Sun-Dried Tomato and Goat Cheese Bite",
+    "description": "Tangy goat cheese with sun-dried tomatoes",
+    "base_price": 3.25,
+    "meal_type": ["dinner"],
+    "image_url": "🧀",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "quail-egg",
+    "name": "Quail Egg",
+    "description": "With caviar and crème fraîche",
+    "base_price": 5.50,
+    "meal_type": ["dinner"],
+    "image_url": "🥚",
+    "badges": ["Cold Hors d'Oeuvres", "Premium"]
+  },
+  {
+    "id": "stuffed-grape-leaf",
+    "name": "Vegetarian Stuffed Grape Leaf",
+    "description": "Traditional Greek dolma",
+    "base_price": 3.25,
+    "meal_type": ["dinner"],
+    "image_url": "🌿",
+    "badges": ["Cold Hors d'Oeuvres"]
+  },
+  {
+    "id": "vietnamese-summer-roll",
+    "name": "Vietnamese Summer Roll",
+    "description": "Wrapped in rice paper with orange soy dipping sauce",
+    "base_price": 4.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥢",
+    "badges": ["Cold Hors d'Oeuvres"]
+  }
+,
+  {
+    "id": "domestic-cheese-display",
+    "name": "Domestic Cheese Display",
+    "description": "A selection of sliced domestic cheeses, garnished with clusters of grapes, served with assorted crackers and mustard dip",
+    "base_price": 16.95,
+    "meal_type": ["dinner"],
+    "image_url": "🧀",
+    "badges": ["Stationary Display"],
+    "serves": 1
+  },
+  {
+    "id": "gourmet-cheese-display",
+    "name": "Gourmet Cheese Display",
+    "description": "A selection of domestic and imported cheeses, sliced fresh fruit, crab, artichoke and jalapeño dip, and pesto Parmesan soufflé, served with crackers, toasted pita triangles, baguette slices and mustard dip",
+    "base_price": 17.50,
+    "meal_type": ["dinner"],
+    "image_url": "🧀",
+    "badges": ["Stationary Display"],
+    "serves": 1
+  },
+  {
+    "id": "mediterranean-table",
+    "name": "Mediterranean Table",
+    "description": "Housemade chickpea hummus with grape leaves, baba ganoush, marinated roasted peppers, feta cheese, artichokes and kalamata olives, served with pita and flat breads",
+    "base_price": 16.95,
+    "meal_type": ["dinner"],
+    "image_url": "🫒",
+    "badges": ["Stationary Display"],
+    "serves": 1
+  },
+  {
+    "id": "antipasto-station",
+    "name": "Antipasto Station",
+    "description": "Italian-cured meats and cheeses, assorted grilled and marinated vegetables and imported olives, served with focaccia sticks and crostini",
+    "base_price": 16.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍖",
+    "badges": ["Stationary Display"],
+    "serves": 1
+  },
+  {
+    "id": "sliced-filet-beef",
+    "name": "Sliced Filet of Beef",
+    "description": "The finest cut of beef sliced and served with silver dollar rolls, housemade horseradish mousse and caramelized onions",
+    "base_price": 19.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Stationary Display"],
+    "serves": 1
+  },
+  {
+    "id": "mini-sandwiches",
+    "name": "Miniature Sandwiches",
+    "description": "Roast beef and provolone, turkey and havarti, ham and swiss (2 per person)",
+    "base_price": 9.95,
+    "meal_type": ["lunch"],
+    "image_url": "🥪",
+    "badges": ["Stationary Display"],
+    "serves": 1
+  },
+  {
+    "id": "gourmet-mini-sandwiches",
+    "name": "Gourmet Miniature Sandwiches",
+    "description": "Sliced filet of beef with horseradish mousse, smoked turkey with cranberry mayonnaise, brie with sun-dried tomatoes and fresh basil (2 per person)",
+    "base_price": 15.50,
+    "meal_type": ["lunch"],
+    "image_url": "🥪",
+    "badges": ["Stationary Display"],
+    "serves": 1
+  },
+  {
+    "id": "smoked-salmon-display",
+    "name": "Smoked Salmon Display",
+    "description": "Presented with capers, red onion, lemon wedges, chopped egg, pink peppercorn sauce and black bread triangles (Serves 25)",
+    "base_price": 275.00,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Stationary Display"],
+    "serves": 25
+  },
+  {
+    "id": "poached-salmon-display",
+    "name": "Poached Salmon Display",
+    "description": "Presented with crème fraîche, cucumber, lemon, capers, red onion, egg whites and pumpernickel toast (Serves 25)",
+    "base_price": 275.00,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Stationary Display"],
+    "serves": 25
+  }
+,
+  {
+    "id": "grilled-salmon",
+    "name": "Grilled Salmon",
+    "description": "With maple-mustard glaze. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 45.50,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Sit-Down Entrée", "Seafood"],
+    "serves": 1
+  },
+  {
+    "id": "macadamia-mahi-mahi",
+    "name": "Macadamia Nut-Crusted Mahi Mahi",
+    "description": "With lemon beurre blanc. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 49.25,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Sit-Down Entrée", "Seafood"],
+    "serves": 1
+  },
+  {
+    "id": "roulade-sole",
+    "name": "Roulade of Sole",
+    "description": "With shrimp and watercress mousse, lemon beurre blanc. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 45.50,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Sit-Down Entrée", "Seafood"],
+    "serves": 1
+  },
+  {
+    "id": "black-sesame-salmon",
+    "name": "Black Sesame-Crusted Salmon",
+    "description": "With orange-soy beurre blanc. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 45.50,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Sit-Down Entrée", "Seafood"],
+    "serves": 1
+  },
+  {
+    "id": "maryland-crab-cakes",
+    "name": "Maryland Style Crab Cakes",
+    "description": "Topped with roasted tomato remoulade. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 58.75,
+    "meal_type": ["dinner"],
+    "image_url": "🦀",
+    "badges": ["Sit-Down Entrée", "Seafood"],
+    "serves": 1
+  }
+,
+  {
+    "id": "stuffed-pork-loin-fruit",
+    "name": "Stuffed Pork Loin",
+    "description": "With dried fruit and bourbon jus. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 41.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Sit-Down Entrée", "Pork"],
+    "serves": 1
+  },
+  {
+    "id": "crusted-pork-loin",
+    "name": "Crusted Pork Loin",
+    "description": "Of mustard, rosemary and sage with roasted garlic jus. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 41.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Sit-Down Entrée", "Pork"],
+    "serves": 1
+  },
+  {
+    "id": "stuffed-pork-loin-spinach",
+    "name": "Stuffed Pork Loin with Spinach & Feta",
+    "description": "With spinach, feta and pine nuts, natural pork jus. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 43.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Sit-Down Entrée", "Pork"],
+    "serves": 1
+  },
+  {
+    "id": "pork-tenderloin-medallions",
+    "name": "Medallions of Pork Tenderloin",
+    "description": "Crusted with mango chutney and almonds, apple butter-cider pork reduction. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 43.25,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Sit-Down Entrée", "Pork"],
+    "serves": 1
+  },
+  {
+    "id": "filet-6oz",
+    "name": "Filet (6 oz.)",
+    "description": "With leeks and balsamic-thyme reduction or sautéed wild mushrooms and natural jus. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 58.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Sit-Down Entrée", "Beef", "Premium"],
+    "serves": 1
+  },
+  {
+    "id": "stuffed-filet-6oz",
+    "name": "Stuffed Filet (6 oz.)",
+    "description": "With roasted tomatoes, fresh basil and gorgonzola, red wine sauce. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 59.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Sit-Down Entrée", "Beef", "Premium"],
+    "serves": 1
+  }
+,
+  {
+    "id": "oregano-chicken",
+    "name": "Oregano Chicken",
+    "description": "With artichoke hearts, grilled tomato and fresh basil. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 42.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "chicken-roulade-bread",
+    "name": "Chicken Roulade",
+    "description": "With savory bread stuffing and velouté sauce. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 42.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "chicken-roulade-mushroom",
+    "name": "Chicken Roulade with Wild Mushrooms",
+    "description": "With wild mushrooms, spinach and fontina, pesto cream sauce. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 44.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "panko-chicken-boursin",
+    "name": "Panko-Crusted Chicken Breast",
+    "description": "Stuffed with Boursin cheese. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 44.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "pierre-chicken",
+    "name": "Pierre Chicken Breast",
+    "description": "With roasted red pepper farce and balsamic-chicken reduction. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 43.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "chicken-romano",
+    "name": "Chicken Romano",
+    "description": "In a rich egg and romano cheese batter. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 39.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "chicken-marsala",
+    "name": "Chicken Marsala",
+    "description": "With mushrooms in a Marsala wine sauce. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 42.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "baby-rock-hen",
+    "name": "Roasted Baby Rock Hen",
+    "description": "Semi-boneless, with blackberry glaze. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 49.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "chicken-saltimbocca",
+    "name": "Chicken Saltimbocca",
+    "description": "Pierre chicken breast with prosciutto and sage, fontina cream sauce. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 44.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  },
+  {
+    "id": "lavender-chicken",
+    "name": "Lavender Chicken",
+    "description": "Lavender, orange and panko-crusted chicken breast with rosemary beurre blanc. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 44.25,
+    "meal_type": ["dinner"],
+    "image_url": "🍗",
+    "badges": ["Sit-Down Entrée", "Chicken"],
+    "serves": 1
+  }
+,
+  {
+    "id": "parmesan-eggplant",
+    "name": "Parmesan Encrusted Eggplant",
+    "description": "With gluten free rotini and pistachio pesto (can also be made vegan). Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 39.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍆",
+    "badges": ["Sit-Down Entrée", "Vegetarian", "Gluten-Free"],
+    "serves": 1
+  },
+  {
+    "id": "risotto-vegetarian",
+    "name": "Risotto",
+    "description": "With asparagus, wild mushrooms, avocado, red onion, roasted tomatoes and balsamic reduction. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 39.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍚",
+    "badges": ["Sit-Down Entrée", "Vegetarian", "Gluten-Free", "Vegan"],
+    "serves": 1
+  },
+  {
+    "id": "duet-shrimp-chicken",
+    "name": "Jumbo Shrimp with Sautéed Petit Breast of Chicken",
+    "description": "Served with Provençal sauce. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 51.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍤",
+    "badges": ["Duet Entrée"],
+    "serves": 1
+  },
+  {
+    "id": "duet-shrimp-romano",
+    "name": "Shrimp Scampi with Chicken Romano",
+    "description": "Classic combination. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 51.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍤",
+    "badges": ["Duet Entrée"],
+    "serves": 1
+  },
+  {
+    "id": "duet-filet-romano",
+    "name": "Petit Filet of Beef Tenderloin with Chicken Romano",
+    "description": "Petit filet is 4 oz. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 55.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Duet Entrée"],
+    "serves": 1
+  },
+  {
+    "id": "duet-filet-salmon",
+    "name": "Petit Filet of Beef Tenderloin with Grilled Fillet of Salmon",
+    "description": "Served with pinot noir sauce. Petit filet is 4 oz. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 58.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Duet Entrée"],
+    "serves": 1
+  },
+  {
+    "id": "duet-pork-chicken",
+    "name": "Pork Tenderloin Medallion with Petit Breast of Chicken",
+    "description": "Served with cranberry and mandarin orange compote. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 47.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Duet Entrée"],
+    "serves": 1
+  },
+  {
+    "id": "duet-filet-boursin",
+    "name": "Petit Filet of Beef Tenderloin with Panko-Crusted Chicken Breast Stuffed with Boursin Cheese",
+    "description": "Served with roasted shallot sauce. Petit filet is 4 oz. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 55.00,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Duet Entrée"],
+    "serves": 1
+  },
+  {
+    "id": "duet-salmon-stuffed-chicken",
+    "name": "Seared Salmon with Petit Chicken Breast Stuffed with Spinach, Fontina and Sun-Dried Tomatoes",
+    "description": "Served with tomato tarragon coulis. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 52.95,
+    "meal_type": ["dinner"],
+    "image_url": "🐟",
+    "badges": ["Duet Entrée"],
+    "serves": 1
+  },
+  {
+    "id": "duet-filet-crab-cake",
+    "name": "Petit Filet of Beef Tenderloin with Maryland Style Crab Cake",
+    "description": "Served with wild mushroom demi-glace. Petit filet is 4 oz. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 71.95,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Duet Entrée", "Premium"],
+    "serves": 1
+  }
+,
+  {
+    "id": "buffet-package-one",
+    "name": "Buffet Package One",
+    "description": "Choose 2 entrées: Grilled Breast of Chicken (marinated with lemon and rosemary), Oregano Chicken, Chicken Roulade, Panko-Crusted Baked Tilapia, Herb-Crusted Pork Loin, or Sliced Top Round of Beef. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 45.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍽️",
+    "badges": ["Buffet Package"],
+    "serves": 1
+  },
+  {
+    "id": "buffet-package-two",
+    "name": "Buffet Package Two",
+    "description": "Choose 2 entrées: Grilled Salmon, Marinated Beef Brisket, Chicken Roulade with Mushrooms, Pork Tenderloin Medallions, Breaded Chicken Breast with Boursin, Shrimp Scampi, Chicken Romano, or Chicken Marsala. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 52.50,
+    "meal_type": ["dinner"],
+    "image_url": "🍽️",
+    "badges": ["Buffet Package"],
+    "serves": 1
+  },
+  {
+    "id": "buffet-package-three",
+    "name": "Buffet Package Three",
+    "description": "Choose 2 entrées: Seared Tenderloin, Macadamia Nut-Crusted Mahi Mahi, Roasted Baby Rock Hen, Grilled Tournedos of Beef, or Pork Tenderloin Medallions with Apples. Includes choice of salad, starch, vegetable, rolls and butter",
+    "base_price": 65.95,
+    "meal_type": ["dinner"],
+    "image_url": "🍽️",
+    "badges": ["Buffet Package", "Premium"],
+    "serves": 1
+  },
+  {
+    "id": "carving-top-round",
+    "name": "Top Round of Beef",
+    "description": "Marinated and slow roasted, served with horseradish mousse and natural jus (Serves 25)",
+    "base_price": 395.00,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Carving Station"],
+    "serves": 25
+  },
+  {
+    "id": "carving-prime-rib",
+    "name": "Prime Rib of Beef",
+    "description": "With horseradish mousse and natural jus (Serves 25)",
+    "base_price": 495.00,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Carving Station", "Premium"],
+    "serves": 25
+  },
+  {
+    "id": "carving-beef-tenderloin",
+    "name": "Beef Tenderloin",
+    "description": "The most tender cut of beef served with bearnaise sauce and horseradish mousse (Serves 25)",
+    "base_price": 525.00,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Carving Station", "Premium"],
+    "serves": 25
+  },
+  {
+    "id": "carving-pork-loin",
+    "name": "Roasted Loin of Pork",
+    "description": "Marinated center-cut pork loin, rubbed with dijon mustard, served with fresh apple chutney (Serves 25)",
+    "base_price": 350.00,
+    "meal_type": ["dinner"],
+    "image_url": "🥩",
+    "badges": ["Carving Station"],
+    "serves": 25
+  },
+  {
+    "id": "carving-turkey",
+    "name": "Herb Roasted Turkey",
+    "description": "Slow roasted with Herbes de Provence, served with cranberry mayonnaise and dijon mustard (Serves 25)",
+    "base_price": 325.00,
+    "meal_type": ["dinner"],
+    "image_url": "🦃",
+    "badges": ["Carving Station"],
+    "serves": 25
+  },
+  {
+    "id": "carving-ham",
+    "name": "Bourbon-Glazed Almond Crusted Bone-In Ham",
+    "description": "With whole grain mustard sauce (Serves 40)",
+    "base_price": 275.00,
+    "meal_type": ["dinner"],
+    "image_url": "🍖",
+    "badges": ["Carving Station"],
+    "serves": 40
+  }
+]
