@@ -2,11 +2,21 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { CartItem, Cart } from '@/types/cart';
 
+export interface DeliveryDetails {
+  deliveryType: 'delivery' | 'pickup';
+  phoneNumber: string;
+  address?: string;
+  deliveryDate: string;
+  deliveryTime: string;
+}
+
 interface CartStore extends Cart {
+  deliveryDetails: DeliveryDetails | null;
   addItem: (item: CartItem) => void;
   removeItem: (itemId: string) => void;
   updateItemQuantity: (itemId: string, quantity: number) => void;
   updateItemPeople: (itemId: string, numberOfPeople: number) => void;
+  setDeliveryDetails: (details: DeliveryDetails) => void;
   clearCart: () => void;
   getCartTotal: () => number;
 }
@@ -16,6 +26,7 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       items: [],
       totalPrice: 0,
+      deliveryDetails: null,
 
       addItem: (item: CartItem) => {
         set((state) => {
@@ -68,7 +79,11 @@ export const useCartStore = create<CartStore>()(
       },
 
       clearCart: () => {
-        set({ items: [], totalPrice: 0 });
+        set({ items: [], totalPrice: 0, deliveryDetails: null });
+      },
+
+      setDeliveryDetails: (details: DeliveryDetails) => {
+        set({ deliveryDetails: details });
       },
 
       getCartTotal: () => {
