@@ -11,7 +11,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   experimental: {
-  // İçindeki turbo kısmını komple sildik
-},
+    // Turbo buradaydı, sildik.
+  }
+};
 
 export default nextConfig;
