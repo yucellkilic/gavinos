@@ -11,10 +11,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   experimental: {
-    turbo: {
-      root: process.cwd(),
-    },
-  },
-};
+  // İçindeki turbo kısmını komple sildik
+},
 
 export default nextConfig;
