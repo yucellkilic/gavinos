@@ -16,7 +16,7 @@ export function calculatePrice(
   selectedAccompaniments: AccompanimentItem[] = []
 ): PriceCalculation {
   const optionalOptionsPrice = selectedOptionalOptions.reduce(
-    (sum, option) => sum + option.price,
+    (sum, option) => sum + (option.price || 0),
     0
   );
 
@@ -47,11 +47,11 @@ export function calculatePrice(
 }
 
 export function formatPrice(price: number | null): string {
-  if (price === null) return 'Market Price';
+  if (price === null || price === 0) return 'Market Price';
   return price.toFixed(2);
 }
 
 export function formatCurrency(price: number | null): string {
-  if (price === null) return 'Market Price';
-  return `$${formatPrice(price)}`;
+  if (price === null || price === 0) return 'Market Price';
+  return `$${price.toFixed(2)}`;
 }

@@ -94,7 +94,7 @@ export const useCartStore = create<CartStore>()(
       },
 
       getCartTotal: () => {
-        return get().totalPrice;
+        return get().totalPrice ?? 0;
       },
     }),
     {

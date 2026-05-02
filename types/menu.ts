@@ -6,14 +6,14 @@ export interface RequiredOption {
   choices: {
     id: string;
     label: string;
-    price: number;
+    price: number | null;
   }[];
 }
 
 export interface OptionalOption {
   id: string;
   label: string;
-  price: number;
+  price: number | null;
 }
 
 export interface AccompanimentItem {
