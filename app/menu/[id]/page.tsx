@@ -75,7 +75,7 @@ export default function ProductDetailPage() {
       configuration: {
         requiredOptions: selectedRequiredOptions,
         optionalOptions: selectedOptionalOptions.map((opt) => opt.id),
-        selectedAccompaniments: selectedAccompaniments.map((acc) => acc.id),
+        selectedAccompaniments: menuItem.supports_accompaniments ? selectedAccompaniments.map((acc) => acc.id) : [],
       },
       totalPrice: calculation.total,
       image_url: menuItem.image_url,
@@ -222,7 +222,7 @@ export default function ProductDetailPage() {
             )}
 
             {/* Accompaniments Section */}
-            {accompaniments.length > 0 && (
+            {menuItem.supports_accompaniments && accompaniments.length > 0 && (
               <div className="bg-white p-6 rounded-xl shadow-md">
                 <label className="block text-sm font-semibold text-gray-900 mb-3">
                   Garnitür Seçenekleri (İsteğe Bağlı)

@@ -27,4 +27,5 @@ export interface MenuItem {
   optional_options?: OptionalOption[];
   badges?: string[];
   serves?: number;
+  supports_accompaniments?: boolean;
 }

@@ -845,7 +845,8 @@
       "Sit-Down Entrée",
       "Seafood"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "macadamia-mahi-mahi",
@@ -860,7 +861,8 @@
       "Sit-Down Entrée",
       "Seafood"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "roulade-sole",
@@ -875,7 +877,8 @@
       "Sit-Down Entrée",
       "Seafood"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "black-sesame-salmon",
@@ -890,7 +893,8 @@
       "Sit-Down Entrée",
       "Seafood"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "maryland-crab-cakes",
@@ -905,7 +909,8 @@
       "Sit-Down Entrée",
       "Seafood"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "stuffed-pork-loin-fruit",
@@ -920,7 +925,8 @@
       "Sit-Down Entrée",
       "Pork"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "crusted-pork-loin",
@@ -935,7 +941,8 @@
       "Sit-Down Entrée",
       "Pork"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "stuffed-pork-loin-spinach",
@@ -950,7 +957,8 @@
       "Sit-Down Entrée",
       "Pork"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "pork-tenderloin-medallions",
@@ -965,7 +973,8 @@
       "Sit-Down Entrée",
       "Pork"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "filet-6oz",
@@ -981,7 +990,8 @@
       "Beef",
       "Premium"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "stuffed-filet-6oz",
@@ -997,7 +1007,8 @@
       "Beef",
       "Premium"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "oregano-chicken",
@@ -1012,7 +1023,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "chicken-roulade-bread",
@@ -1027,7 +1039,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "chicken-roulade-mushroom",
@@ -1042,7 +1055,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "panko-chicken-boursin",
@@ -1057,7 +1071,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "pierre-chicken",
@@ -1072,7 +1087,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "chicken-romano",
@@ -1087,7 +1103,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "chicken-marsala",
@@ -1102,7 +1119,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "baby-rock-hen",
@@ -1117,7 +1135,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "chicken-saltimbocca",
@@ -1132,7 +1151,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "lavender-chicken",
@@ -1147,7 +1167,8 @@
       "Sit-Down Entrée",
       "Chicken"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "parmesan-eggplant",
@@ -1163,7 +1184,8 @@
       "Vegetarian",
       "Gluten-Free"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "risotto-vegetarian",
@@ -1180,7 +1202,8 @@
       "Gluten-Free",
       "Vegan"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-shrimp-chicken",
@@ -1194,7 +1217,8 @@
     "badges": [
       "Duet Entrée"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-shrimp-romano",
@@ -1208,7 +1232,8 @@
     "badges": [
       "Duet Entrée"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-filet-romano",
@@ -1222,7 +1247,8 @@
     "badges": [
       "Duet Entrée"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-filet-salmon",
@@ -1236,7 +1262,8 @@
     "badges": [
       "Duet Entrée"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-pork-chicken",
@@ -1250,7 +1277,8 @@
     "badges": [
       "Duet Entrée"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-filet-boursin",
@@ -1264,7 +1292,8 @@
     "badges": [
       "Duet Entrée"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-salmon-stuffed-chicken",
@@ -1278,7 +1307,8 @@
     "badges": [
       "Duet Entrée"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "duet-filet-crab-cake",
@@ -1293,7 +1323,8 @@
       "Duet Entrée",
       "Premium"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "buffet-package-one",
@@ -1307,7 +1338,8 @@
     "badges": [
       "Buffet Package"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "buffet-package-two",
@@ -1321,7 +1353,8 @@
     "badges": [
       "Buffet Package"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "buffet-package-three",
@@ -1336,7 +1369,8 @@
       "Buffet Package",
       "Premium"
     ],
-    "serves": 1
+    "serves": 1,
+    "supports_accompaniments": true
   },
   {
     "id": "carving-top-round",
