@@ -52,7 +52,7 @@ export default function CheckoutPage() {
   };
 
   useEffect(() => {
-    if (selectedPayment === 'stripe' && totalPrice > 0) {
+    if (selectedPayment === 'stripe' && typeof totalPrice === 'number' && totalPrice > 0) {
       initializePayment();
     }
   }, [selectedPayment, totalPrice]);
@@ -93,7 +93,7 @@ export default function CheckoutPage() {
               {items.map((item) => (
                 <div key={item.id} className="flex gap-4 pb-4 border-b border-gray-200 last:border-0">
                   <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center">
-                    <div className="text-2xl">🍕</div>
+                    <div className="text-2xl">{item.image_url}</div>
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">{item.name}</h3>
@@ -160,7 +160,20 @@ export default function CheckoutPage() {
 
             {/* Payment Form */}
             <div className="bg-white rounded-xl p-6 shadow-md">
-              {isLoading ? (
+              {totalPrice === null ? (
+                <div className="text-center py-12">
+                  <p className="text-xl font-bold text-gray-900 mb-2">Custom Pricing Required</p>
+                  <p className="text-gray-600 mb-6">
+                    Your order includes items that require custom pricing or are based on current market rates.
+                  </p>
+                  <button
+                    onClick={() => window.location.href = 'mailto:info@theflutedmushroom.com?subject=Pricing Inquiry'}
+                    className="px-6 py-3 bg-forestGreen text-white font-semibold rounded-lg hover:bg-forestGreen/90 transition-smooth"
+                  >
+                    Contact for Pricing
+                  </button>
+                </div>
+              ) : isLoading ? (
                 <div className="text-center py-12">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-forestGreen mx-auto"></div>
                   <p className="text-gray-600 mt-4">Initializing payment...</p>
