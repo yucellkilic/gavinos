@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { OptionalOption, MenuItem } from '@/types/menu';
+import { OptionalOption, AccompanimentItem } from '@/types/menu';
 import { calculatePrice, PriceCalculation } from '@/lib/priceCalculator';
 
 export function usePriceCalculator(
@@ -10,7 +10,7 @@ export function usePriceCalculator(
   const [numberOfPeople, setNumberOfPeople] = useState(initialPeople);
   const [quantity, setQuantity] = useState(initialQuantity);
   const [selectedOptionalOptions, setSelectedOptionalOptions] = useState<OptionalOption[]>([]);
-  const [selectedAccompaniments, setSelectedAccompaniments] = useState<MenuItem[]>([]);
+  const [selectedAccompaniments, setSelectedAccompaniments] = useState<AccompanimentItem[]>([]);
   const [calculation, setCalculation] = useState<PriceCalculation>(() =>
     calculatePrice(basePrice, initialPeople, initialQuantity, [], [])
   );
@@ -36,7 +36,7 @@ export function usePriceCalculator(
     });
   };
 
-  const toggleAccompaniment = (item: MenuItem) => {
+  const toggleAccompaniment = (item: AccompanimentItem) => {
     setSelectedAccompaniments((prev) => {
       const exists = prev.find((acc) => acc.id === item.id);
       if (exists) {

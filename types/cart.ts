@@ -1,7 +1,9 @@
+import { AccompanimentItem } from './menu';
+
 export interface CartItemConfiguration {
   requiredOptions: Record<string, string>;
   optionalOptions: string[];
-  selectedAccompaniments?: string[];
+  selectedAccompaniments?: AccompanimentItem[];
 }
 
 export interface CartItem {

@@ -846,7 +846,150 @@
       "Seafood"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "macadamia-mahi-mahi",
@@ -862,7 +1005,150 @@
       "Seafood"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "roulade-sole",
@@ -878,7 +1164,150 @@
       "Seafood"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "black-sesame-salmon",
@@ -894,7 +1323,150 @@
       "Seafood"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "maryland-crab-cakes",
@@ -910,7 +1482,150 @@
       "Seafood"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "stuffed-pork-loin-fruit",
@@ -926,7 +1641,150 @@
       "Pork"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "crusted-pork-loin",
@@ -942,7 +1800,150 @@
       "Pork"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "stuffed-pork-loin-spinach",
@@ -958,7 +1959,150 @@
       "Pork"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pork-tenderloin-medallions",
@@ -974,7 +2118,150 @@
       "Pork"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "filet-6oz",
@@ -991,7 +2278,150 @@
       "Premium"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "stuffed-filet-6oz",
@@ -1008,7 +2438,150 @@
       "Premium"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "oregano-chicken",
@@ -1024,7 +2597,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "chicken-roulade-bread",
@@ -1040,7 +2756,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "chicken-roulade-mushroom",
@@ -1056,7 +2915,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "panko-chicken-boursin",
@@ -1072,7 +3074,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pierre-chicken",
@@ -1088,7 +3233,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "chicken-romano",
@@ -1104,7 +3392,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "chicken-marsala",
@@ -1120,7 +3551,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "baby-rock-hen",
@@ -1136,7 +3710,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "chicken-saltimbocca",
@@ -1152,7 +3869,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lavender-chicken",
@@ -1168,7 +4028,150 @@
       "Chicken"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "parmesan-eggplant",
@@ -1185,7 +4188,150 @@
       "Gluten-Free"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "risotto-vegetarian",
@@ -1203,7 +4349,150 @@
       "Vegan"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-shrimp-chicken",
@@ -1218,7 +4507,150 @@
       "Duet Entrée"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-shrimp-romano",
@@ -1233,7 +4665,150 @@
       "Duet Entrée"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-filet-romano",
@@ -1248,7 +4823,150 @@
       "Duet Entrée"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-filet-salmon",
@@ -1263,7 +4981,150 @@
       "Duet Entrée"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-pork-chicken",
@@ -1278,7 +5139,150 @@
       "Duet Entrée"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-filet-boursin",
@@ -1293,7 +5297,150 @@
       "Duet Entrée"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-salmon-stuffed-chicken",
@@ -1308,7 +5455,150 @@
       "Duet Entrée"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "duet-filet-crab-cake",
@@ -1324,7 +5614,150 @@
       "Premium"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "sd-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "sd-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Wild mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "sd-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots with choice of dressing"
+          },
+          {
+            "id": "sd-salad-mediterranean-salad",
+            "name": "Mediterranean Salad",
+            "price": 0,
+            "description": "Mixed greens, artichoke hearts, kalamata olives, cucumbers and feta cheese tossed with lemon-olive oil vinaigrette"
+          },
+          {
+            "id": "sd-salad-signature-salad",
+            "name": "Signature Salad",
+            "price": 5.95,
+            "description": "Seasonal greens, spiced pecans, dried cranberries, gorgonzola cheese, with champagne vinaigrette"
+          },
+          {
+            "id": "sd-salad-roasted-beet-and-truffle-salad",
+            "name": "Roasted Beet and Truffle Salad",
+            "price": 7,
+            "description": "Arugula, honey and local goat cheese, with truffle vinaigrette"
+          },
+          {
+            "id": "sd-salad-blueberry-and-ricotta-salad",
+            "name": "Blueberry and Ricotta Salad",
+            "price": 7,
+            "description": "Artisan greens, charred orange, whipped lemon ricotta and toasted almonds with blueberry and balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-heirloom-tomato-salad",
+            "name": "Heirloom Tomato Salad",
+            "price": 5.95,
+            "description": "Roasted heirloom cherry tomatoes, bibb lettuce, carrots and gorgonzola croutons, with white balsamic vinaigrette"
+          },
+          {
+            "id": "sd-salad-watermelon-radish-salad",
+            "name": "Watermelon Radish Salad",
+            "price": 5.95,
+            "description": "Mixed greens, grilled fennel and pickled red onion, with rice wine and soy vinaigrette"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose One Starch",
+        "items": [
+          {
+            "id": "sd-starch-wild-mushroom-risotto-cake",
+            "name": "Wild Mushroom Risotto Cake",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-duchess-potatoes-piped-whipped-potatoes-",
+            "name": "Duchess Potatoes (Piped Whipped Potatoes)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-dauphinoise-potatoes",
+            "name": "Dauphinoise Potatoes",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-red-skin-potatoes-with-fines-herbs-roasted-or-steamed-",
+            "name": "Red Skin Potatoes with Fines Herbs (roasted or steamed)",
+            "price": 0
+          },
+          {
+            "id": "sd-starch-yukon-gold-whipped-potatoes",
+            "name": "Yukon Gold Whipped Potatoes",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "sd-veg-poached-asparagus",
+            "name": "Poached Asparagus",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-seasonal-baby-vegetables",
+            "name": "Seasonal Baby Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-roasted-root-vegetables",
+            "name": "Roasted Root Vegetables",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-broccolini",
+            "name": "Broccolini",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-with-toasted-sesame-seeds",
+            "name": "Sautéed Sugar Snap Peas with toasted sesame seeds",
+            "price": 0
+          },
+          {
+            "id": "sd-veg-saut-ed-sugar-snap-peas-and-baby-carrots",
+            "name": "Sautéed Sugar Snap Peas and Baby Carrots",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "buffet-package-one",
@@ -1339,7 +5772,153 @@
       "Buffet Package"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "buff-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "buff-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "buff-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose Two Starches",
+        "items": [
+          {
+            "id": "buff-rice-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "buff-rice-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "buff-pasta-penne",
+            "name": "Penne",
+            "price": 0,
+            "description": "With sun-dried tomato cream sauce"
+          },
+          {
+            "id": "buff-pasta-bow-tie",
+            "name": "Bow Tie",
+            "price": 0,
+            "description": "With tomato-basil pesto sauce"
+          },
+          {
+            "id": "buff-pasta-tortellini",
+            "name": "Tortellini",
+            "price": 0,
+            "description": "With marinara sauce"
+          },
+          {
+            "id": "buff-pasta-orzo",
+            "name": "Orzo",
+            "price": 0,
+            "description": "With wild mushrooms"
+          },
+          {
+            "id": "buff-potato-red-skin-potatoes-with-fines-herbs-steamed-or-roasted-",
+            "name": "Red Skin Potatoes with Fines Herbs (steamed or roasted)",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-smashed-potatoes-with-cheddar-cheese",
+            "name": "Smashed Potatoes with Cheddar Cheese",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-chive-whipped-potatoes",
+            "name": "Chive Whipped Potatoes",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-au-gratin-potatoes-with-aged-cheddar-cheese",
+            "name": "Au Gratin Potatoes with aged cheddar cheese",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-baked-yams-with-cinnamon-nutmeg-and-brown-sugar",
+            "name": "Baked Yams with cinnamon, nutmeg and brown sugar",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-red-bliss-potatoes-with-garlic-cream-sauce",
+            "name": "Red Bliss Potatoes with garlic cream sauce",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "buff-veg-fresh-green-beans-yellow-wax-beans-and-carrots-in-compound-herb-butter",
+            "name": "Fresh Green Beans, Yellow Wax Beans and Carrots in compound herb butter",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-corn-pudding-souffl-",
+            "name": "Corn Pudding Soufflé",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-grilled-marinated-vegetables-served-at-room-temperature-",
+            "name": "Grilled Marinated Vegetables (served at room temperature)",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-saut-ed-sliced-carrots-with-fresh-dill",
+            "name": "Sautéed Sliced Carrots with fresh dill",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-fresh-vegetable-medley",
+            "name": "Fresh Vegetable Medley",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-zucchini-and-yellow-squash-proven-al",
+            "name": "Zucchini and Yellow Squash Provençal",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-broccoli-and-cheddar-cheese-souffl-",
+            "name": "Broccoli and Cheddar Cheese Soufflé",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-summer-vegetable-gratin-seasonal-",
+            "name": "Summer Vegetable Gratin (seasonal)",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "buffet-package-two",
@@ -1354,7 +5933,153 @@
       "Buffet Package"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "buff-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "buff-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "buff-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose Two Starches",
+        "items": [
+          {
+            "id": "buff-rice-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "buff-rice-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "buff-pasta-penne",
+            "name": "Penne",
+            "price": 0,
+            "description": "With sun-dried tomato cream sauce"
+          },
+          {
+            "id": "buff-pasta-bow-tie",
+            "name": "Bow Tie",
+            "price": 0,
+            "description": "With tomato-basil pesto sauce"
+          },
+          {
+            "id": "buff-pasta-tortellini",
+            "name": "Tortellini",
+            "price": 0,
+            "description": "With marinara sauce"
+          },
+          {
+            "id": "buff-pasta-orzo",
+            "name": "Orzo",
+            "price": 0,
+            "description": "With wild mushrooms"
+          },
+          {
+            "id": "buff-potato-red-skin-potatoes-with-fines-herbs-steamed-or-roasted-",
+            "name": "Red Skin Potatoes with Fines Herbs (steamed or roasted)",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-smashed-potatoes-with-cheddar-cheese",
+            "name": "Smashed Potatoes with Cheddar Cheese",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-chive-whipped-potatoes",
+            "name": "Chive Whipped Potatoes",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-au-gratin-potatoes-with-aged-cheddar-cheese",
+            "name": "Au Gratin Potatoes with aged cheddar cheese",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-baked-yams-with-cinnamon-nutmeg-and-brown-sugar",
+            "name": "Baked Yams with cinnamon, nutmeg and brown sugar",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-red-bliss-potatoes-with-garlic-cream-sauce",
+            "name": "Red Bliss Potatoes with garlic cream sauce",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "buff-veg-fresh-green-beans-yellow-wax-beans-and-carrots-in-compound-herb-butter",
+            "name": "Fresh Green Beans, Yellow Wax Beans and Carrots in compound herb butter",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-corn-pudding-souffl-",
+            "name": "Corn Pudding Soufflé",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-grilled-marinated-vegetables-served-at-room-temperature-",
+            "name": "Grilled Marinated Vegetables (served at room temperature)",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-saut-ed-sliced-carrots-with-fresh-dill",
+            "name": "Sautéed Sliced Carrots with fresh dill",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-fresh-vegetable-medley",
+            "name": "Fresh Vegetable Medley",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-zucchini-and-yellow-squash-proven-al",
+            "name": "Zucchini and Yellow Squash Provençal",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-broccoli-and-cheddar-cheese-souffl-",
+            "name": "Broccoli and Cheddar Cheese Soufflé",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-summer-vegetable-gratin-seasonal-",
+            "name": "Summer Vegetable Gratin (seasonal)",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "buffet-package-three",
@@ -1370,7 +6095,153 @@
       "Premium"
     ],
     "serves": 1,
-    "supports_accompaniments": true
+    "accompaniment_groups": [
+      {
+        "id": "salads",
+        "label": "Choose One Salad",
+        "items": [
+          {
+            "id": "buff-salad-caesar-salad",
+            "name": "Caesar Salad",
+            "price": 0,
+            "description": "Romaine lettuce, Parmesan cheese, housemade croutons and Caesar dressing"
+          },
+          {
+            "id": "buff-salad-baby-spinach-salad",
+            "name": "Baby Spinach Salad",
+            "price": 0,
+            "description": "Mushrooms, hard-cooked egg and red onion, with poppyseed dressing"
+          },
+          {
+            "id": "buff-salad-tossed-garden-salad",
+            "name": "Tossed Garden Salad",
+            "price": 0,
+            "description": "Tomatoes, cucumbers and carrots"
+          }
+        ]
+      },
+      {
+        "id": "starches",
+        "label": "Choose Two Starches",
+        "items": [
+          {
+            "id": "buff-rice-herbed-long-grain-and-wild-rice",
+            "name": "Herbed Long Grain and Wild Rice",
+            "price": 0
+          },
+          {
+            "id": "buff-rice-saffron-basmati-rice",
+            "name": "Saffron Basmati Rice",
+            "price": 0
+          },
+          {
+            "id": "buff-pasta-penne",
+            "name": "Penne",
+            "price": 0,
+            "description": "With sun-dried tomato cream sauce"
+          },
+          {
+            "id": "buff-pasta-bow-tie",
+            "name": "Bow Tie",
+            "price": 0,
+            "description": "With tomato-basil pesto sauce"
+          },
+          {
+            "id": "buff-pasta-tortellini",
+            "name": "Tortellini",
+            "price": 0,
+            "description": "With marinara sauce"
+          },
+          {
+            "id": "buff-pasta-orzo",
+            "name": "Orzo",
+            "price": 0,
+            "description": "With wild mushrooms"
+          },
+          {
+            "id": "buff-potato-red-skin-potatoes-with-fines-herbs-steamed-or-roasted-",
+            "name": "Red Skin Potatoes with Fines Herbs (steamed or roasted)",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-smashed-potatoes-with-cheddar-cheese",
+            "name": "Smashed Potatoes with Cheddar Cheese",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-chive-whipped-potatoes",
+            "name": "Chive Whipped Potatoes",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-au-gratin-potatoes-with-aged-cheddar-cheese",
+            "name": "Au Gratin Potatoes with aged cheddar cheese",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-baked-yams-with-cinnamon-nutmeg-and-brown-sugar",
+            "name": "Baked Yams with cinnamon, nutmeg and brown sugar",
+            "price": 0
+          },
+          {
+            "id": "buff-potato-red-bliss-potatoes-with-garlic-cream-sauce",
+            "name": "Red Bliss Potatoes with garlic cream sauce",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "id": "vegetables",
+        "label": "Choose One Vegetable",
+        "items": [
+          {
+            "id": "buff-veg-fresh-green-beans-yellow-wax-beans-and-carrots-in-compound-herb-butter",
+            "name": "Fresh Green Beans, Yellow Wax Beans and Carrots in compound herb butter",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-corn-pudding-souffl-",
+            "name": "Corn Pudding Soufflé",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-grilled-marinated-vegetables-served-at-room-temperature-",
+            "name": "Grilled Marinated Vegetables (served at room temperature)",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-saut-ed-sliced-carrots-with-fresh-dill",
+            "name": "Sautéed Sliced Carrots with fresh dill",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-fresh-vegetable-medley",
+            "name": "Fresh Vegetable Medley",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-haricot-vert-with-garlic-and-basil",
+            "name": "Haricot Vert with garlic and basil",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-zucchini-and-yellow-squash-proven-al",
+            "name": "Zucchini and Yellow Squash Provençal",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-broccoli-and-cheddar-cheese-souffl-",
+            "name": "Broccoli and Cheddar Cheese Soufflé",
+            "price": 0
+          },
+          {
+            "id": "buff-veg-summer-vegetable-gratin-seasonal-",
+            "name": "Summer Vegetable Gratin (seasonal)",
+            "price": 0
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "carving-top-round",

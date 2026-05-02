@@ -16,6 +16,19 @@ export interface OptionalOption {
   price: number;
 }
 
+export interface AccompanimentItem {
+  id: string;
+  name: string;
+  price: number;
+  description?: string;
+}
+
+export interface AccompanimentGroup {
+  id: string;
+  label: string;
+  items: AccompanimentItem[];
+}
+
 export interface MenuItem {
   id: string;
   name: string;
@@ -27,5 +40,5 @@ export interface MenuItem {
   optional_options?: OptionalOption[];
   badges?: string[];
   serves?: number;
-  supports_accompaniments?: boolean;
+  accompaniment_groups?: AccompanimentGroup[];
 }

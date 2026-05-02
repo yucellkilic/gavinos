@@ -1,4 +1,4 @@
-import { MenuItem, OptionalOption } from '@/types/menu';
+import { OptionalOption, AccompanimentItem } from '@/types/menu';
 
 export interface PriceCalculation {
   basePrice: number;
@@ -13,7 +13,7 @@ export function calculatePrice(
   numberOfPeople: number,
   quantity: number,
   selectedOptionalOptions: OptionalOption[] = [],
-  selectedAccompaniments: MenuItem[] = []
+  selectedAccompaniments: AccompanimentItem[] = []
 ): PriceCalculation {
   const optionalOptionsPrice = selectedOptionalOptions.reduce(
     (sum, option) => sum + option.price,
@@ -21,7 +21,7 @@ export function calculatePrice(
   );
 
   const accompanimentsPrice = selectedAccompaniments.reduce(
-    (sum, acc) => sum + acc.base_price,
+    (sum, acc) => sum + acc.price,
     0
   );
 

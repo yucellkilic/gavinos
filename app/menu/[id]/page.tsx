@@ -37,10 +37,6 @@ export default function ProductDetailPage() {
     calculation,
   } = usePriceCalculator(menuItem?.base_price || 0);
 
-  const accompaniments = useMemo(() => {
-    return (menuData as MenuItem[]).filter(item => item.badges?.includes('Accompaniment'));
-  }, []);
-
   if (!menuItem) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -75,7 +71,7 @@ export default function ProductDetailPage() {
       configuration: {
         requiredOptions: selectedRequiredOptions,
         optionalOptions: selectedOptionalOptions.map((opt) => opt.id),
-        selectedAccompaniments: menuItem.supports_accompaniments ? selectedAccompaniments.map((acc) => acc.id) : [],
+        selectedAccompaniments: selectedAccompaniments,
       },
       totalPrice: calculation.total,
       image_url: menuItem.image_url,
@@ -222,13 +218,13 @@ export default function ProductDetailPage() {
             )}
 
             {/* Accompaniments Section */}
-            {menuItem.supports_accompaniments && accompaniments.length > 0 && (
-              <div className="bg-white p-6 rounded-xl shadow-md">
+            {menuItem.accompaniment_groups && menuItem.accompaniment_groups.map((group) => (
+              <div key={group.id} className="bg-white p-6 rounded-xl shadow-md mb-4 last:mb-0">
                 <label className="block text-sm font-semibold text-gray-900 mb-3">
-                  Garnitür Seçenekleri (İsteğe Bağlı)
+                  {group.label} (İsteğe Bağlı)
                 </label>
                 <div className="space-y-2 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
-                  {accompaniments.map((acc) => (
+                  {group.items.map((acc) => (
                     <label key={acc.id} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 border border-gray-100 cursor-pointer transition-smooth">
                       <input
                         type="checkbox"
@@ -239,17 +235,19 @@ export default function ProductDetailPage() {
                       <div className="flex-1 flex justify-between items-center">
                         <div>
                           <span className="font-medium text-gray-900">{acc.name}</span>
-                          {acc.base_price > 0 && (
-                            <span className="ml-2 text-sm text-gray-500">(+{formatCurrency(acc.base_price)})</span>
+                          {acc.price > 0 && (
+                            <span className="ml-2 text-sm text-gray-500">(+{formatCurrency(acc.price)})</span>
+                          )}
+                          {acc.description && (
+                            <p className="text-xs text-gray-500 mt-1">{acc.description}</p>
                           )}
                         </div>
-                        <span className="text-xl" aria-hidden="true">{acc.image_url}</span>
                       </div>
                     </label>
                   ))}
                 </div>
               </div>
-            )}
+            ))}
 
             {/* Price Summary */}
             <div className="bg-forestGreen/5 p-6 rounded-xl border-2 border-forestGreen">
