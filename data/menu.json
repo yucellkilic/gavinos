@@ -170,7 +170,7 @@
   },
   {
     "id": "corn-crab-fritter",
-    "name": "Corn and Crab Fritter",
+    "name": "Corn and Crab Fitter",
     "description": "With sweet tomato jam and scallion marmalade",
     "base_price": 3.95,
     "meal_type": [
@@ -2591,7 +2591,7 @@
   {
     "id": "filet-6oz",
     "name": "Filet (6 oz.)",
-    "description": "With leeks and balsamic-thyme reduction or sautéed wild mushrooms and natural jus. Includes choice of salad, starch, vegetable, rolls and butter",
+    "description": "With leeks and balsamicthyme reduction or sautéed wild mushrooms and natural jus. Includes choice of salad, starch, vegetable, rolls and butter",
     "base_price": 58.95,
     "meal_type": [
       "dinner"

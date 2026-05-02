@@ -89,7 +89,7 @@
           "description": "With lime dipping sauce"
         },
         {
-          "name": "Corn and Crab Fritter",
+          "name": "Corn and Crab Fitter",
           "price": 3.95,
           "description": "With sweet tomato jam and scallion marmalade"
         },
@@ -598,7 +598,7 @@
             {
               "name": "Filet (6 oz.)",
               "price": 58.95,
-              "description": "With leeks and balsamic-thyme reduction or sautéed wild mushrooms and natural jus"
+              "description": "With leeks and balsamicthyme reduction or sautéed wild mushrooms and natural jus"
             },
             {
               "name": "Stuffed Filet (6 oz.)",
@@ -882,7 +882,7 @@
           "pricing_unit": "per_person",
           "selection_note": "Select two main items from this list",
           "items": [
-            { "name": "Seared Tenderloin", "description": "With leeks and balsamic-thyme reduction" },
+            { "name": "Seared Tenderloin", "description": "With leeks and balsamicthyme reduction" },
             { "name": "Macadamia Nut-Crusted Mahi Mahi", "description": "With lemon beurre blanc" },
             { "name": "Roasted Baby Rock Hen", "description": "Semi-boneless, with blackberry glaze" },
             { "name": "Grilled Tournedos of Beef", "description": "With port wine reduction sauce" },
