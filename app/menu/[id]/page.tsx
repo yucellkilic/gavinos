@@ -237,7 +237,7 @@ export default function ProductDetailPage() {
                       <div className="flex-1 flex justify-between items-center">
                         <div>
                           <span className="font-medium text-gray-900">{acc.name}</span>
-                          {acc.price > 0 && (
+                          {typeof acc.price === 'number' && acc.price > 0 && (
                             <span className="ml-2 text-sm text-gray-500">(+{formatCurrency(acc.price)})</span>
                           )}
                           {acc.description && (

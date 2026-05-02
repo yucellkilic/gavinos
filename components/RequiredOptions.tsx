@@ -57,7 +57,7 @@ export default function RequiredOptions({
                   <span className="ml-3 flex-1 text-sm text-gray-700">
                     {choice.label}
                   </span>
-                  {choice.price > 0 && (
+                  {typeof choice.price === 'number' && choice.price > 0 && (
                     <span className="text-sm font-medium text-forestGreen">
                       +${choice.price.toFixed(2)}
                     </span>
