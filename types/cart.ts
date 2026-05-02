@@ -1,6 +1,7 @@
 export interface CartItemConfiguration {
   requiredOptions: Record<string, string>;
   optionalOptions: string[];
+  selectedAccompaniments?: string[];
 }
 
 export interface CartItem {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { OptionalOption } from '@/types/menu';
+import { OptionalOption, MenuItem } from '@/types/menu';
 import { calculatePrice, PriceCalculation } from '@/lib/priceCalculator';
 
 export function usePriceCalculator(
@@ -10,8 +10,9 @@ export function usePriceCalculator(
   const [numberOfPeople, setNumberOfPeople] = useState(initialPeople);
   const [quantity, setQuantity] = useState(initialQuantity);
   const [selectedOptionalOptions, setSelectedOptionalOptions] = useState<OptionalOption[]>([]);
+  const [selectedAccompaniments, setSelectedAccompaniments] = useState<MenuItem[]>([]);
   const [calculation, setCalculation] = useState<PriceCalculation>(() =>
-    calculatePrice(basePrice, initialPeople, initialQuantity, [])
+    calculatePrice(basePrice, initialPeople, initialQuantity, [], [])
   );
 
   useEffect(() => {
@@ -19,10 +20,11 @@ export function usePriceCalculator(
       basePrice,
       numberOfPeople,
       quantity,
-      selectedOptionalOptions
+      selectedOptionalOptions,
+      selectedAccompaniments
     );
     setCalculation(newCalculation);
-  }, [basePrice, numberOfPeople, quantity, selectedOptionalOptions]);
+  }, [basePrice, numberOfPeople, quantity, selectedOptionalOptions, selectedAccompaniments]);
 
   const toggleOptionalOption = (option: OptionalOption) => {
     setSelectedOptionalOptions((prev) => {
@@ -34,8 +36,22 @@ export function usePriceCalculator(
     });
   };
 
+  const toggleAccompaniment = (item: MenuItem) => {
+    setSelectedAccompaniments((prev) => {
+      const exists = prev.find((acc) => acc.id === item.id);
+      if (exists) {
+        return prev.filter((acc) => acc.id !== item.id);
+      }
+      return [...prev, item];
+    });
+  };
+
   const isOptionalOptionSelected = (optionId: string): boolean => {
     return selectedOptionalOptions.some((opt) => opt.id === optionId);
+  };
+
+  const isAccompanimentSelected = (itemId: string): boolean => {
+    return selectedAccompaniments.some((acc) => acc.id === itemId);
   };
 
   return {
@@ -46,6 +62,9 @@ export function usePriceCalculator(
     selectedOptionalOptions,
     toggleOptionalOption,
     isOptionalOptionSelected,
+    selectedAccompaniments,
+    toggleAccompaniment,
+    isAccompanimentSelected,
     calculation,
   };
 }
