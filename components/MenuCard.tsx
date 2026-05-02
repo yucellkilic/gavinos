@@ -21,7 +21,7 @@ export default function MenuCard({ item }: MenuCardProps) {
       >
         {/* Image Container */}
         <div className="relative h-56 w-full bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center">
-          <div className="text-6xl">🍕</div>
+          <div className="text-6xl">{item.image_url}</div>
           
           {/* Badges */}
           {item.badges && item.badges.length > 0 && (
