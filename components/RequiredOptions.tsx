@@ -59,7 +59,7 @@ export default function RequiredOptions({
                   </span>
                   {typeof choice.price === 'number' && choice.price > 0 && (
                     <span className="text-sm font-medium text-forestGreen">
-                      +${choice.price.toFixed(2)}
+                      +${(choice.price || 0).toFixed(2)}
                     </span>
                   )}
                 </label>

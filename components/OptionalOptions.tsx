@@ -43,9 +43,11 @@ export default function OptionalOptions({
               <span className="ml-3 flex-1 text-sm text-gray-700">
                 {option.label}
               </span>
-              <span className="text-sm font-medium text-forestGreen">
-                +${option.price.toFixed(2)}
-              </span>
+              {typeof option.price === 'number' && option.price > 0 && (
+                <span className="text-sm font-medium text-forestGreen">
+                  +${(option.price || 0).toFixed(2)}
+                </span>
+              )}
             </label>
           );
         })}
