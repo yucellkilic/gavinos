@@ -10,15 +10,15 @@ export interface CartItem {
   id: string;
   menuItemId: string;
   name: string;
-  base_price: number;
+  base_price: number | null;
   numberOfPeople: number;
   quantity: number;
   configuration: CartItemConfiguration;
-  totalPrice: number;
+  totalPrice: number | null;
   image_url: string;
 }
 
 export interface Cart {
   items: CartItem[];
-  totalPrice: number;
+  totalPrice: number | null;
 }

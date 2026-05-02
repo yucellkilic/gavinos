@@ -35,7 +35,7 @@ export default function ProductDetailPage() {
     toggleAccompaniment,
     isAccompanimentSelected,
     calculation,
-  } = usePriceCalculator(menuItem?.base_price || 0);
+  } = usePriceCalculator(menuItem?.base_price ?? null);
 
   if (!menuItem) {
     return (
@@ -133,7 +133,9 @@ export default function ProductDetailPage() {
                 <span className="text-3xl font-bold text-forestGreen">
                   {formatCurrency(menuItem.base_price)}
                 </span>
-                <span className="text-gray-500 ml-2">per piece</span>
+                {menuItem.base_price !== null && (
+                  <span className="text-gray-500 ml-2">per piece</span>
+                )}
               </div>
             </div>
 
@@ -270,17 +272,17 @@ export default function ProductDetailPage() {
                 )}
                 <div className="flex justify-between">
                   <span className="text-gray-600">× {numberOfPeople} people:</span>
-                  <span className="font-medium">{formatCurrency(calculation.subtotal)}</span>
+                  <span className="font-medium">{calculation.subtotal !== null ? formatCurrency(calculation.subtotal) : 'Market Price'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">× {quantity} quantity:</span>
-                  <span className="font-medium">{formatCurrency(calculation.total)}</span>
+                  <span className="font-medium">{calculation.total !== null ? formatCurrency(calculation.total) : 'Market Price'}</span>
                 </div>
                 <div className="border-t-2 border-forestGreen pt-2 mt-2">
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-900">Total:</span>
                     <span className="text-2xl font-bold text-forestGreen">
-                      {formatCurrency(calculation.total)}
+                      {calculation.total !== null ? formatCurrency(calculation.total) : 'Market Price'}
                     </span>
                   </div>
                 </div>

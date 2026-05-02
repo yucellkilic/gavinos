@@ -3,7 +3,7 @@ import { OptionalOption, AccompanimentItem } from '@/types/menu';
 import { calculatePrice, PriceCalculation } from '@/lib/priceCalculator';
 
 export function usePriceCalculator(
-  basePrice: number,
+  basePrice: number | null,
   initialPeople: number = 1,
   initialQuantity: number = 1
 ) {

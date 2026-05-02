@@ -1,15 +1,15 @@
 import { OptionalOption, AccompanimentItem } from '@/types/menu';
 
 export interface PriceCalculation {
-  basePrice: number;
+  basePrice: number | null;
   optionalOptionsPrice: number;
   accompanimentsPrice: number;
-  subtotal: number;
-  total: number;
+  subtotal: number | null;
+  total: number | null;
 }
 
 export function calculatePrice(
-  basePrice: number,
+  basePrice: number | null,
   numberOfPeople: number,
   quantity: number,
   selectedOptionalOptions: OptionalOption[] = [],
@@ -21,12 +21,21 @@ export function calculatePrice(
   );
 
   const accompanimentsPrice = selectedAccompaniments.reduce(
-    (sum, acc) => sum + acc.price,
+    (sum, acc) => sum + (acc.price || 0),
     0
   );
 
-  const subtotal = (basePrice + optionalOptionsPrice + accompanimentsPrice) * numberOfPeople;
-  const total = subtotal * quantity;
+  let subtotal: number | null = null;
+  let total: number | null = null;
+
+  if (basePrice !== null) {
+    subtotal = (basePrice + optionalOptionsPrice + accompanimentsPrice) * numberOfPeople;
+    total = subtotal * quantity;
+  } else if (optionalOptionsPrice > 0 || accompanimentsPrice > 0) {
+    // If base price is null (market price) but there are priced add-ons
+    subtotal = (optionalOptionsPrice + accompanimentsPrice) * numberOfPeople;
+    total = subtotal * quantity;
+  }
 
   return {
     basePrice,
@@ -37,10 +46,12 @@ export function calculatePrice(
   };
 }
 
-export function formatPrice(price: number): string {
+export function formatPrice(price: number | null): string {
+  if (price === null) return 'Market Price';
   return price.toFixed(2);
 }
 
-export function formatCurrency(price: number): string {
+export function formatCurrency(price: number | null): string {
+  if (price === null) return 'Market Price';
   return `$${formatPrice(price)}`;
 }

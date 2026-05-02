@@ -31,7 +31,7 @@ export const useCartStore = create<CartStore>()(
       addItem: (item: CartItem) => {
         set((state) => {
           const newItems = [...state.items, item];
-          const totalPrice = newItems.reduce((sum, i) => sum + i.totalPrice, 0);
+          const totalPrice = newItems.reduce((sum, i) => sum + (i.totalPrice || 0), 0);
           return { items: newItems, totalPrice };
         });
       },
@@ -39,7 +39,7 @@ export const useCartStore = create<CartStore>()(
       removeItem: (itemId: string) => {
         set((state) => {
           const newItems = state.items.filter((item) => item.id !== itemId);
-          const totalPrice = newItems.reduce((sum, i) => sum + i.totalPrice, 0);
+          const totalPrice = newItems.reduce((sum, i) => sum + (i.totalPrice || 0), 0);
           return { items: newItems, totalPrice };
         });
       },
@@ -48,15 +48,19 @@ export const useCartStore = create<CartStore>()(
         set((state) => {
           const newItems = state.items.map((item) => {
             if (item.id === itemId) {
-              const optionalPrice = item.configuration.optionalOptions.reduce((sum, optId) => {
-                return sum + 0; // Will be calculated properly in product page
-              }, 0);
-              const totalPrice = (item.base_price + optionalPrice) * item.numberOfPeople * quantity;
-              return { ...item, quantity, totalPrice };
+              const accompanimentsPrice = item.configuration.selectedAccompaniments?.reduce((sum, acc) => sum + (acc.price || 0), 0) || 0;
+              // If base_price is null, total is null unless accompaniments exist
+              let newTotalPrice: number | null = null;
+              if (item.base_price !== null) {
+                newTotalPrice = (item.base_price + accompanimentsPrice) * item.numberOfPeople * quantity;
+              } else if (accompanimentsPrice > 0) {
+                newTotalPrice = accompanimentsPrice * item.numberOfPeople * quantity;
+              }
+              return { ...item, quantity, totalPrice: newTotalPrice };
             }
             return item;
           });
-          const totalPrice = newItems.reduce((sum, i) => sum + i.totalPrice, 0);
+          const totalPrice = newItems.reduce((sum, i) => sum + (i.totalPrice || 0), 0);
           return { items: newItems, totalPrice };
         });
       },
@@ -65,15 +69,18 @@ export const useCartStore = create<CartStore>()(
         set((state) => {
           const newItems = state.items.map((item) => {
             if (item.id === itemId) {
-              const optionalPrice = item.configuration.optionalOptions.reduce((sum, optId) => {
-                return sum + 0;
-              }, 0);
-              const totalPrice = (item.base_price + optionalPrice) * numberOfPeople * item.quantity;
-              return { ...item, numberOfPeople, totalPrice };
+              const accompanimentsPrice = item.configuration.selectedAccompaniments?.reduce((sum, acc) => sum + (acc.price || 0), 0) || 0;
+              let newTotalPrice: number | null = null;
+              if (item.base_price !== null) {
+                newTotalPrice = (item.base_price + accompanimentsPrice) * numberOfPeople * item.quantity;
+              } else if (accompanimentsPrice > 0) {
+                newTotalPrice = accompanimentsPrice * numberOfPeople * item.quantity;
+              }
+              return { ...item, numberOfPeople, totalPrice: newTotalPrice };
             }
             return item;
           });
-          const totalPrice = newItems.reduce((sum, i) => sum + i.totalPrice, 0);
+          const totalPrice = newItems.reduce((sum, i) => sum + (i.totalPrice || 0), 0);
           return { items: newItems, totalPrice };
         });
       },

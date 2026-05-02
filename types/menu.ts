@@ -19,7 +19,9 @@ export interface OptionalOption {
 export interface AccompanimentItem {
   id: string;
   name: string;
-  price: number;
+  price: number | null;
+  surcharge?: number | null;
+  no_surcharge?: boolean;
   description?: string;
 }
 
@@ -33,7 +35,11 @@ export interface MenuItem {
   id: string;
   name: string;
   description: string;
-  base_price: number;
+  base_price: number | null;
+  pricing_type?: string;
+  is_policy_object?: boolean;
+  policies?: Record<string, string>;
+  general_notes?: string[];
   meal_type: MealType[];
   image_url: string;
   required_options?: RequiredOption[];

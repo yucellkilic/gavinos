@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { MenuItem } from '@/types/menu';
+import { formatCurrency } from '@/lib/priceCalculator';
 
 interface MenuCardProps {
   item: MenuItem;
@@ -50,9 +51,11 @@ export default function MenuCard({ item }: MenuCardProps) {
           <div className="flex items-center justify-between">
             <div>
               <span className="text-2xl font-bold text-forestGreen">
-                ${item.base_price.toFixed(2)}
+                {formatCurrency(item.base_price)}
               </span>
-              <span className="text-sm text-gray-500 ml-1">/ piece</span>
+              {item.base_price !== null && (
+                <span className="text-sm text-gray-500 ml-1">/ piece</span>
+              )}
             </div>
             
             <motion.button

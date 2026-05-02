@@ -21,13 +21,15 @@ const CATEGORIES = [
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const menuItems = menuData as MenuItem[];
+  const policyItem = menuItems.find(item => item.is_policy_object);
+  const regularItems = menuItems.filter(item => !item.is_policy_object);
 
   const filteredItems = useMemo(() => {
     if (activeCategory === 'all') {
-      return menuItems;
+      return regularItems;
     }
 
-    return menuItems.filter((item) => {
+    return regularItems.filter((item) => {
       const badges = item.badges || [];
       switch (activeCategory) {
         case 'hot-hors':
@@ -48,7 +50,7 @@ export default function MenuPage() {
           return true;
       }
     });
-  }, [activeCategory, menuItems]);
+  }, [activeCategory, regularItems]);
 
   return (
     <div className="min-h-screen bg-white py-12">
@@ -134,6 +136,44 @@ export default function MenuPage() {
             <p className="text-xl text-gray-500 font-semibold">
               No items found for this category.
             </p>
+          </motion.div>
+        )}
+
+        {/* Policies and Disclaimers Section */}
+        {policyItem && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-20 bg-gray-50 rounded-3xl p-8 lg:p-12 border border-gray-200"
+          >
+            <div className="text-center mb-8">
+              <span className="text-4xl mb-4 block">{policyItem.image_url}</span>
+              <h2 className="text-3xl font-bold text-forestGreen mb-2">{policyItem.name}</h2>
+              <p className="text-gray-600">{policyItem.description}</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {policyItem.policies && Object.entries(policyItem.policies).map(([key, value]) => (
+                <div key={key} className="bg-white p-6 rounded-xl shadow-sm">
+                  <h3 className="font-bold text-gray-900 capitalize mb-2">
+                    {key.replace(/_/g, ' ')}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{value}</p>
+                </div>
+              ))}
+            </div>
+
+            {policyItem.general_notes && policyItem.general_notes.length > 0 && (
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <h3 className="font-bold text-gray-900 mb-4">General Notes</h3>
+                <ul className="list-disc list-inside text-gray-600 text-sm space-y-2">
+                  {policyItem.general_notes.map((note, index) => (
+                    <li key={index}>{note}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </motion.div>
         )}
       </div>
