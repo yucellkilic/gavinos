@@ -8402,9 +8402,9 @@
   },
   {
     "id": "disclaimers_and_policies",
-    "name": "Kurallar ve Politikalar",
+    "name": "Policies and Disclaimers",
     "is_policy_object": true,
-    "description": "Catering hizmetlerimize ait genel kurallar ve politikalar",
+    "description": "General policies and disclaimers for our catering services",
     "base_price": null,
     "meal_type": [],
     "image_url": "📄",
