@@ -51,9 +51,9 @@ export default function MenuCard({ item }: MenuCardProps) {
           <div className="flex items-center justify-between">
             <div>
               <span className="text-2xl font-bold text-forestGreen">
-                {formatCurrency(item.base_price)}
+                {formatCurrency(item.base_price ?? 0)}
               </span>
-              {item.base_price !== null && (
+              {(item.base_price ?? null) !== null && (
                 <span className="text-sm text-gray-500 ml-1">/ piece</span>
               )}
             </div>

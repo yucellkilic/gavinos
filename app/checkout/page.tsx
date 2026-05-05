@@ -101,7 +101,7 @@ export default function CheckoutPage() {
                       {item.numberOfPeople} people × {item.quantity} qty
                     </p>
                     <p className="text-sm font-bold text-forestGreen mt-1">
-                      {formatCurrency(item.totalPrice)}
+                      {formatCurrency(item.totalPrice ?? 0)}
                     </p>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ export default function CheckoutPage() {
                 <div className="flex justify-between items-center">
                   <span className="text-xl font-bold text-gray-900">Total:</span>
                   <span className="text-2xl font-bold text-forestGreen">
-                    {formatCurrency(totalPrice)}
+                    {formatCurrency(totalPrice ?? 0)}
                   </span>
                 </div>
               </div>

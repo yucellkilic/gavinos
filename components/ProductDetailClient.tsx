@@ -108,9 +108,9 @@ export default function ProductDetailClient({ menuItem }: { menuItem: MenuItem }
               <p className="text-lg text-gray-600">{menuItem.description}</p>
               <div className="mt-4">
                 <span className="text-3xl font-bold text-forestGreen">
-                  {formatCurrency(menuItem.base_price)}
+                  {formatCurrency(menuItem.base_price ?? 0)}
                 </span>
-                {menuItem.base_price !== null && (
+                {(menuItem.base_price ?? null) !== null && (
                   <span className="text-gray-500 ml-2">per piece</span>
                 )}
               </div>
@@ -215,7 +215,7 @@ export default function ProductDetailClient({ menuItem }: { menuItem: MenuItem }
                         <div>
                           <span className="font-medium text-gray-900">{acc.name}</span>
                           {typeof acc.price === 'number' && acc.price > 0 && (
-                            <span className="ml-2 text-sm text-gray-500">(+{formatCurrency(acc.price)})</span>
+                            <span className="ml-2 text-sm text-gray-500">(+{formatCurrency(acc.price ?? 0)})</span>
                           )}
                         </div>
                       </div>
@@ -230,21 +230,21 @@ export default function ProductDetailClient({ menuItem }: { menuItem: MenuItem }
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Base Price:</span>
-                  <span className="font-medium">{formatCurrency(calculation.basePrice)}</span>
+                  <span className="font-medium">{formatCurrency(calculation.basePrice ?? 0)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">× {numberOfPeople} people:</span>
-                  <span className="font-medium">{calculation.subtotal !== null ? formatCurrency(calculation.subtotal) : 'Market Price'}</span>
+                  <span className="font-medium">{calculation.subtotal !== null ? formatCurrency(calculation.subtotal ?? 0) : 'Market Price'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">× {quantity} quantity:</span>
-                  <span className="font-medium">{calculation.total !== null ? formatCurrency(calculation.total) : 'Market Price'}</span>
+                  <span className="font-medium">{calculation.total !== null ? formatCurrency(calculation.total ?? 0) : 'Market Price'}</span>
                 </div>
                 <div className="border-t-2 border-forestGreen pt-2 mt-2">
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-900">Total:</span>
                     <span className="text-2xl font-bold text-forestGreen">
-                      {calculation.total !== null ? formatCurrency(calculation.total) : 'Market Price'}
+                      {calculation.total !== null ? formatCurrency(calculation.total ?? 0) : 'Market Price'}
                     </span>
                   </div>
                 </div>

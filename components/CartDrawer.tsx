@@ -82,7 +82,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                           {item.numberOfPeople} people × {item.quantity} qty
                         </p>
                         <p className="text-sm font-bold text-forestGreen mt-1">
-                          {formatCurrency(item.totalPrice)}
+                          {formatCurrency(item.totalPrice ?? 0)}
                         </p>
                       </div>
 
@@ -127,7 +127,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold text-gray-900">Total:</span>
                   <span className="text-2xl font-bold text-forestGreen">
-                    {formatCurrency(totalPrice)}
+                    {formatCurrency(totalPrice ?? 0)}
                   </span>
                 </div>
 

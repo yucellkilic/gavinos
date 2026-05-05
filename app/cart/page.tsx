@@ -100,7 +100,7 @@ export default function CartPage() {
 
                     <div className="flex-shrink-0 text-left sm:text-right min-w-0 max-w-full overflow-hidden">
                       <p className="text-lg sm:text-xl lg:text-2xl font-bold text-forestGreen break-words overflow-wrap-anywhere max-w-full">
-                        {formatCurrency(item.totalPrice)}
+                        {formatCurrency(item.totalPrice ?? 0)}
                       </p>
                     </div>
                   </div>
@@ -119,7 +119,7 @@ export default function CartPage() {
           <div className="flex flex-row justify-between items-center gap-3 mb-4 w-full max-w-full flex-wrap">
             <span className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 flex-shrink-0">Total:</span>
             <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-forestGreen break-words overflow-wrap-anywhere text-right min-w-0 max-w-full">
-              {formatCurrency(totalPrice)}
+              {formatCurrency(totalPrice ?? 0)}
             </span>
           </div>
           
