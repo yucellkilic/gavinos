@@ -1,21 +1,17 @@
+import { Suspense } from 'react';
 import { supabase } from '@/lib/supabase';
 import MenuClient from '@/components/MenuClient';
 import { MenuItem } from '@/types/menu';
 
-export const revalidate = 60; // ISR: 60 seconds
+export const revalidate = 60;
 
 async function getMenuItems(category?: string, search?: string) {
+  // Using explicit columns based on user hint: id, category_name, item_name, item_price, description, image_url
   let query = supabase
     .from('menu_items')
-    .select('*')
-    .eq('is_policy_object', false);
+    .select('id, category_name, item_name, item_price, description, image_url, badges, serves, pricing_type');
 
   if (category && category !== 'all') {
-    // The badges logic from before: item.badges.includes(...)
-    // In Supabase, badges is likely a text[] or jsonb column.
-    // If it's a text array, we use .contains('badges', [categoryValue])
-    // But categories in the UI have different IDs than badges.
-    
     const categoryToBadge: Record<string, string> = {
       'hot-hors': "Hot Hors d'Oeuvres",
       'cold-hors': "Cold Hors d'Oeuvres",
@@ -28,37 +24,27 @@ async function getMenuItems(category?: string, search?: string) {
 
     const badgeValue = categoryToBadge[category];
     if (badgeValue) {
-      if (badgeValue === "Sit-Down Entrée") {
-        // Special case from original code: .some(b => b.includes('Sit-Down Entrée') && !b.includes('Duet'))
-        query = query.ilike('badges', `%${badgeValue}%`).not('badges', 'ilike', '%Duet%');
-      } else {
-        query = query.ilike('badges', `%${badgeValue}%`);
-      }
+      query = query.ilike('badges', `%${badgeValue}%`);
     }
   }
 
   if (search) {
-    query = query.ilike('name', `%${search}%`);
+    query = query.ilike('item_name', `%${search}%`);
   }
 
-  const { data, error } = await query.order('name');
+  const { data, error } = await query.order('item_name');
   
   if (error) {
     console.error('Supabase error:', error);
     return [];
   }
 
-  return data as MenuItem[];
-}
-
-async function getPolicyObject() {
-  const { data } = await supabase
-    .from('menu_items')
-    .select('*')
-    .eq('is_policy_object', true)
-    .single();
-  
-  return data as MenuItem | null;
+  // Map database names to application names (MenuItem type)
+  return (data || []).map((item: any) => ({
+    ...item,
+    name: item.item_name,
+    base_price: item.item_price,
+  })) as MenuItem[];
 }
 
 export default async function MenuPage({
@@ -69,17 +55,20 @@ export default async function MenuPage({
   const category = searchParams.category || 'all';
   const search = searchParams.search || '';
   
-  const [items, policyItem] = await Promise.all([
-    getMenuItems(category, search),
-    getPolicyObject(),
-  ]);
+  const items = await getMenuItems(category, search);
 
   return (
-    <MenuClient 
-      initialItems={items} 
-      policyItem={policyItem} 
-      initialCategory={category}
-      initialSearch={search}
-    />
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-forestGreen"></div>
+      </div>
+    }>
+      <MenuClient 
+        initialItems={items} 
+        policyItem={null} // Temporarily null until is_policy_object logic is clarified
+        initialCategory={category}
+        initialSearch={search}
+      />
+    </Suspense>
   );
 }

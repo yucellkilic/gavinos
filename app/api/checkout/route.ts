@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const itemIds = items.map((item: any) => item.id);
     const { data: dbItems, error: dbError } = await supabase
       .from('menu_items')
-      .select('id, base_price, name')
+      .select('id, item_price, item_name')
       .in('id', itemIds);
 
     if (dbError || !dbItems) {
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       // For this migration, we'll validate the base_price.
       // If base_price is null (custom pricing), we might handle it differently.
       
-      const itemBasePrice = dbItem.base_price || 0;
+      const itemBasePrice = dbItem.item_price || 0;
       const quantity = cartItem.quantity || 1;
       const numPeople = cartItem.numberOfPeople || 1;
 

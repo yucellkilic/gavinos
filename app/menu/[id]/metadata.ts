@@ -5,7 +5,7 @@ import { MenuItem } from '@/types/menu';
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const { data: menuItem, error } = await supabase
     .from('menu_items')
-    .select('*')
+    .select('id, item_name, item_price, description, image_url')
     .eq('id', params.id)
     .single();
 
@@ -16,7 +16,11 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     };
   }
 
-  const item = menuItem as MenuItem;
+  const item = {
+    ...menuItem,
+    name: menuItem.item_name,
+    base_price: menuItem.item_price,
+  } as MenuItem;
 
   return {
     title: `${item.name} - GAVINO'S PIZZA Catering`,

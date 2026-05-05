@@ -13,18 +13,24 @@ export default async function AdminManagePage({
   
   let query = supabaseAdmin
     .from('menu_items')
-    .select('*')
-    .order('name');
+    .select('id, item_name, item_price, description, image_url, badges')
+    .order('item_name');
 
   if (search) {
-    query = query.ilike('name', `%${search}%`);
+    query = query.ilike('item_name', `%${search}%`);
   }
 
-  const { data: items, error } = await query;
+  const { data, error } = await query;
 
   if (error) {
     return <div className="p-10 text-red-500">Error loading items: {error.message}</div>;
   }
+
+  const items = (data || []).map((item: any) => ({
+    ...item,
+    name: item.item_name,
+    base_price: item.item_price,
+  })) as MenuItem[];
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
