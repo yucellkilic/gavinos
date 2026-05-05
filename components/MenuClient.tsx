@@ -9,13 +9,29 @@ import { Search, X } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Items', icon: '🍽️' },
-  { id: 'hot-hors', label: 'Hot Hors d\'Oeuvres', icon: '🔥' },
-  { id: 'cold-hors', label: 'Cold Hors d\'Oeuvres', icon: '❄️' },
-  { id: 'stationary', label: 'Stationary Displays', icon: '🧀' },
-  { id: 'sit-down', label: 'Sit-Down Entrées', icon: '🍽️' },
-  { id: 'duet', label: 'Duet Entrées', icon: '👥' },
-  { id: 'buffet', label: 'Buffet Packages', icon: '🍴' },
-  { id: 'carving', label: 'Carving Stations', icon: '🥩' },
+  { id: 'Sub Sandwiches', label: 'Sub Sandwiches', icon: '🥪' },
+  { id: 'Panini Sandwiches', label: 'Panini Sandwiches', icon: '🥪' },
+  { id: 'Breakfast', label: 'Breakfast', icon: '🍳' },
+  { id: 'Beverages', label: 'Beverages', icon: '🥤' },
+  { id: 'Croissants', label: 'Croissants', icon: '🥐' },
+  { id: 'Wraps', label: 'Wraps', icon: '🌯' },
+  { id: 'Desserts', label: 'Desserts', icon: '🍰' },
+  { id: 'Mediterranean Mains & Sides', label: 'Mediterranean', icon: '🥗' },
+  { id: 'Pasta Dinner', label: 'Pasta', icon: '🍝' },
+  { id: 'Hoagies', label: 'Hoagies', icon: '🥪' },
+  { id: 'Starters', label: 'Starters', icon: '🥗' },
+  { id: 'Sides', label: 'Sides', icon: '🍟' },
+  { id: 'Gyro', label: 'Gyro', icon: '🥙' },
+  { id: 'Salad', label: 'Salad', icon: '🥗' },
+  { id: 'Wings', label: 'Wings', icon: '🍗' },
+  { id: 'Create-Your-Own Pizza', label: 'CYO Pizza', icon: '🍕' },
+  { id: 'Gourmet Pizza', label: 'Gourmet Pizza', icon: '🍕' },
+  { id: 'Vegan Pizza', label: 'Vegan Pizza', icon: '🌱' },
+  { id: 'Gluten Free Pizza', label: 'GF Pizza', icon: '🌾' },
+  { id: 'Catering Packages', label: 'Catering Packages', icon: '📦' },
+  { id: 'Quesadillas', label: 'Quesadillas', icon: '🌮' },
+  { id: 'Italian Panino Tray', label: 'Panino Tray', icon: '🧺' },
+  { id: 'Ottoman Kebabs', label: 'Ottoman Kebabs', icon: '🍢' },
 ];
 
 interface MenuClientProps {
@@ -44,6 +60,8 @@ export default function MenuClient({
     
     if (search) params.set('search', search);
     else params.delete('search');
+
+    params.set('limit', '50');
 
     router.push(`/menu?${params.toString()}`, { scroll: false });
   };

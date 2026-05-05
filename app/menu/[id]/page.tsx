@@ -8,7 +8,7 @@ export const revalidate = 60;
 async function getMenuItem(id: string) {
   const { data, error } = await supabase
     .from('menu_items')
-    .select('id, item_name, item_price, description, image_url, badges, serves, pricing_type, required_options, optional_options, accompaniment_groups')
+    .select('*')
     .eq('id', id)
     .single();
 
