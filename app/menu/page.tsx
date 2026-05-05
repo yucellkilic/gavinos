@@ -5,6 +5,27 @@ import { MenuItem } from '@/types/menu';
 
 export const revalidate = 60;
 
+async function getCategories() {
+  const { data, error } = await supabase
+    .from('menu_items')
+    .select('category_name')
+    .not('category_name', 'is', null)
+    .order('category_name');
+
+  if (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
+
+  // Get unique category names
+  const uniqueCategories = Array.from(new Set(data.map(item => item.category_name)));
+  return uniqueCategories.map(cat => ({
+    id: cat,
+    label: cat,
+    icon: '🍴' // Default icon for all fetched categories
+  }));
+}
+
 async function getMenuItems(category?: string, search?: string, limit = 50) {
   let query = supabase.from('menu_items').select('*', { count: 'exact' });
 
@@ -48,6 +69,7 @@ export default async function MenuPage({
   const limit = parseInt(searchParams.limit || '50');
   
   const { items, total } = await getMenuItems(category, search, limit);
+  const categories = await getCategories();
 
   return (
     <Suspense fallback={
@@ -57,6 +79,7 @@ export default async function MenuPage({
     }>
       <MenuClient 
         initialItems={items} 
+        categories={categories}
         policyItem={null}
         initialCategory={category}
         initialSearch={search}

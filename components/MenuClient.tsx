@@ -7,35 +7,15 @@ import MenuCard from '@/components/MenuCard';
 import { MenuItem } from '@/types/menu';
 import { Search, X } from 'lucide-react';
 
-const CATEGORIES = [
-  { id: 'all', label: 'All Items', icon: '🍽️' },
-  { id: 'Sub Sandwiches', label: 'Sub Sandwiches', icon: '🥪' },
-  { id: 'Panini Sandwiches', label: 'Panini Sandwiches', icon: '🥪' },
-  { id: 'Breakfast', label: 'Breakfast', icon: '🍳' },
-  { id: 'Beverages', label: 'Beverages', icon: '🥤' },
-  { id: 'Croissants', label: 'Croissants', icon: '🥐' },
-  { id: 'Wraps', label: 'Wraps', icon: '🌯' },
-  { id: 'Desserts', label: 'Desserts', icon: '🍰' },
-  { id: 'Mediterranean Mains & Sides', label: 'Mediterranean', icon: '🥗' },
-  { id: 'Pasta Dinner', label: 'Pasta', icon: '🍝' },
-  { id: 'Hoagies', label: 'Hoagies', icon: '🥪' },
-  { id: 'Starters', label: 'Starters', icon: '🥗' },
-  { id: 'Sides', label: 'Sides', icon: '🍟' },
-  { id: 'Gyro', label: 'Gyro', icon: '🥙' },
-  { id: 'Salad', label: 'Salad', icon: '🥗' },
-  { id: 'Wings', label: 'Wings', icon: '🍗' },
-  { id: 'Create-Your-Own Pizza', label: 'CYO Pizza', icon: '🍕' },
-  { id: 'Gourmet Pizza', label: 'Gourmet Pizza', icon: '🍕' },
-  { id: 'Vegan Pizza', label: 'Vegan Pizza', icon: '🌱' },
-  { id: 'Gluten Free Pizza', label: 'GF Pizza', icon: '🌾' },
-  { id: 'Catering Packages', label: 'Catering Packages', icon: '📦' },
-  { id: 'Quesadillas', label: 'Quesadillas', icon: '🌮' },
-  { id: 'Italian Panino Tray', label: 'Panino Tray', icon: '🧺' },
-  { id: 'Ottoman Kebabs', label: 'Ottoman Kebabs', icon: '🍢' },
-];
+interface Category {
+  id: string;
+  label: string;
+  icon: string;
+}
 
 interface MenuClientProps {
   initialItems: MenuItem[];
+  categories: Category[];
   policyItem: MenuItem | null;
   initialCategory: string;
   initialSearch: string;
@@ -43,6 +23,7 @@ interface MenuClientProps {
 
 export default function MenuClient({ 
   initialItems, 
+  categories,
   policyItem, 
   initialCategory,
   initialSearch 
@@ -52,6 +33,11 @@ export default function MenuClient({
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [items, setItems] = useState<MenuItem[]>(initialItems);
+
+  const displayCategories = [
+    { id: 'all', label: 'All Items', icon: '🍽️' },
+    ...categories
+  ];
 
   // Sync state with initialItems (handles appending)
   useEffect(() => {
@@ -151,7 +137,7 @@ export default function MenuClient({
           className="mb-12"
         >
           <div className="flex flex-wrap justify-center gap-3">
-            {CATEGORIES.map((category) => (
+            {displayCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => handleCategoryChange(category.id)}
