@@ -11,7 +11,7 @@ interface MenuCardProps {
 
 export default function MenuCard({ item }: MenuCardProps) {
   return (
-    <Link href={`/menu/${item.id}`}>
+    <Link href={`/menu/${item.id || ''}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ export default function MenuCard({ item }: MenuCardProps) {
       >
         {/* Image Container */}
         <div className="relative h-56 w-full bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center">
-          <div className="text-6xl">{item.image_url}</div>
+          <div className="text-6xl">{item.image_url || '🍽️'}</div>
           
           {/* Badges */}
           {item.badges && item.badges.length > 0 && (
@@ -41,11 +41,11 @@ export default function MenuCard({ item }: MenuCardProps) {
         {/* Content */}
         <div className="p-5">
           <h3 className="text-xl font-bold text-gray-900 mb-2 font-poppins line-clamp-2">
-            {item.name}
+            {item.name || 'Unnamed Item'}
           </h3>
           
           <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-            {item.description}
+            {item.description || ''}
           </p>
 
           <div className="flex items-center justify-between">

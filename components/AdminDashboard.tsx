@@ -22,7 +22,7 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
   });
 
   const filteredItems = items.filter(item => 
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    (item.name?.toLowerCase() || '').includes(searchTerm.toLowerCase())
   );
 
   const handleUpdatePrice = async (id: string) => {
@@ -165,8 +165,8 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{item.image_url}</span>
                       <div>
-                        <div className="font-bold text-gray-900">{item.name}</div>
-                        <div className="text-xs text-gray-500 truncate max-w-xs">{item.description}</div>
+                        <div className="font-bold text-gray-900">{item.name || 'Unnamed Item'}</div>
+                        <div className="text-xs text-gray-500 truncate max-w-xs">{item.description || ''}</div>
                       </div>
                     </div>
                   </td>
@@ -192,7 +192,7 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                       {editingId === item.id ? (
                         <>
                           <button
-                            onClick={() => handleUpdatePrice(item.id)}
+                            onClick={() => item.id && handleUpdatePrice(item.id)}
                             className="p-2 text-forestGreen hover:bg-forestGreen/10 rounded-lg transition-colors"
                             title="Save"
                           >
@@ -210,8 +210,10 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                         <>
                           <button
                             onClick={() => {
-                              setEditingId(item.id);
-                              setNewPrice(item.base_price || 0);
+                              if (item.id) {
+                                setEditingId(item.id);
+                                setNewPrice(item.base_price || 0);
+                              }
                             }}
                             className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                             title="Edit Price"
@@ -219,7 +221,7 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                             <Edit2 size={20} />
                           </button>
                           <button
-                            onClick={() => handleDelete(item.id)}
+                            onClick={() => item.id && handleDelete(item.id)}
                             className="p-2 text-classicRed hover:bg-red-50 rounded-lg transition-colors"
                             title="Delete Product"
                           >

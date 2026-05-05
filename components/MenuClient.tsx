@@ -189,9 +189,9 @@ export default function MenuClient({
             className="mt-20 bg-gray-50 rounded-3xl p-8 lg:p-12 border border-gray-200"
           >
             <div className="text-center mb-8">
-              <span className="text-4xl mb-4 block">{policyItem.image_url}</span>
-              <h2 className="text-3xl font-bold text-forestGreen mb-2">{policyItem.name}</h2>
-              <p className="text-gray-600">{policyItem.description}</p>
+              <span className="text-4xl mb-4 block">{policyItem.image_url || '📝'}</span>
+              <h2 className="text-3xl font-bold text-forestGreen mb-2">{policyItem.name || 'Policies'}</h2>
+              <p className="text-gray-600">{policyItem.description || ''}</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
