@@ -18,9 +18,10 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
   const item = {
     ...menuItem,
-    name: menuItem.item_name,
-    base_price: menuItem.item_price,
-  } as MenuItem;
+    name: menuItem.item_name || 'GAVINO\'S PIZZA Item',
+    description: menuItem.description || '',
+    image_url: menuItem.image_url || '',
+  } as unknown as MenuItem;
 
   return {
     title: `${item.name} - GAVINO'S PIZZA Catering`,
@@ -28,14 +29,14 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     openGraph: {
       title: item.name,
       description: item.description,
-      images: [item.image_url],
+      images: item.image_url ? [item.image_url] : [],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: item.name,
       description: item.description,
-      images: [item.image_url],
+      images: item.image_url ? [item.image_url] : [],
     },
   };
 }
