@@ -39,10 +39,10 @@ export default function ProductDetailClient({ menuItem }: { menuItem: MenuItem }
     if (!allRequiredOptionsSelected) return;
 
     const cartItem = {
-      id: `${menuItem.id}-${Date.now()}`,
-      menuItemId: menuItem.id,
-      name: menuItem.name,
-      base_price: menuItem.base_price,
+      id: `${menuItem.id || 'new'}-${Date.now()}`,
+      menuItemId: menuItem.id || '',
+      name: menuItem.name || 'Unnamed Item',
+      base_price: menuItem.base_price ?? 0,
       numberOfPeople,
       quantity,
       configuration: {
@@ -51,10 +51,10 @@ export default function ProductDetailClient({ menuItem }: { menuItem: MenuItem }
         selectedAccompaniments: selectedAccompaniments,
       },
       totalPrice: calculation.total,
-      image_url: menuItem.image_url,
+      image_url: menuItem.image_url || '🍕',
     };
 
-    addItem(cartItem);
+    addItem(cartItem as any);
     router.push('/cart');
   };
 
