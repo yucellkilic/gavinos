@@ -51,6 +51,22 @@ export default function MenuClient({
   const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [items, setItems] = useState<MenuItem[]>(initialItems);
+
+  // Sync state with initialItems (handles appending)
+  useEffect(() => {
+    const limit = parseInt(searchParams.get('limit') || '50');
+    if (limit === 50) {
+      setItems(initialItems);
+    } else {
+      // Append only the new items that aren't already in the state
+      const currentIds = new Set(items.map(i => i.id));
+      const newItems = initialItems.filter(i => !currentIds.has(i.id));
+      if (newItems.length > 0) {
+        setItems(prev => [...prev, ...newItems]);
+      }
+    }
+  }, [initialItems, searchParams]);
 
   // Update URL when filters change
   const updateFilters = (category: string, search: string) => {
@@ -95,7 +111,7 @@ export default function MenuClient({
             Our Catering Menu
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto font-semibold">
-            Discover our selection of {initialItems.length > 0 ? 'premium' : ''} Italian-inspired dishes, 
+            Discover our selection of {items.length > 0 ? 'premium' : ''} Italian-inspired dishes, 
             now powered by Supabase.
           </p>
         </motion.div>
@@ -159,7 +175,7 @@ export default function MenuClient({
           className="text-center mb-8"
         >
           <p className="text-gray-600 font-semibold">
-            Showing <span className="text-forestGreen font-black">{initialItems.length}</span> items
+            Showing <span className="text-forestGreen font-black">{items.length}</span> items
           </p>
         </motion.div>
 
@@ -169,7 +185,7 @@ export default function MenuClient({
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {initialItems.map((item, index) => (
+            {items.map((item, index) => (
               <motion.div
                 key={item.id}
                 layout
@@ -185,7 +201,7 @@ export default function MenuClient({
         </AnimatePresence>
 
         {/* Load More Button */}
-        {initialItems.length > 0 && initialItems.length % 50 === 0 && (
+        {items.length > 0 && items.length % 50 === 0 && (
           <div className="mt-12 text-center">
             <button
               onClick={() => {
@@ -202,7 +218,7 @@ export default function MenuClient({
         )}
 
         {/* No Results */}
-        {initialItems.length === 0 && (
+        {items.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
