@@ -20,8 +20,16 @@ export default function MenuCard({ item }: MenuCardProps) {
         className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-smooth cursor-pointer h-full"
       >
         {/* Image Container */}
-        <div className="relative h-56 w-full bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center">
-          <div className="text-6xl">{item.image_url || '🍽️'}</div>
+        <div className="relative h-56 w-full bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center overflow-hidden">
+          {item.image_url && (item.image_url.startsWith('http') || item.image_url.startsWith('/')) ? (
+            <img 
+              src={item.image_url} 
+              alt={item.name || 'Product'} 
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="text-6xl">{item.image_url || '🍽️'}</div>
+          )}
           
           {/* Badges */}
           {item.badges && item.badges.length > 0 && (

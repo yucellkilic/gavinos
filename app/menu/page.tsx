@@ -5,14 +5,12 @@ import { MenuItem } from '@/types/menu';
 
 export const revalidate = 60;
 
-async function getMenuItems(category?: string, search?: string) {
-  // Using explicit columns based on user hint: id, category_name, item_name, item_price, description, image_url
-  let query = supabase
-    .from('menu_items')
-    .select('*');
+async function getMenuItems(category?: string, search?: string, limit = 50) {
+  let query = supabase.from('menu_items').select('*');
 
   if (category && category !== 'all') {
-    const categoryToBadge: Record<string, string> = {
+    // Map URL category to database category_name
+    const categoryMap: Record<string, string> = {
       'hot-hors': "Hot Hors d'Oeuvres",
       'cold-hors': "Cold Hors d'Oeuvres",
       'stationary': "Stationary Display",
@@ -22,11 +20,9 @@ async function getMenuItems(category?: string, search?: string) {
       'carving': "Carving Station",
     };
 
-    const badgeValue = categoryToBadge[category];
-    console.log(`Filtre uygulanıyor - Kategori: ${category}, Aranacak Değer: ${badgeValue}`);
-    if (badgeValue) {
-      // Try to match either in category_name or badges for maximum compatibility
-      query = query.or(`category_name.ilike.%${badgeValue}%,badges.ilike.%${badgeValue}%`);
+    const mappedCategory = categoryMap[category];
+    if (mappedCategory) {
+      query = query.or(`category_name.ilike.%${mappedCategory}%,badges.ilike.%${mappedCategory}%`);
     }
   }
 
@@ -34,21 +30,15 @@ async function getMenuItems(category?: string, search?: string) {
     query = query.ilike('item_name', `%${search}%`);
   }
 
-  const { data, error } = await query.order('item_name');
+  const { data, error } = await query
+    .order('item_name')
+    .limit(limit);
   
   if (error) {
     console.error('Supabase error:', error);
     return [];
   }
 
-  console.log('Supabase Veri Sayısı:', data?.length || 0);
-  if (data && data.length > 0) {
-    console.log('İlk ürün örneği:', data[0]);
-    const categories = Array.from(new Set(data.map((i: any) => i.category_name || i.badges)));
-    console.log('Mevcut Kategoriler (ilk 5):', categories.slice(0, 5));
-  }
-
-  // Map database names to application names (MenuItem type)
   return (data || []).map((item: any) => ({
     ...item,
     name: item.item_name || item.name || 'Unnamed Item',
@@ -59,12 +49,13 @@ async function getMenuItems(category?: string, search?: string) {
 export default async function MenuPage({
   searchParams,
 }: {
-  searchParams: { category?: string; search?: string };
+  searchParams: { category?: string; search?: string; limit?: string };
 }) {
   const category = searchParams.category || 'all';
   const search = searchParams.search || '';
+  const limit = parseInt(searchParams.limit || '50');
   
-  const items = await getMenuItems(category, search);
+  const items = await getMenuItems(category, search, limit);
 
   return (
     <Suspense fallback={

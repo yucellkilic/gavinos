@@ -78,7 +78,15 @@ export default function ProductDetailClient({ menuItem }: { menuItem: MenuItem }
             transition={{ duration: 0.6 }}
           >
             <div className="relative h-96 lg:h-[600px] rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center">
-              <div className="text-9xl">{menuItem.image_url}</div>
+              {menuItem.image_url && (menuItem.image_url.startsWith('http') || menuItem.image_url.startsWith('/')) ? (
+                <img 
+                  src={menuItem.image_url} 
+                  alt={menuItem.name || 'Product'} 
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="text-9xl">{menuItem.image_url || '🍕'}</div>
+              )}
               {menuItem.badges && menuItem.badges.length > 0 && (
                 <div className="absolute top-4 right-4 flex flex-col gap-2">
                   {menuItem.badges.map((badge) => (

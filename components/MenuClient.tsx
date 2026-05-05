@@ -166,6 +166,23 @@ export default function MenuClient({
           </motion.div>
         </AnimatePresence>
 
+        {/* Load More Button */}
+        {initialItems.length > 0 && initialItems.length % 50 === 0 && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => {
+                const currentLimit = parseInt(searchParams.get('limit') || '50');
+                const params = new URLSearchParams(searchParams.toString());
+                params.set('limit', (currentLimit + 50).toString());
+                router.push(`/menu?${params.toString()}`, { scroll: false });
+              }}
+              className="px-10 py-4 bg-forestGreen text-white font-bold rounded-2xl shadow-lg hover:bg-forestGreen/90 transition-all hover:scale-105 active:scale-95"
+            >
+              Load More Products
+            </button>
+          </div>
+        )}
+
         {/* No Results */}
         {initialItems.length === 0 && (
           <motion.div
