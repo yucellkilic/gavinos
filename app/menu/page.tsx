@@ -9,7 +9,7 @@ async function getMenuItems(category?: string, search?: string) {
   // Using explicit columns based on user hint: id, category_name, item_name, item_price, description, image_url
   let query = supabase
     .from('menu_items')
-    .select('id, category_name, item_name, item_price, description, image_url, badges, serves, pricing_type');
+    .select('*');
 
   if (category && category !== 'all') {
     const categoryToBadge: Record<string, string> = {
@@ -23,8 +23,10 @@ async function getMenuItems(category?: string, search?: string) {
     };
 
     const badgeValue = categoryToBadge[category];
+    console.log(`Filtre uygulanıyor - Kategori: ${category}, Aranacak Değer: ${badgeValue}`);
     if (badgeValue) {
-      query = query.ilike('badges', `%${badgeValue}%`);
+      // Try to match either in category_name or badges for maximum compatibility
+      query = query.or(`category_name.ilike.%${badgeValue}%,badges.ilike.%${badgeValue}%`);
     }
   }
 
@@ -39,11 +41,18 @@ async function getMenuItems(category?: string, search?: string) {
     return [];
   }
 
+  console.log('Supabase Veri Sayısı:', data?.length || 0);
+  if (data && data.length > 0) {
+    console.log('İlk ürün örneği:', data[0]);
+    const categories = Array.from(new Set(data.map((i: any) => i.category_name || i.badges)));
+    console.log('Mevcut Kategoriler (ilk 5):', categories.slice(0, 5));
+  }
+
   // Map database names to application names (MenuItem type)
   return (data || []).map((item: any) => ({
     ...item,
-    name: item.item_name,
-    base_price: item.item_price,
+    name: item.item_name || item.name || 'Unnamed Item',
+    base_price: item.item_price ?? item.base_price ?? 0,
   })) as MenuItem[];
 }
 
