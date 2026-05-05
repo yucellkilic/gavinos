@@ -30,10 +30,10 @@ export default function CheckoutPage() {
 
     try {
       if (selectedPayment === 'stripe') {
-        const response = await fetch('/api/stripe/create-payment-intent', {
+        const response = await fetch('/api/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ amount: totalPrice }),
+          body: JSON.stringify({ items }),
         });
 
         const data = await response.json();
