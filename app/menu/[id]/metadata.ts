@@ -1,11 +1,10 @@
 import { Metadata } from 'next';
 import { supabase } from '@/lib/supabase';
-import { MenuItem } from '@/types/menu';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const { data: menuItem, error } = await supabase
     .from('menu_items')
-    .select('id, item_name, item_price, description, image_url')
+    .select('id, item_name, category_name')
     .eq('id', params.id)
     .single();
 
@@ -16,27 +15,16 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     };
   }
 
-  const item = {
-    ...menuItem,
-    name: menuItem.item_name || 'GAVINO\'S PIZZA Item',
-    description: menuItem.description || '',
-    image_url: menuItem.image_url || '',
-  } as unknown as MenuItem;
+  const itemName = menuItem.item_name || 'Menu Item';
+  const categoryName = menuItem.category_name || 'Menu';
 
   return {
-    title: `${item.name} - GAVINO'S PIZZA Catering`,
-    description: item.description,
+    title: `${itemName} - GAVINO'S PIZZA Catering`,
+    description: `${itemName} from our ${categoryName} menu. Order online from GAVINO'S PIZZA.`,
     openGraph: {
-      title: item.name,
-      description: item.description,
-      images: item.image_url ? [item.image_url] : [],
+      title: `${itemName} - GAVINO'S PIZZA`,
+      description: `${itemName} from our ${categoryName} menu.`,
       type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: item.name,
-      description: item.description,
-      images: item.image_url ? [item.image_url] : [],
     },
   };
 }

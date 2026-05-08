@@ -12,23 +12,20 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
   const [editingId, setEditingId] = useState<string | null>(null);
   const [newPrice, setNewPrice] = useState<number>(0);
   const [isAdding, setIsAdding] = useState(false);
-  const [newItem, setNewItem] = useState<Partial<MenuItem>>({
-    name: '',
-    base_price: 0,
-    description: '',
-    image_url: '🍽️',
-    is_policy_object: false,
-    badges: [],
+  const [newItem, setNewItem] = useState({
+    item_name: '',
+    item_price: 0,
+    category_name: '',
   });
 
   const filteredItems = items.filter(item => 
-    (item.name?.toLowerCase() || '').includes(searchTerm.toLowerCase())
+    (item.item_name?.toLowerCase() || item.name?.toLowerCase() || '').includes(searchTerm.toLowerCase())
   );
 
   const handleUpdatePrice = async (id: string) => {
     try {
       await updateItemPrice(id, newPrice);
-      setItems(items.map(item => item.id === id ? { ...item, base_price: newPrice } : item));
+      setItems(items.map(item => item.id === id ? { ...item, item_price: newPrice, base_price: newPrice } : item));
       setEditingId(null);
       alert('Price updated successfully!');
     } catch (err: any) {
@@ -44,7 +41,7 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
       await addItem(itemToAdd as MenuItem);
       setItems([itemToAdd as MenuItem, ...items]);
       setIsAdding(false);
-      setNewItem({ name: '', base_price: 0, description: '', image_url: '🍽️', is_policy_object: false, badges: [] });
+      setNewItem({ item_name: '', item_price: 0, category_name: '' });
       alert('Product added successfully!');
     } catch (err: any) {
       alert('Error: ' + err.message);
@@ -111,8 +108,8 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                     type="text"
                     required
                     className="w-full p-3 border border-gray-200 rounded-xl"
-                    value={newItem.name}
-                    onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                    value={newItem.item_name}
+                    onChange={(e) => setNewItem({ ...newItem, item_name: e.target.value })}
                   />
                 </div>
                 <div>
@@ -122,17 +119,16 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                     step="0.01"
                     required
                     className="w-full p-3 border border-gray-200 rounded-xl"
-                    value={newItem.base_price || 0}
-                    onChange={(e) => setNewItem({ ...newItem, base_price: parseFloat(e.target.value) })}
+                    value={newItem.item_price || 0}
+                    onChange={(e) => setNewItem({ ...newItem, item_price: parseFloat(e.target.value) })}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">Description</label>
-                  <textarea
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Category</label>
+                  <input
                     className="w-full p-3 border border-gray-200 rounded-xl"
-                    rows={3}
-                    value={newItem.description}
-                    onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
+                    value={newItem.category_name}
+                    onChange={(e) => setNewItem({ ...newItem, category_name: e.target.value })}
                   />
                 </div>
                 <button
@@ -163,10 +159,10 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                 <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl">{item.image_url}</span>
+                      <span className="text-2xl">🍽️</span>
                       <div>
-                        <div className="font-bold text-gray-900">{item.name || 'Unnamed Item'}</div>
-                        <div className="text-xs text-gray-500 truncate max-w-xs">{item.description || ''}</div>
+                        <div className="font-bold text-gray-900">{item.name || item.item_name || 'Unnamed Item'}</div>
+                        <div className="text-xs text-gray-500 truncate max-w-xs">{item.category_name || ''}</div>
                       </div>
                     </div>
                   </td>
@@ -184,7 +180,7 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                         />
                       </div>
                     ) : (
-                      <span className="font-bold text-gray-900">${item.base_price?.toFixed(2) || '0.00'}</span>
+                      <span className="font-bold text-gray-900">${Number(item.base_price ?? item.item_price ?? 0).toFixed(2)}</span>
                     )}
                   </td>
                   <td className="px-6 py-4 text-right">
@@ -212,7 +208,7 @@ export default function AdminDashboard({ initialItems }: { initialItems: MenuIte
                             onClick={() => {
                               if (item.id) {
                                 setEditingId(item.id);
-                                setNewPrice(item.base_price || 0);
+                                setNewPrice(Number(item.base_price ?? item.item_price ?? 0));
                               }
                             }}
                             className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"

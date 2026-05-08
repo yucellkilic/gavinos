@@ -1,50 +1,22 @@
-export type MealType = 'breakfast' | 'lunch' | 'dinner';
-
-export interface RequiredOption {
-  id: string;
-  name: string;
-  choices: {
-    id: string;
-    label: string;
-    price: number | null;
-  }[];
-}
-
-export interface OptionalOption {
-  id: string;
-  label: string;
-  price: number | null;
-}
-
-export interface AccompanimentItem {
-  id: string;
-  name: string;
-  price: number | null;
-  surcharge?: number | null;
-  no_surcharge?: boolean;
-  description?: string;
-}
-
-export interface AccompanimentGroup {
-  id: string;
-  label: string;
-  items: AccompanimentItem[];
-}
+// MenuItem interface aligned with Supabase menu_items table schema
+// Columns: id (uuid), category_name (text), item_name (text), item_price (numeric),
+// choice_name (text), choice_price (numeric), is_active (boolean), created_at (timestamptz),
+// item_price2 (numeric), item_price3 (numeric), choice_price2 (numeric), choice_price3 (numeric)
 
 export interface MenuItem {
-  id?: string;
+  id: string;
+  category_name: string | null;
+  item_name: string | null;
+  item_price: number | null;
+  choice_name: string | null;
+  choice_price: number | null;
+  is_active: boolean | null;
+  created_at: string | null;
+  item_price2: number | null;
+  item_price3: number | null;
+  choice_price2: number | null;
+  choice_price3: number | null;
+  // Mapped fields for UI compatibility
   name?: string;
-  description?: string;
   base_price?: number | null;
-  pricing_type?: string;
-  is_policy_object?: boolean;
-  policies?: Record<string, string>;
-  general_notes?: string[];
-  meal_type?: MealType[];
-  image_url?: string;
-  required_options?: RequiredOption[];
-  optional_options?: OptionalOption[];
-  badges?: string[];
-  serves?: number;
-  accompaniment_groups?: AccompanimentGroup[];
 }

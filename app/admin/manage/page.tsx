@@ -13,7 +13,7 @@ export default async function AdminManagePage({
   
   let query = supabaseAdmin
     .from('menu_items')
-    .select('id, item_name, item_price, description, image_url, badges')
+    .select('*')
     .order('item_name');
 
   if (search) {

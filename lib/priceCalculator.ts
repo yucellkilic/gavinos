@@ -1,4 +1,4 @@
-import { OptionalOption, AccompanimentItem } from '@/types/menu';
+// Price calculation utilities — simplified for Supabase schema
 
 export interface PriceCalculation {
   basePrice: number | null;
@@ -8,12 +8,16 @@ export interface PriceCalculation {
   total: number | null;
 }
 
+interface PricedItem {
+  price?: number | null;
+}
+
 export function calculatePrice(
   basePrice: number | null,
   numberOfPeople: number,
   quantity: number,
-  selectedOptionalOptions: OptionalOption[] = [],
-  selectedAccompaniments: AccompanimentItem[] = []
+  selectedOptionalOptions: PricedItem[] = [],
+  selectedAccompaniments: PricedItem[] = []
 ): PriceCalculation {
   const optionalOptionsPrice = selectedOptionalOptions.reduce(
     (sum, option) => sum + (option.price || 0),
@@ -32,7 +36,6 @@ export function calculatePrice(
     subtotal = (basePrice + optionalOptionsPrice + accompanimentsPrice) * numberOfPeople;
     total = subtotal * quantity;
   } else if (optionalOptionsPrice > 0 || accompanimentsPrice > 0) {
-    // If base price is null (market price) but there are priced add-ons
     subtotal = (optionalOptionsPrice + accompanimentsPrice) * numberOfPeople;
     total = subtotal * quantity;
   }

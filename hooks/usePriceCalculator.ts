@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
-import { OptionalOption, AccompanimentItem } from '@/types/menu';
 import { calculatePrice, PriceCalculation } from '@/lib/priceCalculator';
+
+interface PricedItem {
+  id: string;
+  price?: number | null;
+}
 
 export function usePriceCalculator(
   basePrice: number | null,
@@ -9,8 +13,8 @@ export function usePriceCalculator(
 ) {
   const [numberOfPeople, setNumberOfPeople] = useState(initialPeople);
   const [quantity, setQuantity] = useState(initialQuantity);
-  const [selectedOptionalOptions, setSelectedOptionalOptions] = useState<OptionalOption[]>([]);
-  const [selectedAccompaniments, setSelectedAccompaniments] = useState<AccompanimentItem[]>([]);
+  const [selectedOptionalOptions, setSelectedOptionalOptions] = useState<PricedItem[]>([]);
+  const [selectedAccompaniments, setSelectedAccompaniments] = useState<PricedItem[]>([]);
   const [calculation, setCalculation] = useState<PriceCalculation>(() =>
     calculatePrice(basePrice, initialPeople, initialQuantity, [], [])
   );
@@ -26,7 +30,7 @@ export function usePriceCalculator(
     setCalculation(newCalculation);
   }, [basePrice, numberOfPeople, quantity, selectedOptionalOptions, selectedAccompaniments]);
 
-  const toggleOptionalOption = (option: OptionalOption) => {
+  const toggleOptionalOption = (option: PricedItem) => {
     setSelectedOptionalOptions((prev) => {
       const exists = prev.find((opt) => opt.id === option.id);
       if (exists) {
@@ -36,7 +40,7 @@ export function usePriceCalculator(
     });
   };
 
-  const toggleAccompaniment = (item: AccompanimentItem) => {
+  const toggleAccompaniment = (item: PricedItem) => {
     setSelectedAccompaniments((prev) => {
       const exists = prev.find((acc) => acc.id === item.id);
       if (exists) {
@@ -44,10 +48,6 @@ export function usePriceCalculator(
       }
       return [...prev, item];
     });
-  };
-
-  const isOptionalOptionSelected = (optionId: string): boolean => {
-    return selectedOptionalOptions.some((opt) => opt.id === optionId);
   };
 
   const isAccompanimentSelected = (itemId: string): boolean => {
@@ -61,7 +61,6 @@ export function usePriceCalculator(
     setQuantity,
     selectedOptionalOptions,
     toggleOptionalOption,
-    isOptionalOptionSelected,
     selectedAccompaniments,
     toggleAccompaniment,
     isAccompanimentSelected,
