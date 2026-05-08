@@ -14,7 +14,7 @@ async function getMenuItem(id: string): Promise<MenuItem | null> {
       .single();
 
     if (error) {
-      console.error('Supabase getMenuItem Error:', error);
+      console.error('Supabase getMenuItem Error:', JSON.stringify(error, null, 2));
       return null;
     }
 
@@ -41,7 +41,7 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
       .limit(6);
 
     if (error) {
-      console.error('Supabase getRelatedItems Error:', error);
+      console.error('Supabase getRelatedItems Error:', JSON.stringify(error, null, 2));
       return [];
     }
     
@@ -61,9 +61,10 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
 export default async function ProductDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const menuItem = await getMenuItem(params.id);
+  const { id } = await params;
+  const menuItem = await getMenuItem(id);
 
   if (!menuItem) {
     notFound();

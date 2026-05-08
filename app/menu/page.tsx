@@ -15,7 +15,7 @@ async function getCategories(): Promise<string[]> {
       .order('category_name');
 
     if (error) {
-      console.error('Supabase getCategories Error:', error);
+      console.error('Supabase getCategories Error:', JSON.stringify(error, null, 2));
       return [];
     }
 
@@ -43,7 +43,7 @@ async function getMenuItems(category?: string, search?: string, offset = 0, limi
       .range(offset, offset + limit - 1);
 
     if (error) {
-      console.error('Supabase getMenuItems Error:', error);
+      console.error('Supabase getMenuItems Error:', JSON.stringify(error, null, 2));
       return { items: [] as MenuItem[], total: 0 };
     }
 
@@ -64,12 +64,13 @@ async function getMenuItems(category?: string, search?: string, offset = 0, limi
 export default async function MenuPage({
   searchParams,
 }: {
-  searchParams: { category?: string; search?: string; offset?: string; limit?: string };
+  searchParams: Promise<{ category?: string; search?: string; offset?: string; limit?: string }>;
 }) {
-  const category = searchParams.category || 'all';
-  const search = searchParams.search || '';
-  const offset = parseInt(searchParams.offset || '0');
-  const limit = parseInt(searchParams.limit || '50');
+  const resolvedParams = await searchParams;
+  const category = resolvedParams.category || 'all';
+  const search = resolvedParams.search || '';
+  const offset = parseInt(resolvedParams.offset || '0');
+  const limit = parseInt(resolvedParams.limit || '50');
 
   const [{ items, total }, categories] = await Promise.all([
     getMenuItems(category, search, offset, limit),
