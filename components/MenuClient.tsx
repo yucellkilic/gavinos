@@ -59,8 +59,8 @@ export default function MenuClient({
 
   // Sync items state with server data
   useEffect(() => {
-    const limit = parseInt(searchParams.get('limit') || '50');
-    if (limit <= 50) {
+    const offset = parseInt(searchParams.get('offset') || '0');
+    if (offset === 0) {
       // Fresh load (category/search changed)
       setItems(initialItems);
     } else {
@@ -69,25 +69,24 @@ export default function MenuClient({
       const newItems = initialItems.filter(i => !existingIds.has(i.id));
       if (newItems.length > 0) {
         setItems(prev => [...prev, ...newItems]);
-      } else {
-        setItems(initialItems);
       }
     }
     setIsLoadingMore(false);
-  }, [initialItems]);
+  }, [initialItems, searchParams]);
 
-  // Update URL when filters change (resets limit to 50)
+  // Update URL when filters change (resets offset to 0)
   const updateFilters = (category: string, search: string) => {
+    setIsLoadingMore(true);
+    setItems([]); // Clear for fresh load UI
     const params = new URLSearchParams();
     if (category && category !== 'all') params.set('category', category);
     if (search) params.set('search', search);
-    // Always reset to 50 on new filter
+    // Always reset to 0 offset on new filter (default is 0)
     router.push(`/menu?${params.toString()}`, { scroll: false });
   };
 
   const handleCategoryChange = (id: string) => {
     setActiveCategory(id);
-    setItems([]); // Clear for fresh load
     updateFilters(id, searchTerm);
   };
 
@@ -98,9 +97,9 @@ export default function MenuClient({
 
   const handleLoadMore = () => {
     setIsLoadingMore(true);
-    const currentLimit = parseInt(searchParams.get('limit') || '50');
+    const currentOffset = parseInt(searchParams.get('offset') || '0');
     const params = new URLSearchParams(searchParams.toString());
-    params.set('limit', (currentLimit + 50).toString());
+    params.set('offset', (currentOffset + 50).toString());
     router.push(`/menu?${params.toString()}`, { scroll: false });
   };
 

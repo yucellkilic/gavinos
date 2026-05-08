@@ -3,18 +3,22 @@ import ProductDetailClient from '@/components/ProductDetailClient';
 import { MenuItem } from '@/types/menu';
 import { notFound } from 'next/navigation';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 async function getMenuItem(id: string): Promise<MenuItem | null> {
-  const { data, error } = await supabase
-    .from('menu_items')
-    .select('*')
-    .eq('id', id)
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from('menu_items')
+      .select('*')
+      .eq('id', id)
+      .single();
 
-  if (error || !data) {
-    return null;
-  }
+    if (error) {
+      console.error('Supabase getMenuItem Error:', error);
+      return null;
+    }
+
+    if (!data) return null;
 
   return {
     ...data,
@@ -23,16 +27,21 @@ async function getMenuItem(id: string): Promise<MenuItem | null> {
   } as MenuItem;
 }
 
-// Fetch related items from the same category
 async function getRelatedItems(categoryName: string, excludeId: string): Promise<MenuItem[]> {
-  const { data, error } = await supabase
-    .from('menu_items')
-    .select('*')
-    .eq('category_name', categoryName)
-    .neq('id', excludeId)
-    .limit(6);
+  try {
+    const { data, error } = await supabase
+      .from('menu_items')
+      .select('*')
+      .eq('category_name', categoryName)
+      .neq('id', excludeId)
+      .limit(6);
 
-  if (error || !data) return [];
+    if (error) {
+      console.error('Supabase getRelatedItems Error:', error);
+      return [];
+    }
+    
+    if (!data) return [];
 
   return data.map((item: any) => ({
     ...item,
