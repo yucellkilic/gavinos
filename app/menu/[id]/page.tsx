@@ -20,11 +20,15 @@ async function getMenuItem(id: string): Promise<MenuItem | null> {
 
     if (!data) return null;
 
-  return {
-    ...data,
-    name: data.item_name || 'Unnamed Item',
-    base_price: data.item_price ?? 0,
-  } as MenuItem;
+    return {
+      ...data,
+      name: data.item_name || 'Unnamed Item',
+      base_price: data.item_price ?? 0,
+    } as MenuItem;
+  } catch (err) {
+    console.error('Exception in getMenuItem:', err);
+    return null;
+  }
 }
 
 async function getRelatedItems(categoryName: string, excludeId: string): Promise<MenuItem[]> {
@@ -43,11 +47,15 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
     
     if (!data) return [];
 
-  return data.map((item: any) => ({
-    ...item,
-    name: item.item_name || 'Unnamed Item',
-    base_price: item.item_price ?? 0,
-  })) as MenuItem[];
+    return data.map((item: any) => ({
+      ...item,
+      name: item.item_name || 'Unnamed Item',
+      base_price: item.item_price ?? 0,
+    })) as MenuItem[];
+  } catch (err) {
+    console.error('Exception in getRelatedItems:', err);
+    return [];
+  }
 }
 
 export default async function ProductDetailPage({
