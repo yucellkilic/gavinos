@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { motion, AnimatePresence } from 'framer-motion';
 import { KeyRound, Save, CheckCircle2, AlertTriangle, Users, Mail, Loader2 } from 'lucide-react';
-import { listAdminUsers, sendPasswordReset } from '@/app/actions/admin';
+import { listAdminUsers, directUpdatePassword } from '@/app/actions/admin';
 
 export default function SettingsClient() {
   const [adminUsers, setAdminUsers] = useState<{ id: string; email: string }[]>([]);
