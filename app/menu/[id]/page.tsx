@@ -58,6 +58,55 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
   }
 }
 
+async function getChoices(itemName: string): Promise<{ name: string; price: number }[]> {
+  try {
+    const { data, error } = await supabase
+      .from('menu_items')
+      .select('choice_name, choice_price')
+      .eq('item_name', itemName)
+      .not('choice_name', 'is', null)
+      .order('choice_price');
+
+    if (error) {
+      console.error('Supabase getChoices Error:', JSON.stringify(error, null, 2));
+      return [];
+    }
+
+    return (data || []).map(row => ({
+      name: row.choice_name,
+      price: row.choice_price || 0,
+    }));
+  } catch (err) {
+    console.error('Exception in getChoices:', err);
+    return [];
+  }
+}
+
+async function getBeverages(): Promise<MenuItem[]> {
+  try {
+    const { data, error } = await supabase
+      .from('menu_items')
+      .select('*')
+      .eq('category_name', 'Beverages')
+      .is('choice_name', null) // Only main beverages
+      .limit(4);
+
+    if (error) {
+      console.error('Supabase getBeverages Error:', JSON.stringify(error, null, 2));
+      return [];
+    }
+
+    return (data || []).map(row => ({
+      ...row,
+      name: row.item_name || 'Unnamed Item',
+      base_price: row.item_price ?? 0,
+    })) as MenuItem[];
+  } catch (err) {
+    console.error('Exception in getBeverages:', err);
+    return [];
+  }
+}
+
 export default async function ProductDetailPage({
   params,
 }: {
@@ -70,10 +119,19 @@ export default async function ProductDetailPage({
     notFound();
   }
 
-  const relatedItems = await getRelatedItems(
-    menuItem.category_name || '',
-    menuItem.id
-  );
+  const [relatedItems, choices, beverages] = await Promise.all([
+    getRelatedItems(menuItem.category_name || '', menuItem.id),
+    getChoices(menuItem.item_name || ''),
+    getBeverages(),
+  ]);
 
-  return <ProductDetailClient menuItem={menuItem} relatedItems={relatedItems} />;
+  return (
+    <ProductDetailClient 
+      menuItem={menuItem} 
+      relatedItems={relatedItems} 
+      choices={choices}
+      beverages={beverages}
+    />
+  );
 }
+

@@ -3,39 +3,74 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { ArrowLeft, Plus, Minus, ShoppingCart } from 'lucide-react';
+import { ArrowLeft, Plus, Minus, ShoppingCart, Coffee, Check } from 'lucide-react';
 import { MenuItem } from '@/types/menu';
 import { useCartStore } from '@/stores/cartStore';
 import MenuCard from '@/components/MenuCard';
 
+interface Choice {
+  name: string;
+  price: number;
+}
+
 interface ProductDetailClientProps {
   menuItem: MenuItem;
   relatedItems?: MenuItem[];
+  choices?: Choice[];
+  beverages?: MenuItem[];
 }
 
-export default function ProductDetailClient({ menuItem, relatedItems = [] }: ProductDetailClientProps) {
+export default function ProductDetailClient({ 
+  menuItem, 
+  relatedItems = [],
+  choices = [],
+  beverages = [],
+}: ProductDetailClientProps) {
   const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
+  
   const [quantity, setQuantity] = useState(1);
+  const [selectedChoices, setSelectedChoices] = useState<Choice[]>([]);
+  const [selectedBeverage, setSelectedBeverage] = useState<MenuItem | null>(null);
 
-  const price = menuItem.base_price ?? menuItem.item_price ?? 0;
-  const numPrice = typeof price === 'number' ? price : Number(price);
+  const basePrice = menuItem.base_price ?? menuItem.item_price ?? 0;
+  const numPrice = typeof basePrice === 'number' ? basePrice : Number(basePrice);
   const displayName = menuItem.name || menuItem.item_name || 'Unnamed Item';
   const category = menuItem.category_name || '';
-  const totalPrice = numPrice * quantity;
+
+  // Calculate dynamic price
+  const choicesTotal = selectedChoices.reduce((sum, c) => sum + Number(c.price), 0);
+  const beverageTotal = selectedBeverage ? (selectedBeverage.base_price ?? selectedBeverage.item_price ?? 0) : 0;
+  const unitPrice = numPrice + choicesTotal + Number(beverageTotal);
+  const totalPrice = unitPrice * quantity;
+
+  const toggleChoice = (choice: Choice) => {
+    setSelectedChoices(prev => 
+      prev.some(c => c.name === choice.name)
+        ? prev.filter(c => c.name !== choice.name)
+        : [...prev, choice]
+    );
+  };
 
   const handleAddToCart = () => {
+    // Collect all options for the cart representation
+    const options = [
+      ...selectedChoices.map(c => `${c.name} (+$${Number(c.price).toFixed(2)})`),
+    ];
+    if (selectedBeverage) {
+      options.push(`Drink: ${selectedBeverage.name} (+$${Number(selectedBeverage.item_price).toFixed(2)})`);
+    }
+
     const cartItem = {
       id: `${menuItem.id}-${Date.now()}`,
       menuItemId: menuItem.id,
       name: displayName,
-      base_price: numPrice,
+      base_price: unitPrice,
       numberOfPeople: 1,
       quantity,
       configuration: {
         requiredOptions: {},
-        optionalOptions: [],
+        optionalOptions: options,
         selectedAccompaniments: [],
       },
       totalPrice: totalPrice,
@@ -47,155 +82,158 @@ export default function ProductDetailClient({ menuItem, relatedItems = [] }: Pro
   };
 
   return (
-    <div className="min-h-screen py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
+    <div className="min-h-screen bg-gray-50 py-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => router.back()}
-          className="flex items-center text-forestGreen hover:text-forestGreen/80 mb-6 transition-smooth"
+          className="flex items-center text-forestGreen hover:text-forestGreen/80 mb-4 font-semibold transition-colors"
         >
-          <ArrowLeft size={20} className="mr-2" />
-          Back to Menu
+          <ArrowLeft size={18} className="mr-1" /> Back to Menu
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Image Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center">
-              <div className="text-9xl">🍽️</div>
-
-              {/* Category Badge */}
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* Minimalist Image Area */}
+            <div className="bg-gradient-to-br from-forestGreen/10 to-classicRed/10 flex items-center justify-center p-12 relative min-h-[300px]">
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="text-9xl drop-shadow-2xl"
+              >
+                🍽️
+              </motion.div>
               {category && (
-                <div className="absolute top-4 right-4">
-                  <span className="px-4 py-2 bg-classicRed text-white text-sm font-bold rounded-full shadow-lg">
-                    {category}
-                  </span>
-                </div>
-              )}
-            </div>
-          </motion.div>
-
-          {/* Details Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            {/* Title & Category */}
-            <div>
-              <p className="text-sm font-semibold text-classicRed mb-2 uppercase tracking-wide">
-                {category}
-              </p>
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3 font-poppins">
-                {displayName}
-              </h1>
-
-              {menuItem.choice_name && (
-                <p className="text-gray-600 text-lg">
-                  Option: <span className="font-semibold">{menuItem.choice_name}</span>
-                  {menuItem.choice_price && (
-                    <span className="ml-2 text-forestGreen font-bold">
-                      (+${Number(menuItem.choice_price).toFixed(2)})
-                    </span>
-                  )}
-                </p>
-              )}
-
-              <div className="mt-4">
-                <span className="text-3xl font-bold text-forestGreen">
-                  ${numPrice.toFixed(2)}
+                <span className="absolute top-6 left-6 px-4 py-1.5 bg-white/90 backdrop-blur-sm text-classicRed text-xs font-black uppercase tracking-wider rounded-full shadow-sm border border-red-100">
+                  {category}
                 </span>
-                {menuItem.item_price2 && (
-                  <span className="text-gray-500 ml-3">
-                    Size 2: ${Number(menuItem.item_price2).toFixed(2)}
-                  </span>
-                )}
-                {menuItem.item_price3 && (
-                  <span className="text-gray-500 ml-3">
-                    Size 3: ${Number(menuItem.item_price3).toFixed(2)}
-                  </span>
-                )}
-              </div>
+              )}
             </div>
 
-            {/* Quantity Selector */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <label className="block text-sm font-semibold text-gray-900 mb-3">
-                Quantity
-              </label>
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-smooth"
-                >
-                  <Minus size={20} />
-                </button>
-                <input
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-20 text-center text-xl font-semibold border-2 border-gray-200 rounded-lg py-2"
-                />
-                <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-smooth"
-                >
-                  <Plus size={20} />
-                </button>
-              </div>
-            </div>
+            {/* Compact Details Area */}
+            <div className="p-8 lg:p-10 flex flex-col justify-between">
+              <div className="space-y-6">
+                <div>
+                  <h1 className="text-3xl font-black text-gray-900 leading-tight mb-2">
+                    {displayName}
+                  </h1>
+                  <p className="text-2xl font-bold text-forestGreen">
+                    ${numPrice.toFixed(2)}
+                  </p>
+                </div>
 
-            {/* Price Summary */}
-            <div className="bg-forestGreen/5 p-6 rounded-xl border-2 border-forestGreen">
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Unit Price:</span>
-                  <span className="font-medium">${numPrice.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">× {quantity} quantity:</span>
-                  <span className="font-medium">${totalPrice.toFixed(2)}</span>
-                </div>
-                <div className="border-t-2 border-forestGreen pt-2 mt-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold text-gray-900">Total:</span>
-                    <span className="text-2xl font-bold text-forestGreen">
-                      ${totalPrice.toFixed(2)}
-                    </span>
+                {/* Choices / Garnishes as Chips */}
+                {choices.length > 0 && (
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+                      Add-ons & Options
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {choices.map((choice, idx) => {
+                        const isSelected = selectedChoices.some(c => c.name === choice.name);
+                        return (
+                          <button
+                            key={idx}
+                            onClick={() => toggleChoice(choice)}
+                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 ${
+                              isSelected 
+                                ? 'bg-forestGreen border-forestGreen text-white shadow-md' 
+                                : 'bg-white border-gray-200 text-gray-700 hover:border-forestGreen/50 hover:bg-forestGreen/5'
+                            }`}
+                          >
+                            {isSelected && <Check size={14} />}
+                            {choice.name}
+                            {choice.price > 0 && (
+                              <span className={isSelected ? 'text-white/80' : 'text-gray-400'}>
+                                +${Number(choice.price).toFixed(2)}
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Optional Drinks */}
+                {beverages.length > 0 && (
+                  <div className="space-y-3 pt-4 border-t border-gray-100">
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide flex items-center gap-2">
+                      <Coffee size={16} className="text-classicRed" /> 
+                      Need a drink? (Optional)
+                    </h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      {beverages.map((bev) => {
+                        const isSelected = selectedBeverage?.id === bev.id;
+                        return (
+                          <button
+                            key={bev.id}
+                            onClick={() => setSelectedBeverage(isSelected ? null : bev)}
+                            className={`p-3 rounded-xl border text-left transition-all ${
+                              isSelected 
+                                ? 'bg-classicRed/5 border-classicRed text-classicRed shadow-sm' 
+                                : 'bg-white border-gray-200 hover:border-classicRed/50'
+                            }`}
+                          >
+                            <div className="font-semibold text-sm truncate">{bev.name}</div>
+                            <div className="text-xs mt-1 font-bold">
+                              +${Number(bev.base_price).toFixed(2)}
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Action Area */}
+              <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-bold text-gray-900">Quantity</span>
+                  <div className="flex items-center gap-3 bg-gray-50 p-1.5 rounded-xl border border-gray-200">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all"
+                    >
+                      <Minus size={16} />
+                    </button>
+                    <span className="w-8 text-center font-bold text-lg">{quantity}</span>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all"
+                    >
+                      <Plus size={16} />
+                    </button>
                   </div>
                 </div>
+
+                <button
+                  onClick={handleAddToCart}
+                  className="w-full py-4 rounded-2xl font-black text-lg bg-gray-900 text-white hover:bg-forestGreen shadow-xl hover:shadow-forestGreen/30 transition-all flex items-center justify-between px-6 group"
+                >
+                  <span className="flex items-center gap-2">
+                    <ShoppingCart size={20} className="group-hover:scale-110 transition-transform" />
+                    Add to Cart
+                  </span>
+                  <span>${totalPrice.toFixed(2)}</span>
+                </button>
               </div>
             </div>
-
-            {/* Add to Cart Button */}
-            <button
-              onClick={handleAddToCart}
-              className="w-full py-4 rounded-xl font-bold text-lg bg-forestGreen text-white hover:bg-forestGreen/90 shadow-lg hover:shadow-xl transition-smooth flex items-center justify-center gap-3"
-            >
-              <ShoppingCart size={22} />
-              Add to Cart — ${totalPrice.toFixed(2)}
-            </button>
-          </motion.div>
+          </div>
         </div>
 
         {/* Related Items */}
         {relatedItems.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-20"
+            transition={{ delay: 0.2 }}
+            className="mt-16"
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">
+            <h2 className="text-xl font-black text-gray-900 mb-6 px-2">
               More from {category}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {relatedItems.slice(0, 3).map((item) => (
                 <MenuCard key={item.id} item={item} />
               ))}
@@ -206,3 +244,4 @@ export default function ProductDetailClient({ menuItem, relatedItems = [] }: Pro
     </div>
   );
 }
+
