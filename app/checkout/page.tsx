@@ -7,6 +7,7 @@ import { ArrowLeft, CreditCard, Smartphone } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 import { formatCurrency } from '@/lib/priceCalculator';
 import StripePaymentForm from '@/components/StripePaymentForm';
+import { supabase } from '@/lib/supabase';
 
 type PaymentMethod = 'stripe' | 'square' | 'apple_pay' | 'google_pay';
 
@@ -57,7 +58,25 @@ export default function CheckoutPage() {
     }
   }, [selectedPayment, totalPrice]);
 
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = async () => {
+    try {
+      // Save order to Supabase
+      const { error: dbError } = await supabase.from('orders').insert({
+        order_total: totalPrice,
+        items: items,
+        status: 'success',
+        // In a real app, you'd get these from a form or auth
+        customer_email: 'customer@example.com', 
+        customer_name: 'Guest Customer'
+      });
+
+      if (dbError) {
+        console.error('Error saving order:', dbError);
+      }
+    } catch (err) {
+      console.error('Exception saving order:', err);
+    }
+
     clearCart();
     router.push('/order-confirmation');
   };

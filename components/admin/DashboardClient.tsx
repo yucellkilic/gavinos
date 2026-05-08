@@ -48,34 +48,93 @@ export default function DashboardClient() {
     activeUsers: 0,
     profit: 0
   });
+  const [revenueData, setRevenueData] = useState<any[]>([]);
+  const [categoryData, setCategoryData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchStats() {
-      // In a real app, we'd aggregate from the orders table
-      const { data: orders, error } = await supabase.from('orders').select('*');
+  const fetchDashboardData = async () => {
+    try {
+      const { data: orders, error } = await supabase
+        .from('orders')
+        .select('*')
+        .order('created_at', { ascending: true });
       
-      if (!error && orders && orders.length > 0) {
-        const total = orders.reduce((sum, order) => sum + Number(order.total_amount), 0);
+      if (error) throw error;
+      
+      if (orders && orders.length > 0) {
+        // 1. Basic Stats
+        const total = orders.reduce((sum, order) => sum + Number(order.order_total || 0), 0);
+        const uniqueEmails = new Set(orders.map(o => o.customer_email || o.user_id)).size;
+        
         setStats({
           totalSales: total,
           totalOrders: orders.length,
-          activeUsers: new Set(orders.map(o => o.user_id)).size,
-          profit: total * 0.35 // Assuming 35% margin for demo
+          activeUsers: uniqueEmails,
+          profit: total * 0.35 // 35% margin
         });
-      } else {
-        // Fallback to mock stats if no real data yet
-        setStats({
-          totalSales: 24500.50,
-          totalOrders: 342,
-          activeUsers: 128,
-          profit: 8575.17
+
+        // 2. Revenue Overview (Last 7 Days)
+        const last7Days = Array.from({ length: 7 }, (_, i) => {
+          const d = new Date();
+          d.setDate(d.getDate() - (6 - i));
+          return d.toISOString().split('T')[0];
         });
+
+        const dailyRevenue = last7Days.map(date => {
+          const dayTotal = orders
+            .filter(o => o.created_at.startsWith(date))
+            .reduce((sum, o) => sum + Number(o.order_total || 0), 0);
+          
+          return {
+            name: new Date(date).toLocaleDateString('en-US', { weekday: 'short' }),
+            total: dayTotal
+          };
+        });
+        setRevenueData(dailyRevenue);
+
+        // 3. Top Categories Analysis
+        const categoryCounts: { [key: string]: number } = {};
+        orders.forEach(order => {
+          const items = Array.isArray(order.items) ? order.items : [];
+          items.forEach((item: any) => {
+            const cat = item.category_name || 'Other';
+            categoryCounts[cat] = (categoryCounts[cat] || 0) + (item.quantity || 1);
+          });
+        });
+
+        const sortedCategories = Object.entries(categoryCounts)
+          .map(([name, count]) => ({ name, count }))
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5);
+        
+        setCategoryData(sortedCategories);
       }
+    } catch (err) {
+      console.error('Error fetching dashboard data:', err);
+    } finally {
       setLoading(false);
     }
-    
-    fetchStats();
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
+
+    // Realtime Subscription
+    const channel = supabase
+      .channel('schema-db-changes')
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'orders' },
+        () => {
+          console.log('New order received! Refreshing dashboard...');
+          fetchDashboardData();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const statCards = [
@@ -86,17 +145,20 @@ export default function DashboardClient() {
   ];
 
   if (loading) {
-    return <div className="animate-pulse h-96 bg-gray-800/50 rounded-3xl"></div>;
+    return (
+      <div className="flex items-center justify-center h-96">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-forestGreen"></div>
+      </div>
+    );
   }
 
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-black text-white tracking-tight">Dashboard Overview</h1>
-        <p className="text-gray-400 mt-2">Welcome back. Here's what's happening with your restaurant today.</p>
+        <h1 className="text-3xl font-black text-white tracking-tight">Real-time Analytics</h1>
+        <p className="text-gray-400 mt-2">Connected to live production data from Supabase.</p>
       </div>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {statCards.map((stat, idx) => (
           <motion.div
@@ -120,7 +182,6 @@ export default function DashboardClient() {
         ))}
       </div>
 
-      {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -130,17 +191,12 @@ export default function DashboardClient() {
         >
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <Activity className="text-forestGreen" /> Revenue Overview
+              <Activity className="text-forestGreen" /> Revenue Overview (7D)
             </h3>
-            <select className="bg-gray-900 border border-gray-700 text-sm text-gray-300 rounded-lg px-3 py-1.5 focus:outline-none focus:border-forestGreen">
-              <option>Last 7 Days</option>
-              <option>This Month</option>
-              <option>This Year</option>
-            </select>
           </div>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={mockRevenueData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+              <AreaChart data={revenueData.length > 0 ? revenueData : mockRevenueData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
@@ -167,11 +223,11 @@ export default function DashboardClient() {
           className="bg-gray-800/40 backdrop-blur-sm p-6 rounded-3xl border border-gray-700/50"
         >
           <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
-            <ShoppingBag className="text-blue-400" /> Top Categories
+            <ShoppingBag className="text-blue-400" /> Best Selling Categories
           </h3>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={mockOrdersData} layout="vertical" margin={{ top: 0, right: 0, left: 20, bottom: 0 }}>
+              <BarChart data={categoryData.length > 0 ? categoryData : mockOrdersData} layout="vertical" margin={{ top: 0, right: 0, left: 20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" horizontal={false} />
                 <XAxis type="number" stroke="#9ca3af" hide />
                 <YAxis dataKey="name" type="category" stroke="#9ca3af" axisLine={false} tickLine={false} />
@@ -188,3 +244,4 @@ export default function DashboardClient() {
     </div>
   );
 }
+
