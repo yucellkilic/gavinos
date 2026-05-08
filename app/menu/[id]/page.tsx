@@ -71,11 +71,11 @@ async function getChoices(itemName: string, categoryName: string): Promise<{ nam
     if (legacyError) console.error('Supabase getChoices Legacy Error:', legacyError);
 
     // 2. Fetch new choices from menu_options
-    // We fetch options that are EITHER for this specific item OR for this entire category
+    // We fetch options that are EITHER for this specific item OR for this entire category (via JSONB array)
     const { data: advancedData, error: advancedError } = await supabase
       .from('menu_options')
       .select('name, price')
-      .or(`item_name.eq."${itemName}",and(category_name.eq."${categoryName}",item_name.is.null)`);
+      .or(`item_name.eq."${itemName}",categories.cs.["${categoryName}"]`);
 
     if (advancedError) console.error('Supabase getChoices Advanced Error:', advancedError);
 
@@ -148,7 +148,7 @@ export default async function ProductDetailPage({
       menuItem={menuItem} 
       relatedItems={relatedItems} 
       choices={choices}
-      beverages={beverages}
+      beverages={menuItem.category_name === 'Beverages' ? [] : beverages}
     />
   );
 }

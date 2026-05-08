@@ -80,6 +80,26 @@ async function getMenuItems(category?: string, search?: string, offset = 0, limi
     });
 
     const deduplicatedData = Array.from(uniqueItemsMap.values());
+    
+    // Custom sort for "All" view: Priority categories first, Beverages last
+    if (!category || category === 'all') {
+      deduplicatedData.sort((a, b) => {
+        if (a.category_name === 'Beverages' && b.category_name !== 'Beverages') return 1;
+        if (a.category_name !== 'Beverages' && b.category_name === 'Beverages') return -1;
+        
+        // Priority categories (Pizza, Pasta etc) should be relatively mixed but top-heavy
+        const priorityCategories = ['Pizza', 'Pasta', 'Entrées', 'Mediterranean'];
+        const aPri = priorityCategories.findIndex(p => a.category_name?.includes(p));
+        const bPri = priorityCategories.findIndex(p => b.category_name?.includes(p));
+        
+        if (aPri !== -1 && bPri !== -1) return aPri - bPri;
+        if (aPri !== -1) return -1;
+        if (bPri !== -1) return 1;
+
+        return a.item_name.localeCompare(b.item_name);
+      });
+    }
+
     const total = deduplicatedData.length;
     
     // In-memory pagination

@@ -28,7 +28,7 @@ interface Garnish {
   id: string;
   name: string;
   price: number;
-  category_name: string | null;
+  categories: string[]; 
   item_name: string | null;
   group_name: string;
 }
@@ -65,7 +65,7 @@ export default function ProductsClient() {
   const [garnishFormData, setGarnishFormData] = useState({
     name: '',
     price: '',
-    category_name: '',
+    categories: [] as string[],
     item_name: '',
     group_name: 'Options'
   });
@@ -73,7 +73,8 @@ export default function ProductsClient() {
   const fetchCategories = async () => {
     const { data } = await supabase.from('menu_items').select('category_name').not('category_name', 'is', null);
     if (data) {
-      setCategories(Array.from(new Set(data.map(i => i.category_name as string))).sort());
+      const unique = Array.from(new Set(data.map(i => i.category_name as string))).sort();
+      setCategories(unique);
     }
   };
 
@@ -93,14 +94,11 @@ export default function ProductsClient() {
       .range((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE - 1);
 
     if (!error && data) {
-      // Fetch option counts for these products
-      const { data: optCounts } = await supabase
-        .from('menu_options')
-        .select('item_name, category_name');
+      const { data: optCounts } = await supabase.from('menu_options').select('item_name, categories');
 
       const processedProducts = data.map(p => {
         const count = (optCounts || []).filter(o => 
-          o.item_name === p.item_name || (o.category_name === p.category_name && !o.item_name)
+          o.item_name === p.item_name || (Array.isArray(o.categories) && o.categories.includes(p.category_name) && !o.item_name)
         ).length;
         return { ...p, option_count: count };
       });
@@ -113,8 +111,22 @@ export default function ProductsClient() {
 
   const fetchGarnishes = async () => {
     setLoading(true);
-    const { data } = await supabase.from('menu_options').select('*').order('created_at', { ascending: false });
-    if (data) setGarnishes(data);
+    let query = supabase.from('menu_options').select('*');
+    
+    // For garnishes, we filter locally or via SQL if possible
+    // Given the small number of options relative to products, local filter is smoother for UX
+    const { data, error } = await query.order('group_name');
+    
+    if (!error && data) {
+      let filtered = data;
+      if (searchQuery) {
+        filtered = filtered.filter(g => g.name.toLowerCase().includes(searchQuery.toLowerCase()) || g.group_name.toLowerCase().includes(searchQuery.toLowerCase()));
+      }
+      if (selectedCategory !== 'all') {
+        filtered = filtered.filter(g => Array.isArray(g.categories) && g.categories.includes(selectedCategory));
+      }
+      setGarnishes(filtered);
+    }
     setLoading(false);
   };
 
@@ -144,7 +156,7 @@ export default function ProductsClient() {
     setGarnishFormData({
       name: garnish.name,
       price: garnish.price.toString(),
-      category_name: garnish.category_name || '',
+      categories: Array.isArray(garnish.categories) ? garnish.categories : [],
       item_name: garnish.item_name || '',
       group_name: garnish.group_name
     });
@@ -187,7 +199,7 @@ export default function ProductsClient() {
     const payload = {
       name: garnishFormData.name,
       price: Number(garnishFormData.price),
-      category_name: garnishFormData.category_name || null,
+      categories: garnishFormData.categories,
       item_name: garnishFormData.item_name || null,
       group_name: garnishFormData.group_name
     };
@@ -197,20 +209,29 @@ export default function ProductsClient() {
     fetchGarnishes();
   };
 
+  const toggleCategory = (cat: string) => {
+    setGarnishFormData(prev => ({
+      ...prev,
+      categories: prev.categories.includes(cat) 
+        ? prev.categories.filter(c => c !== cat) 
+        : [...prev.categories, cat]
+    }));
+  };
+
   return (
     <div className="h-[calc(100vh-6rem)] flex flex-col md:flex-row gap-6">
       
-      {/* Sidebar with Tabs & Categories */}
+      {/* Sidebar */}
       <div className="w-full md:w-64 space-y-6 shrink-0">
         <div className="bg-gray-800/40 backdrop-blur-md rounded-3xl border border-gray-700/50 p-2 flex">
           <button 
-            onClick={() => setActiveTab('products')}
+            onClick={() => { setActiveTab('products'); setPage(1); setSearchQuery(''); }}
             className={`flex-1 py-2 rounded-2xl text-xs font-bold transition-all ${activeTab === 'products' ? 'bg-forestGreen text-white shadow-lg shadow-forestGreen/20' : 'text-gray-400 hover:text-white'}`}
           >
             Products
           </button>
           <button 
-            onClick={() => setActiveTab('garnishes')}
+            onClick={() => { setActiveTab('garnishes'); setPage(1); setSearchQuery(''); }}
             className={`flex-1 py-2 rounded-2xl text-xs font-bold transition-all ${activeTab === 'garnishes' ? 'bg-forestGreen text-white shadow-lg shadow-forestGreen/20' : 'text-gray-400 hover:text-white'}`}
           >
             Garnishes
@@ -219,14 +240,14 @@ export default function ProductsClient() {
 
         <div className="bg-gray-800/40 backdrop-blur-md rounded-3xl border border-gray-700/50 p-4 flex flex-col h-64 md:h-[calc(100%-5rem)]">
           <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 px-2 flex items-center gap-2">
-            <Filter size={16} /> {activeTab === 'products' ? 'Categories' : 'Filter Options'}
+            <Filter size={16} /> Filter
           </h2>
           <div className="overflow-y-auto pr-2 space-y-1 custom-scrollbar flex-1">
             <button
               onClick={() => { setSelectedCategory('all'); setPage(1); }}
               className={`w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all ${selectedCategory === 'all' ? 'bg-forestGreen/20 text-forestGreen font-bold' : 'text-gray-300 hover:bg-gray-700'}`}
             >
-              All Items
+              All {activeTab === 'products' ? 'Products' : 'Garnishes'}
             </button>
             {categories.map(cat => (
               <button
@@ -264,7 +285,7 @@ export default function ProductsClient() {
                 setIsModalOpen(true);
               } else {
                 setEditingGarnish(null);
-                setGarnishFormData({ name: '', price: '', category_name: '', item_name: '', group_name: 'Options' });
+                setGarnishFormData({ name: '', price: '', categories: selectedCategory !== 'all' && selectedCategory !== 'Beverages' ? [selectedCategory] : [], item_name: '', group_name: 'Options' });
                 setIsGarnishModalOpen(true);
               }
             }}
@@ -274,7 +295,7 @@ export default function ProductsClient() {
           </button>
         </div>
 
-        {/* Dynamic List */}
+        {/* List */}
         <div className="flex-1 overflow-auto p-2">
           {loading ? (
             <div className="flex justify-center items-center h-full"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-forestGreen"></div></div>
@@ -319,7 +340,7 @@ export default function ProductsClient() {
                 <tr className="text-gray-400 border-b border-gray-700/50 text-sm">
                   <th className="p-4 font-semibold">Garnish Name</th>
                   <th className="p-4 font-semibold">Price</th>
-                  <th className="p-4 font-semibold">Applied To</th>
+                  <th className="p-4 font-semibold">Categories / Links</th>
                   <th className="p-4 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
@@ -332,8 +353,12 @@ export default function ProductsClient() {
                     </td>
                     <td className="p-4 text-emerald-400 font-medium">${g.price.toFixed(2)}</td>
                     <td className="p-4">
-                      <div className="text-xs text-gray-300">
-                        {g.item_name ? `Item: ${g.item_name}` : g.category_name ? `Category: ${g.category_name}` : 'Global'}
+                      <div className="flex flex-wrap gap-1">
+                        {g.item_name && <span className="bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded text-[10px] border border-blue-500/20">Item: {g.item_name}</span>}
+                        {Array.isArray(g.categories) && g.categories.map(c => (
+                          <span key={c} className="bg-gray-700 text-gray-300 px-2 py-0.5 rounded text-[10px] border border-gray-600">{c}</span>
+                        ))}
+                        {(!g.item_name && (!g.categories || g.categories.length === 0)) && <span className="text-gray-500 text-xs italic">Global</span>}
                       </div>
                     </td>
                     <td className="p-4 text-right">
@@ -349,7 +374,7 @@ export default function ProductsClient() {
           )}
         </div>
 
-        {/* Pagination Footer (Only for Products) */}
+        {/* Pagination (Products only) */}
         {activeTab === 'products' && (
           <div className="p-4 border-t border-gray-700/50 flex items-center justify-between bg-gray-800/80">
             <span className="text-sm text-gray-400">Page <strong className="text-white">{page}</strong></span>
@@ -415,18 +440,26 @@ export default function ProductsClient() {
                     <input type="number" step="0.01" required value={garnishFormData.price} onChange={e => setGarnishFormData({...garnishFormData, price: e.target.value})} className="w-full bg-gray-800 border border-gray-600 rounded-xl px-4 py-2.5 text-white focus:border-forestGreen" />
                   </div>
                   <div className="col-span-2">
-                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 block">Link to Category (Optional)</label>
-                    <select value={garnishFormData.category_name} onChange={e => setGarnishFormData({...garnishFormData, category_name: e.target.value, item_name: ''})} className="w-full bg-gray-800 border border-gray-600 rounded-xl px-4 py-2.5 text-white focus:border-forestGreen">
-                      <option value="">None (Global)</option>
-                      {categories.map(c => <option key={c} value={c}>{c}</option>)}
-                    </select>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 block">Apply to Categories (Select multiple)</label>
+                    <div className="grid grid-cols-2 gap-2 bg-gray-800 p-3 rounded-xl border border-gray-700 max-h-40 overflow-y-auto">
+                      {categories.filter(c => c !== 'Beverages').map(c => (
+                        <button
+                          key={c}
+                          type="button"
+                          onClick={() => toggleCategory(c)}
+                          className={`text-left px-3 py-1.5 rounded-lg text-xs transition-all ${garnishFormData.categories.includes(c) ? 'bg-forestGreen text-white' : 'bg-gray-700 text-gray-400 hover:text-white'}`}
+                        >
+                          {c}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                   <div className="col-span-2">
-                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 block">Link to Specific Product Name (Optional)</label>
-                    <input placeholder="Enter product name exactly" value={garnishFormData.item_name} onChange={e => setGarnishFormData({...garnishFormData, item_name: e.target.value, category_name: ''})} className="w-full bg-gray-800 border border-gray-600 rounded-xl px-4 py-2.5 text-white focus:border-forestGreen" />
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 block">Link to Specific Product Name (Overrides Categories)</label>
+                    <input placeholder="Enter product name exactly" value={garnishFormData.item_name} onChange={e => setGarnishFormData({...garnishFormData, item_name: e.target.value, categories: []})} className="w-full bg-gray-800 border border-gray-600 rounded-xl px-4 py-2.5 text-white focus:border-forestGreen" />
                   </div>
                 </div>
-                <div className="pt-6 flex justify-end gap-3"><button type="submit" className="bg-forestGreen text-white px-8 py-2.5 rounded-xl font-bold flex items-center gap-2"><Save size={18} /> Save Garnish</button></div>
+                <div className="pt-6 flex justify-end gap-3"><button type="submit" className="bg-forestGreen text-white px-8 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all"><Save size={18} /> Save Garnish</button></div>
               </form>
             </motion.div>
           </div>
