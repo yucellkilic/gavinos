@@ -58,24 +58,42 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
   }
 }
 
-async function getChoices(itemName: string): Promise<{ name: string; price: number }[]> {
+async function getChoices(itemName: string, categoryName: string): Promise<{ name: string; price: number }[]> {
   try {
-    const { data, error } = await supabase
+    // 1. Fetch legacy choices from menu_items
+    const { data: legacyData, error: legacyError } = await supabase
       .from('menu_items')
       .select('choice_name, choice_price')
       .eq('item_name', itemName)
       .not('choice_name', 'is', null)
       .order('choice_price');
 
-    if (error) {
-      console.error('Supabase getChoices Error:', JSON.stringify(error, null, 2));
-      return [];
-    }
+    if (legacyError) console.error('Supabase getChoices Legacy Error:', legacyError);
 
-    return (data || []).map(row => ({
-      name: row.choice_name,
-      price: row.choice_price || 0,
-    }));
+    // 2. Fetch new choices from menu_options
+    // We fetch options that are EITHER for this specific item OR for this entire category
+    const { data: advancedData, error: advancedError } = await supabase
+      .from('menu_options')
+      .select('name, price')
+      .or(`item_name.eq."${itemName}",and(category_name.eq."${categoryName}",item_name.is.null)`);
+
+    if (advancedError) console.error('Supabase getChoices Advanced Error:', advancedError);
+
+    const choices = [
+      ...(legacyData || []).map(row => ({
+        name: row.choice_name,
+        price: row.choice_price || 0,
+      })),
+      ...(advancedData || []).map(row => ({
+        name: row.name,
+        price: Number(row.price) || 0,
+      })),
+    ];
+
+    // Remove duplicates based on name
+    const uniqueChoices = Array.from(new Map(choices.map(c => [c.name, c])).values());
+    
+    return uniqueChoices.sort((a, b) => a.price - b.price);
   } catch (err) {
     console.error('Exception in getChoices:', err);
     return [];
@@ -121,7 +139,7 @@ export default async function ProductDetailPage({
 
   const [relatedItems, choices, beverages] = await Promise.all([
     getRelatedItems(menuItem.category_name || '', menuItem.id),
-    getChoices(menuItem.item_name || ''),
+    getChoices(menuItem.item_name || '', menuItem.category_name || ''),
     getBeverages(),
   ]);
 
