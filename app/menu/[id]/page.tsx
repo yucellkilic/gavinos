@@ -80,13 +80,18 @@ async function getChoices(itemName: string, categoryName: string): Promise<{ nam
     if (legacyError) console.error('Supabase getChoices Legacy Error:', legacyError);
 
     // 2. Fetch new choices from menu_options
-    // We fetch options that are EITHER for this specific item OR for this entire category (via JSONB array)
-    const { data: advancedData, error: advancedError } = await supabase
-      .from('menu_options')
-      .select('name, price')
-      .or(`item_name.eq."${itemName}",categories.cs.["${categoryName}"]`);
-
-    if (advancedError) console.error('Supabase getChoices Advanced Error:', advancedError);
+    // We strictly fetch options that are EITHER for this specific item OR explicitly contain this category
+    let advancedData = null;
+    if (itemName || categoryName) {
+      let query = supabase.from('menu_options').select('name, price');
+      let conditions = [];
+      if (itemName) conditions.push(`item_name.eq."${itemName}"`);
+      if (categoryName) conditions.push(`categories.cs.["${categoryName}"]`);
+      
+      const { data, error } = await query.or(conditions.join(','));
+      if (error) console.error('Supabase getChoices Advanced Error:', error);
+      else advancedData = data;
+    }
 
     const choices = [
       ...(legacyData || []).map(row => ({

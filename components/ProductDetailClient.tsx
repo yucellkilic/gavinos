@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Plus, Minus, ShoppingCart, Coffee, Check } from 'lucide-react';
@@ -32,6 +32,11 @@ export default function ProductDetailClient({
   const [quantity, setQuantity] = useState(1);
   const [selectedChoices, setSelectedChoices] = useState<Choice[]>([]);
   const [selectedBeverage, setSelectedBeverage] = useState<MenuItem | null>(null);
+
+  // Sayfa açıldığında her zaman en üstten başla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const basePrice = menuItem.base_price ?? menuItem.item_price ?? 0;
   const numPrice = typeof basePrice === 'number' ? basePrice : Number(basePrice);

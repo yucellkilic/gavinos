@@ -49,12 +49,12 @@ export const useCartStore = create<CartStore>()(
           const newItems = state.items.map((item) => {
             if (item.id === itemId) {
               const accompanimentsPrice = item.configuration.selectedAccompaniments?.reduce((sum, acc) => sum + (acc.price || 0), 0) || 0;
-              // If base_price is null, total is null unless accompaniments exist
               let newTotalPrice: number | null = null;
+              const people = item.numberOfPeople || 1;
               if (item.base_price !== null) {
-                newTotalPrice = (item.base_price + accompanimentsPrice) * item.numberOfPeople * quantity;
+                newTotalPrice = (Number(item.base_price) + accompanimentsPrice) * people * quantity;
               } else if (accompanimentsPrice > 0) {
-                newTotalPrice = accompanimentsPrice * item.numberOfPeople * quantity;
+                newTotalPrice = accompanimentsPrice * people * quantity;
               }
               return { ...item, quantity, totalPrice: newTotalPrice };
             }
@@ -72,7 +72,7 @@ export const useCartStore = create<CartStore>()(
               const accompanimentsPrice = item.configuration.selectedAccompaniments?.reduce((sum, acc) => sum + (acc.price || 0), 0) || 0;
               let newTotalPrice: number | null = null;
               if (item.base_price !== null) {
-                newTotalPrice = (item.base_price + accompanimentsPrice) * numberOfPeople * item.quantity;
+                newTotalPrice = (Number(item.base_price) + accompanimentsPrice) * numberOfPeople * item.quantity;
               } else if (accompanimentsPrice > 0) {
                 newTotalPrice = accompanimentsPrice * numberOfPeople * item.quantity;
               }
