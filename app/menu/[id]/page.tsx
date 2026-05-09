@@ -6,6 +6,13 @@ import { notFound } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 
 async function getMenuItem(id: string): Promise<MenuItem | null> {
+  // UUID format validation to prevent database query errors on invalid routes
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  if (!id || !uuidRegex.test(id)) {
+    console.warn(`[getMenuItem] Invalid UUID format: ${id}`);
+    return null;
+  }
+
   try {
     const { data, error } = await supabase
       .from('menu_items')
@@ -32,6 +39,8 @@ async function getMenuItem(id: string): Promise<MenuItem | null> {
 }
 
 async function getRelatedItems(categoryName: string, excludeId: string): Promise<MenuItem[]> {
+  if (!categoryName || !excludeId) return [];
+  
   try {
     const { data, error } = await supabase
       .from('menu_items')
@@ -45,9 +54,7 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
       return [];
     }
     
-    if (!data) return [];
-
-    return data.map((item: any) => ({
+    return (data || []).map((item: any) => ({
       ...item,
       name: item.item_name || 'Unnamed Item',
       base_price: item.item_price ?? 0,
@@ -59,6 +66,8 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
 }
 
 async function getChoices(itemName: string, categoryName: string): Promise<{ name: string; price: number }[]> {
+  if (!itemName || !categoryName) return [];
+
   try {
     // 1. Fetch legacy choices from menu_items
     const { data: legacyData, error: legacyError } = await supabase
@@ -81,18 +90,17 @@ async function getChoices(itemName: string, categoryName: string): Promise<{ nam
 
     const choices = [
       ...(legacyData || []).map(row => ({
-        name: row.choice_name,
+        name: row.choice_name || 'Unknown Option',
         price: row.choice_price || 0,
       })),
       ...(advancedData || []).map(row => ({
-        name: row.name,
+        name: row.name || 'Unknown Option',
         price: Number(row.price) || 0,
       })),
     ];
 
-    // Remove duplicates based on name
+    // Remove duplicates based on name and sort by price
     const uniqueChoices = Array.from(new Map(choices.map(c => [c.name, c])).values());
-    
     return uniqueChoices.sort((a, b) => a.price - b.price);
   } catch (err) {
     console.error('Exception in getChoices:', err);
@@ -130,26 +138,39 @@ export default async function ProductDetailPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
-  const menuItem = await getMenuItem(id);
+  try {
+    const { id } = await params;
+    
+    // Ensure we have a valid ID before proceeding
+    if (!id) {
+      notFound();
+    }
 
-  if (!menuItem) {
-    notFound();
+    const menuItem = await getMenuItem(id);
+
+    // Trigger Next.js 404 page gracefully if the item is missing or invalid
+    if (!menuItem) {
+      notFound();
+    }
+
+    const [relatedItems, choices, beverages] = await Promise.all([
+      getRelatedItems(menuItem.category_name || '', menuItem.id),
+      getChoices(menuItem.item_name || '', menuItem.category_name || ''),
+      getBeverages(),
+    ]);
+
+    // Ensure props are never undefined by using fallback empty arrays
+    return (
+      <ProductDetailClient 
+        menuItem={menuItem} 
+        relatedItems={relatedItems || []} 
+        choices={choices || []}
+        beverages={menuItem.category_name === 'Beverages' ? [] : (beverages || [])}
+      />
+    );
+  } catch (error) {
+    console.error('Fatal error rendering ProductDetailPage:', error);
+    notFound(); // Fallback to 404 instead of raw 500 error page
   }
-
-  const [relatedItems, choices, beverages] = await Promise.all([
-    getRelatedItems(menuItem.category_name || '', menuItem.id),
-    getChoices(menuItem.item_name || '', menuItem.category_name || ''),
-    getBeverages(),
-  ]);
-
-  return (
-    <ProductDetailClient 
-      menuItem={menuItem} 
-      relatedItems={relatedItems} 
-      choices={choices}
-      beverages={menuItem.category_name === 'Beverages' ? [] : beverages}
-    />
-  );
 }
 
