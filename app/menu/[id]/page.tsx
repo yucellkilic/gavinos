@@ -66,45 +66,53 @@ async function getRelatedItems(categoryName: string, excludeId: string): Promise
 }
 
 async function getChoices(itemName: string, categoryName: string): Promise<{ name: string; price: number }[]> {
-  if (!itemName || !categoryName) return [];
+  if (!itemName && !categoryName) return [];
 
   try {
     // 1. Fetch legacy choices from menu_items
-    const { data: legacyData, error: legacyError } = await supabase
+    const legacyPromise = supabase
       .from('menu_items')
       .select('choice_name, choice_price')
       .eq('item_name', itemName)
       .not('choice_name', 'is', null)
       .order('choice_price');
 
-    if (legacyError) console.error('Supabase getChoices Legacy Error:', legacyError);
+    // 2. Fetch new choices from menu_options (by item_name)
+    const optionsItemPromise = supabase
+      .from('menu_options')
+      .select('name, price')
+      .eq('item_name', itemName);
 
-    // 2. Fetch new choices from menu_options
-    // We strictly fetch options that are EITHER for this specific item OR explicitly contain this category
-    let advancedData = null;
-    if (itemName || categoryName) {
-      let query = supabase.from('menu_options').select('name, price');
-      let conditions = [];
-      if (itemName) conditions.push(`item_name.eq."${itemName}"`);
-      if (categoryName) conditions.push(`categories.cs.["${categoryName}"]`);
-      
-      const { data, error } = await query.or(conditions.join(','));
-      if (error) console.error('Supabase getChoices Advanced Error:', error);
-      else advancedData = data;
-    }
+    // 3. Fetch new choices from menu_options (by category)
+    // We use JSONB contains logic safely without string interpolation bugs
+    const optionsCategoryPromise = supabase
+      .from('menu_options')
+      .select('name, price')
+      .contains('categories', [categoryName]);
+
+    // Executing all independently to prevent any single query from locking the page
+    const [legacyRes, itemRes, categoryRes] = await Promise.all([
+      legacyPromise,
+      optionsItemPromise,
+      optionsCategoryPromise
+    ]);
 
     const choices = [
-      ...(legacyData || []).map(row => ({
+      ...(legacyRes.data || []).map(row => ({
         name: row.choice_name || 'Unknown Option',
         price: row.choice_price || 0,
       })),
-      ...(advancedData || []).map(row => ({
+      ...(itemRes.data || []).map(row => ({
+        name: row.name || 'Unknown Option',
+        price: Number(row.price) || 0,
+      })),
+      ...(categoryRes.data || []).map(row => ({
         name: row.name || 'Unknown Option',
         price: Number(row.price) || 0,
       })),
     ];
 
-    // Remove duplicates based on name and sort by price
+    // Safe duplicate removal and sorting
     const uniqueChoices = Array.from(new Map(choices.map(c => [c.name, c])).values());
     return uniqueChoices.sort((a, b) => a.price - b.price);
   } catch (err) {
@@ -146,12 +154,13 @@ export default async function ProductDetailPage({
   try {
     const { id } = await params;
     
-    // Ensure we have a valid ID before proceeding
-    if (!id) {
+    // Ensure we have a valid ID and cast to string explicitly
+    const safeId = id ? id.toString() : '';
+    if (!safeId) {
       notFound();
     }
 
-    const menuItem = await getMenuItem(id);
+    const menuItem = await getMenuItem(safeId);
 
     // Trigger Next.js 404 page gracefully if the item is missing or invalid
     if (!menuItem) {

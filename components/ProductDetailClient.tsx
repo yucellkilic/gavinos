@@ -134,6 +134,9 @@ export default function ProductDetailClient({
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {choices.map((choice, idx) => {
+                        // Strict null check for mapped items to prevent crashes
+                        if (!choice || !choice.name) return null;
+
                         const isSelected = selectedChoices.some(c => c.name === choice.name);
                         return (
                           <button
