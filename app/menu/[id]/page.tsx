@@ -1,10 +1,10 @@
 import { supabase } from '@/lib/supabase';
-import dynamic from 'next/dynamic';
+import nextDynamic from 'next/dynamic';
 import { MenuItem, ModifierGroup } from '@/types/menu';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-const ProductDetailClient = dynamic(() => import('@/components/ProductDetailClient'), {
+const ProductDetailClient = nextDynamic(() => import('@/components/ProductDetailClient'), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">
