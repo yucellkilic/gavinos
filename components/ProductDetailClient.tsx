@@ -225,7 +225,7 @@ export default function ProductDetailClient({
                             {/* Group Header */}
                             <button
                               onClick={() => toggleGroup(group.id)}
-                              className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors"
+                              className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors touch-action-manipulation"
                             >
                               <div className="flex items-center gap-2">
                                 <span className="font-bold text-sm text-gray-800">{group.name}</span>
@@ -261,7 +261,7 @@ export default function ProductDetailClient({
                                       <button
                                         key={mod.id}
                                         onClick={() => toggleModifier(group, mod)}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 ${
+                                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation ${
                                           isSelected
                                             ? 'bg-forestGreen border-forestGreen text-white shadow-md'
                                             : 'bg-white border-gray-200 text-gray-700 hover:border-forestGreen/50 hover:bg-forestGreen/5'
@@ -301,7 +301,7 @@ export default function ProductDetailClient({
                           <button
                             key={`choice-${idx}`}
                             onClick={() => toggleChoice(choice)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 ${
+                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation ${
                               isSelected 
                                 ? 'bg-forestGreen border-forestGreen text-white shadow-md' 
                                 : 'bg-white border-gray-200 text-gray-700 hover:border-forestGreen/50 hover:bg-forestGreen/5'
@@ -337,7 +337,7 @@ export default function ProductDetailClient({
                           <button
                             key={bev.id}
                             onClick={() => setSelectedBeverage(isSelected ? null : bev)}
-                            className={`p-3 rounded-xl border text-left transition-all ${
+                            className={`p-3 rounded-xl border text-left transition-all touch-action-manipulation ${
                               isSelected 
                                 ? 'bg-classicRed/5 border-classicRed text-classicRed shadow-sm' 
                                 : 'bg-white border-gray-200 hover:border-classicRed/50'

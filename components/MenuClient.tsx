@@ -182,7 +182,7 @@ export default function MenuClient({
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
-                <span className="text-lg">{CATEGORY_ICONS[cat] || '🍴'}</span>
+                <span className="text-lg">{CATEGORY_ICONS[cat] || (cat.toLowerCase().includes('pizza') ? '🍕' : '🍴')}</span>
                 <span>{cat}</span>
               </button>
             ))}

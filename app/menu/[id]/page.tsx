@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase';
 import ProductDetailClient from '@/components/ProductDetailClient';
 import { MenuItem, ModifierGroup } from '@/types/menu';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 export const dynamic = 'force-dynamic';
 
@@ -239,15 +240,20 @@ export default async function ProductDetailPage({
       getBeverages(),
     ]);
 
-    // Ensure props are never undefined by using fallback empty arrays
     return (
-      <ProductDetailClient 
-        menuItem={menuItem} 
-        relatedItems={relatedItems || []} 
-        choices={choices || []}
-        modifierGroups={modifierGroups || []}
-        beverages={categoryName === 'Beverages' ? [] : (beverages || [])}
-      />
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-forestGreen"></div>
+        </div>
+      }>
+        <ProductDetailClient 
+          menuItem={menuItem} 
+          relatedItems={relatedItems || []} 
+          choices={choices || []}
+          modifierGroups={modifierGroups || []}
+          beverages={categoryName === 'Beverages' ? [] : (beverages || [])}
+        />
+      </Suspense>
     );
   } catch (error) {
     console.error('Fatal error rendering ProductDetailPage:', error);

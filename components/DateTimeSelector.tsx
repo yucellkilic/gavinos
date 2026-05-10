@@ -22,7 +22,8 @@ export default function DateTimeSelector({
   timeError,
 }: DateTimeSelectorProps) {
   const timeSlots = generateTimeSlots();
-  const today = new Date().toISOString().split('T')[0];
+  const tzOffset = new Date().getTimezoneOffset() * 60000;
+  const today = new Date(Date.now() - tzOffset).toISOString().split('T')[0];
 
   return (
     <div className="w-full space-y-4">

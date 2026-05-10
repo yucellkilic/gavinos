@@ -85,7 +85,8 @@ export default function CheckoutDetailsForm({ onValidationComplete }: CheckoutDe
     if (!formState.deliveryDate) {
       newErrors.deliveryDate = 'Please select a delivery date';
     } else {
-      const today = new Date().toISOString().split('T')[0];
+      const tzOffset = new Date().getTimezoneOffset() * 60000;
+      const today = new Date(Date.now() - tzOffset).toISOString().split('T')[0];
       if (formState.deliveryDate < today) {
         newErrors.deliveryDate = 'Please select a valid date (today or later)';
       }
