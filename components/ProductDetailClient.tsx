@@ -65,7 +65,9 @@ export default function ProductDetailClient({
   const unitPrice = numPrice + modifiersTotal + choicesTotal + Number(beverageTotal);
   const totalPrice = unitPrice * quantity;
 
-  const toggleChoice = useCallback((choice: Choice) => {
+  const toggleChoice = useCallback((e: React.MouseEvent, choice: Choice) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!choice?.name) return;
     setSelectedChoices(prev => 
       prev.some(c => c.name === choice.name)
@@ -74,7 +76,9 @@ export default function ProductDetailClient({
     );
   }, []);
 
-  const toggleModifier = useCallback((group: ModifierGroup, modifier: Modifier) => {
+  const toggleModifier = useCallback((e: React.MouseEvent, group: ModifierGroup, modifier: Modifier) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!modifier?.name || !group?.name) return;
     
     setSelectedModifiers(prev => {
@@ -100,7 +104,9 @@ export default function ProductDetailClient({
     });
   }, []);
 
-  const toggleGroup = useCallback((groupId: string) => {
+  const toggleGroup = useCallback((e: React.MouseEvent, groupId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     setExpandedGroups(prev => {
       const next = new Set(prev);
       if (next.has(groupId)) next.delete(groupId);
@@ -115,7 +121,9 @@ export default function ProductDetailClient({
     );
   }, [selectedModifiers]);
 
-  const handleAddToCart = useCallback(() => {
+  const handleAddToCart = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     try {
       // Collect legacy options text
       const options = [
@@ -224,8 +232,9 @@ export default function ProductDetailClient({
                           >
                             {/* Group Header */}
                             <button
-                              onClick={() => toggleGroup(group.id)}
-                              className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors touch-action-manipulation"
+                              onClick={(e) => toggleGroup(e, group.id)}
+                              style={{ WebkitTapHighlightColor: 'transparent' }}
+                              className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors touch-action-manipulation cursor-pointer select-none"
                             >
                               <div className="flex items-center gap-2">
                                 <span className="font-bold text-sm text-gray-800">{group.name}</span>
@@ -260,8 +269,9 @@ export default function ProductDetailClient({
                                     return (
                                       <button
                                         key={mod.id}
-                                        onClick={() => toggleModifier(group, mod)}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation ${
+                                        onClick={(e) => toggleModifier(e, group, mod)}
+                                        style={{ WebkitTapHighlightColor: 'transparent' }}
+                                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
                                           isSelected
                                             ? 'bg-forestGreen border-forestGreen text-white shadow-md'
                                             : 'bg-white border-gray-200 text-gray-700 hover:border-forestGreen/50 hover:bg-forestGreen/5'
@@ -300,8 +310,9 @@ export default function ProductDetailClient({
                         return (
                           <button
                             key={`choice-${idx}`}
-                            onClick={() => toggleChoice(choice)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation ${
+                            onClick={(e) => toggleChoice(e, choice)}
+                            style={{ WebkitTapHighlightColor: 'transparent' }}
+                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
                               isSelected 
                                 ? 'bg-forestGreen border-forestGreen text-white shadow-md' 
                                 : 'bg-white border-gray-200 text-gray-700 hover:border-forestGreen/50 hover:bg-forestGreen/5'
@@ -336,8 +347,9 @@ export default function ProductDetailClient({
                         return (
                           <button
                             key={bev.id}
-                            onClick={() => setSelectedBeverage(isSelected ? null : bev)}
-                            className={`p-3 rounded-xl border text-left transition-all touch-action-manipulation ${
+                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setSelectedBeverage(isSelected ? null : bev); }}
+                            style={{ WebkitTapHighlightColor: 'transparent' }}
+                            className={`p-3 rounded-xl border text-left transition-all touch-action-manipulation cursor-pointer select-none ${
                               isSelected 
                                 ? 'bg-classicRed/5 border-classicRed text-classicRed shadow-sm' 
                                 : 'bg-white border-gray-200 hover:border-classicRed/50'
@@ -393,15 +405,17 @@ export default function ProductDetailClient({
                   <span className="text-sm font-bold text-gray-900">Quantity</span>
                   <div className="flex items-center gap-3 bg-gray-50 p-1.5 rounded-xl border border-gray-200">
                     <button
-                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all"
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuantity(prev => Math.max(1, prev - 1)); }}
+                      style={{ WebkitTapHighlightColor: 'transparent' }}
+                      className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all touch-action-manipulation cursor-pointer select-none"
                     >
                       <Minus size={16} />
                     </button>
                     <span className="w-8 text-center font-bold text-lg">{quantity}</span>
                     <button
-                      onClick={() => setQuantity(quantity + 1)}
-                      className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all"
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuantity(prev => prev + 1); }}
+                      style={{ WebkitTapHighlightColor: 'transparent' }}
+                      className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all touch-action-manipulation cursor-pointer select-none"
                     >
                       <Plus size={16} />
                     </button>
@@ -410,7 +424,8 @@ export default function ProductDetailClient({
 
                 <button
                   onClick={handleAddToCart}
-                  className="w-full py-4 rounded-2xl font-black text-lg bg-gray-900 text-white hover:bg-forestGreen shadow-xl hover:shadow-forestGreen/30 transition-all flex items-center justify-between px-6 group"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  className="w-full py-4 rounded-2xl font-black text-lg bg-gray-900 text-white hover:bg-forestGreen shadow-xl hover:shadow-forestGreen/30 transition-all flex items-center justify-between px-6 group touch-action-manipulation cursor-pointer select-none"
                 >
                   <span className="flex items-center gap-2">
                     <ShoppingCart size={20} className="group-hover:scale-110 transition-transform" />
