@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Component, ErrorInfo, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Plus, Minus, ShoppingCart, Coffee, Check, Sparkles, ChevronDown } from 'lucide-react';
@@ -22,7 +22,42 @@ interface ProductDetailClientProps {
   beverages?: MenuItem[];
 }
 
-export default function ProductDetailClient({ 
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean; error: Error | null }> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center p-8 bg-gray-50">
+          <div className="bg-white p-6 rounded-2xl shadow-xl text-center max-w-sm">
+            <h2 className="text-xl font-black text-classicRed mb-2">UI Error</h2>
+            <p className="text-sm text-gray-600 mb-4">{this.state.error?.message}</p>
+            <button type="button" onClick={() => window.location.reload()} className="px-4 py-2 bg-gray-900 text-white rounded-lg font-bold">Reload Page</button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+export default function ProductDetailClient(props: ProductDetailClientProps) {
+  return (
+    <ErrorBoundary>
+      <ProductDetailClientInner {...props} />
+    </ErrorBoundary>
+  );
+}
+
+function ProductDetailClientInner({ 
   menuItem, 
   relatedItems = [],
   choices = [],
@@ -67,48 +102,66 @@ export default function ProductDetailClient({
   const unitPrice = numPrice + modifiersTotal + choicesTotal + Number(beverageTotal);
   const totalPrice = unitPrice * quantity;
 
-  const toggleChoice = useCallback((choice: Choice) => {
-    if (!choice?.name) return;
-    setSelectedChoices(prev => 
-      prev.some(c => c.name === choice.name)
-        ? prev.filter(c => c.name !== choice.name)
-        : [...prev, choice]
-    );
-  }, []);
-
-  const toggleModifier = useCallback((group: ModifierGroup, modifier: Modifier) => {
-    if (!modifier?.name || !group?.name) return;
-    
-    setSelectedModifiers(prev => {
-      const exists = prev.some(
-        m => m.modifier_name === modifier.name && m.group_name === group.name
+  const toggleChoice = useCallback((e: React.MouseEvent, choice: Choice) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      if (!choice?.name) return;
+      setSelectedChoices(prev => 
+        prev.some(c => c.name === choice.name)
+          ? prev.filter(c => c.name !== choice.name)
+          : [...prev, choice]
       );
-      
-      if (exists) {
-        return prev.filter(
-          m => !(m.modifier_name === modifier.name && m.group_name === group.name)
-        );
-      }
-
-      // Check max_select limit
-      const groupCount = prev.filter(m => m.group_name === group.name).length;
-      if (groupCount >= (group.max_select || 10)) return prev;
-
-      return [...prev, {
-        group_name: group.name,
-        modifier_name: modifier.name,
-        price: Number(modifier.price) || 0,
-      }];
-    });
+    } catch (err: any) {
+      alert(`Error selecting choice: ${err?.message}`);
+    }
   }, []);
 
-  const toggleGroup = useCallback((groupId: string) => {
-    setExpandedGroups(prev => {
-      const next = new Set(prev);
-      if (next.has(groupId)) next.delete(groupId);
-      else next.add(groupId);
-      return next;
-    });
+  const toggleModifier = useCallback((e: React.MouseEvent, group: ModifierGroup, modifier: Modifier) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      if (!modifier?.name || !group?.name) return;
+      
+      setSelectedModifiers(prev => {
+        const exists = prev.some(
+          m => m.modifier_name === modifier.name && m.group_name === group.name
+        );
+        
+        if (exists) {
+          return prev.filter(
+            m => !(m.modifier_name === modifier.name && m.group_name === group.name)
+          );
+        }
+
+        // Check max_select limit
+        const groupCount = prev.filter(m => m.group_name === group.name).length;
+        if (groupCount >= (group.max_select || 10)) return prev;
+
+        return [...prev, {
+          group_name: group.name,
+          modifier_name: modifier.name,
+          price: Number(modifier.price) || 0,
+        }];
+      });
+    } catch (err: any) {
+      alert(`Error selecting modifier: ${err?.message}`);
+    }
+  }, []);
+
+  const toggleGroup = useCallback((e: React.MouseEvent, groupId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      setExpandedGroups(prev => {
+        const next = new Set(prev);
+        if (next.has(groupId)) next.delete(groupId);
+        else next.add(groupId);
+        return next;
+      });
+    } catch (err: any) {
+      alert(`Error toggling group: ${err?.message}`);
+    }
   }, []);
 
   const isModifierSelected = useCallback((groupName: string, modifierName: string) => {
@@ -117,7 +170,9 @@ export default function ProductDetailClient({
     );
   }, [selectedModifiers]);
 
-  const handleAddToCart = useCallback(() => {
+  const handleAddToCart = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     try {
       // Collect legacy options text
       const options = [
@@ -146,7 +201,8 @@ export default function ProductDetailClient({
 
       addItem(cartItem);
       router.push('/cart');
-    } catch (err) {
+    } catch (err: any) {
+      alert(`Error adding to cart: ${err?.message}`);
       console.error('Error adding to cart:', err);
     }
   }, [menuItem, displayName, unitPrice, quantity, totalPrice, selectedChoices, selectedModifiers, selectedBeverage, addItem, router]);
@@ -169,6 +225,7 @@ export default function ProductDetailClient({
     <div className="min-h-screen bg-gray-50 py-6">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
+          type="button"
           onClick={() => router.back()}
           className="flex items-center text-forestGreen hover:text-forestGreen/80 mb-4 font-semibold transition-colors"
         >
@@ -228,7 +285,8 @@ export default function ProductDetailClient({
                           >
                             {/* Group Header */}
                             <button
-                              onClick={() => toggleGroup(group.id)}
+                              type="button"
+                              onClick={(e) => toggleGroup(e, group.id)}
                               style={{ WebkitTapHighlightColor: 'transparent' }}
                               className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors touch-action-manipulation cursor-pointer select-none"
                             >
@@ -264,8 +322,9 @@ export default function ProductDetailClient({
                                     const isSelected = isModifierSelected(group.name, mod.name);
                                     return (
                                       <button
+                                        type="button"
                                         key={mod.id}
-                                        onClick={() => toggleModifier(group, mod)}
+                                        onClick={(e) => toggleModifier(e, group, mod)}
                                         style={{ WebkitTapHighlightColor: 'transparent' }}
                                         className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
                                           isSelected
@@ -305,8 +364,9 @@ export default function ProductDetailClient({
                         const isSelected = selectedChoices.some(c => c.name === choice.name);
                         return (
                           <button
+                            type="button"
                             key={`choice-${idx}`}
-                            onClick={() => toggleChoice(choice)}
+                            onClick={(e) => toggleChoice(e, choice)}
                             style={{ WebkitTapHighlightColor: 'transparent' }}
                             className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
                               isSelected 
@@ -342,8 +402,17 @@ export default function ProductDetailClient({
                         const bevPrice = Number(bev?.base_price) || Number(bev?.item_price) || 0;
                         return (
                           <button
+                            type="button"
                             key={bev.id}
-                            onClick={() => setSelectedBeverage(isSelected ? null : bev)}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              try {
+                                setSelectedBeverage(isSelected ? null : bev);
+                              } catch (err: any) {
+                                alert(`Error selecting beverage: ${err?.message}`);
+                              }
+                            }}
                             style={{ WebkitTapHighlightColor: 'transparent' }}
                             className={`p-3 rounded-xl border text-left transition-all touch-action-manipulation cursor-pointer select-none ${
                               isSelected 
@@ -401,7 +470,16 @@ export default function ProductDetailClient({
                   <span className="text-sm font-bold text-gray-900">Quantity</span>
                   <div className="flex items-center gap-3 bg-gray-50 p-1.5 rounded-xl border border-gray-200">
                     <button
-                      onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                      type="button"
+                      onClick={(e) => { 
+                        e.preventDefault(); 
+                        e.stopPropagation(); 
+                        try {
+                          setQuantity(prev => Math.max(1, prev - 1));
+                        } catch (err: any) {
+                          alert(`Error updating quantity: ${err?.message}`);
+                        }
+                      }}
                       style={{ WebkitTapHighlightColor: 'transparent' }}
                       className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all touch-action-manipulation cursor-pointer select-none"
                     >
@@ -409,7 +487,16 @@ export default function ProductDetailClient({
                     </button>
                     <span className="w-8 text-center font-bold text-lg">{quantity}</span>
                     <button
-                      onClick={() => setQuantity(prev => prev + 1)}
+                      type="button"
+                      onClick={(e) => { 
+                        e.preventDefault(); 
+                        e.stopPropagation(); 
+                        try {
+                          setQuantity(prev => prev + 1);
+                        } catch (err: any) {
+                          alert(`Error updating quantity: ${err?.message}`);
+                        }
+                      }}
                       style={{ WebkitTapHighlightColor: 'transparent' }}
                       className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all touch-action-manipulation cursor-pointer select-none"
                     >
@@ -419,6 +506,7 @@ export default function ProductDetailClient({
                 </div>
 
                 <button
+                  type="button"
                   onClick={handleAddToCart}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                   className="w-full py-4 rounded-2xl font-black text-lg bg-gray-900 text-white hover:bg-forestGreen shadow-xl hover:shadow-forestGreen/30 transition-all flex items-center justify-between px-6 group touch-action-manipulation cursor-pointer select-none"
