@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CartItem, Cart } from '@/types/cart';
+import { CartItem, Cart, SelectedModifier } from '@/types/cart';
 
 export interface DeliveryDetails {
   deliveryType: 'delivery' | 'pickup';
@@ -21,6 +21,24 @@ interface CartStore extends Cart {
   getCartTotal: () => number;
 }
 
+/**
+ * Recalculate total price for a cart item including modifiers + accompaniments.
+ */
+function recalcItemTotal(item: CartItem, quantity: number, numberOfPeople: number): number | null {
+  const modifiersPrice = (item.selected_modifiers ?? []).reduce(
+    (sum, m) => sum + (Number(m?.price) || 0), 0
+  );
+  const accompanimentsPrice = (item.configuration?.selectedAccompaniments ?? []).reduce(
+    (sum, acc) => sum + (Number(acc?.price) || 0), 0
+  );
+
+  const base = Number(item.base_price) || 0;
+  if (base > 0 || modifiersPrice > 0 || accompanimentsPrice > 0) {
+    return (base + modifiersPrice + accompanimentsPrice) * numberOfPeople * quantity;
+  }
+  return null;
+}
+
 export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
@@ -29,8 +47,18 @@ export const useCartStore = create<CartStore>()(
       deliveryDetails: null,
 
       addItem: (item: CartItem) => {
+        // Ensure selected_modifiers always exists
+        const safeItem: CartItem = {
+          ...item,
+          selected_modifiers: item.selected_modifiers ?? [],
+          configuration: item.configuration ?? {
+            requiredOptions: {},
+            optionalOptions: [],
+            selectedAccompaniments: [],
+          },
+        };
         set((state) => {
-          const newItems = [...state.items, item];
+          const newItems = [...state.items, safeItem];
           const totalPrice = newItems.reduce((sum, i) => sum + (i.totalPrice || 0), 0);
           return { items: newItems, totalPrice };
         });
@@ -48,14 +76,8 @@ export const useCartStore = create<CartStore>()(
         set((state) => {
           const newItems = state.items.map((item) => {
             if (item.id === itemId) {
-              const accompanimentsPrice = item.configuration.selectedAccompaniments?.reduce((sum, acc) => sum + (acc.price || 0), 0) || 0;
-              let newTotalPrice: number | null = null;
               const people = item.numberOfPeople || 1;
-              if (item.base_price !== null) {
-                newTotalPrice = (Number(item.base_price) + accompanimentsPrice) * people * quantity;
-              } else if (accompanimentsPrice > 0) {
-                newTotalPrice = accompanimentsPrice * people * quantity;
-              }
+              const newTotalPrice = recalcItemTotal(item, quantity, people);
               return { ...item, quantity, totalPrice: newTotalPrice };
             }
             return item;
@@ -69,13 +91,7 @@ export const useCartStore = create<CartStore>()(
         set((state) => {
           const newItems = state.items.map((item) => {
             if (item.id === itemId) {
-              const accompanimentsPrice = item.configuration.selectedAccompaniments?.reduce((sum, acc) => sum + (acc.price || 0), 0) || 0;
-              let newTotalPrice: number | null = null;
-              if (item.base_price !== null) {
-                newTotalPrice = (Number(item.base_price) + accompanimentsPrice) * numberOfPeople * item.quantity;
-              } else if (accompanimentsPrice > 0) {
-                newTotalPrice = accompanimentsPrice * numberOfPeople * item.quantity;
-              }
+              const newTotalPrice = recalcItemTotal(item, item.quantity, numberOfPeople);
               return { ...item, numberOfPeople, totalPrice: newTotalPrice };
             }
             return item;

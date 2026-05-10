@@ -76,18 +76,41 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-gray-900 text-sm truncate">
-                          {item.name}
+                          {item?.name || 'Item'}
                         </h3>
                         <p className="text-xs text-gray-500 mt-1">
-                          {item.numberOfPeople} people × {item.quantity} qty
+                          {item?.numberOfPeople || 1} people × {item?.quantity || 1} qty
                         </p>
+
+                        {/* Show selected modifiers */}
+                        {Array.isArray(item?.selected_modifiers) && item.selected_modifiers.length > 0 && (
+                          <div className="mt-1.5 space-y-0.5">
+                            {item.selected_modifiers.map((mod, i) => (
+                              <p key={i} className="text-xs text-forestGreen/80 truncate">
+                                + {mod?.modifier_name || 'Extra'}{Number(mod?.price) > 0 ? ` ($${Number(mod.price).toFixed(2)})` : ''}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Show legacy optional options */}
+                        {Array.isArray(item?.configuration?.optionalOptions) && item.configuration.optionalOptions.length > 0 && (
+                          <div className="mt-1 space-y-0.5">
+                            {item.configuration.optionalOptions.map((opt, i) => (
+                              <p key={`opt-${i}`} className="text-xs text-gray-400 truncate">
+                                {opt}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+
                         <p className="text-sm font-bold text-forestGreen mt-1">
-                          {formatCurrency(item.totalPrice ?? 0)}
+                          {formatCurrency(item?.totalPrice ?? 0)}
                         </p>
                       </div>
 
                       <button
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => item?.id && removeItem(item.id)}
                         className="p-2 h-fit rounded-md hover:bg-red-50 text-red-500 transition-smooth"
                         aria-label="Remove item"
                       >
@@ -100,16 +123,16 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                       <span className="text-xs text-gray-600">Quantity:</span>
                       <div className="flex items-center gap-2">
                         <button
-                          onClick={() => updateItemQuantity(item.id, Math.max(1, item.quantity - 1))}
+                          onClick={() => item?.id && updateItemQuantity(item.id, Math.max(1, (item?.quantity || 1) - 1))}
                           className="p-1 rounded bg-white hover:bg-gray-100 transition-smooth"
                         >
                           <Minus size={14} />
                         </button>
                         <span className="text-sm font-semibold w-8 text-center">
-                          {item.quantity}
+                          {item?.quantity || 1}
                         </span>
                         <button
-                          onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+                          onClick={() => item?.id && updateItemQuantity(item.id, (item?.quantity || 1) + 1)}
                           className="p-1 rounded bg-white hover:bg-gray-100 transition-smooth"
                         >
                           <Plus size={14} />

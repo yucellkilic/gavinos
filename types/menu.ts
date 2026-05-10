@@ -20,3 +20,27 @@ export interface MenuItem {
   name?: string;
   base_price?: number | null;
 }
+
+// New modifier system types (category-based)
+export interface ModifierGroup {
+  id: string;
+  name: string;
+  category_name: string;
+  display_order: number;
+  min_select: number;
+  max_select: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+  modifiers?: Modifier[];
+}
+
+export interface Modifier {
+  id: string;
+  group_id: string;
+  name: string;
+  price: number;
+  is_active: boolean;
+  display_order: number;
+  created_at: string;
+}

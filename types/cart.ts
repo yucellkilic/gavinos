@@ -1,3 +1,9 @@
+export interface SelectedModifier {
+  group_name: string;
+  modifier_name: string;
+  price: number;
+}
+
 export interface CartItemConfiguration {
   requiredOptions: Record<string, string>;
   optionalOptions: string[];
@@ -12,6 +18,7 @@ export interface CartItem {
   numberOfPeople: number;
   quantity: number;
   configuration: CartItemConfiguration;
+  selected_modifiers: SelectedModifier[];
   totalPrice: number | null;
   image_url: string;
 }

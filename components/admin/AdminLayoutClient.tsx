@@ -14,7 +14,8 @@ import {
   X,
   Lock,
   Mail,
-  Activity
+  Activity,
+  Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -128,6 +129,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
   const menuItems = [
     { icon: LayoutDashboard, label: 'Dashboard', href: '/admin' },
     { icon: UtensilsCrossed, label: 'Products', href: '/admin/products' },
+    { icon: Sparkles, label: 'Modifiers', href: '/admin/modifiers' },
     { icon: DollarSign, label: 'Bulk Pricing', href: '/admin/bulk-pricing' },
     { icon: Settings, label: 'Settings', href: '/admin/settings' },
   ];

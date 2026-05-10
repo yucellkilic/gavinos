@@ -49,7 +49,7 @@ export default function CartPage() {
         <div className="space-y-4 mb-6 sm:mb-8">
           {items.map((item) => (
             <motion.div
-              key={item.id}
+              key={item?.id || Math.random()}
               layout
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -63,13 +63,41 @@ export default function CartPage() {
                 <div className="flex-1 min-w-0 w-full max-w-full">
                   <div className="flex flex-row justify-between items-start gap-2 mb-3 max-w-full">
                     <div className="flex-1 min-w-0 max-w-full overflow-hidden">
-                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 break-words overflow-wrap-anywhere max-w-full">{item.name}</h3>
+                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 break-words overflow-wrap-anywhere max-w-full">
+                        {item?.name || 'Item'}
+                      </h3>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1 break-words">
-                        {item.numberOfPeople} people × {item.quantity} qty
+                        {item?.numberOfPeople || 1} people × {item?.quantity || 1} qty
                       </p>
+
+                      {/* Selected Modifiers (Toppings) */}
+                      {Array.isArray(item?.selected_modifiers) && item.selected_modifiers.length > 0 && (
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {item.selected_modifiers.map((mod, i) => (
+                            <span
+                              key={i}
+                              className="inline-flex items-center px-2.5 py-1 bg-forestGreen/10 text-forestGreen text-xs font-medium rounded-full"
+                            >
+                              {mod?.modifier_name || 'Extra'}
+                              {Number(mod?.price) > 0 && (
+                                <span className="ml-1 text-forestGreen/60">+${Number(mod.price).toFixed(2)}</span>
+                              )}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Legacy Options */}
+                      {Array.isArray(item?.configuration?.optionalOptions) && item.configuration.optionalOptions.length > 0 && (
+                        <div className="mt-1.5 space-y-0.5">
+                          {item.configuration.optionalOptions.map((opt, i) => (
+                            <p key={`opt-${i}`} className="text-xs text-gray-400">{opt}</p>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     <button
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => item?.id && removeItem(item.id)}
                       className="p-2 rounded-lg hover:bg-red-50 text-red-500 transition-smooth flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
                       aria-label="Remove item"
                     >
@@ -80,17 +108,17 @@ export default function CartPage() {
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 w-full max-w-full">
                     <div className="flex items-center gap-2 sm:gap-3 justify-start flex-shrink-0">
                       <button
-                        onClick={() => updateItemQuantity(item.id, Math.max(1, item.quantity - 1))}
+                        onClick={() => item?.id && updateItemQuantity(item.id, Math.max(1, (item?.quantity || 1) - 1))}
                         className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-smooth min-w-[44px] min-h-[44px] flex items-center justify-center flex-shrink-0"
                         aria-label="Decrease quantity"
                       >
                         <Minus size={18} />
                       </button>
                       <span className="text-base sm:text-lg font-semibold min-w-[40px] text-center">
-                        {item.quantity}
+                        {item?.quantity || 1}
                       </span>
                       <button
-                        onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+                        onClick={() => item?.id && updateItemQuantity(item.id, (item?.quantity || 1) + 1)}
                         className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-smooth min-w-[44px] min-h-[44px] flex items-center justify-center flex-shrink-0"
                         aria-label="Increase quantity"
                       >
@@ -100,7 +128,7 @@ export default function CartPage() {
 
                     <div className="flex-shrink-0 text-left sm:text-right min-w-0 max-w-full overflow-hidden">
                       <p className="text-lg sm:text-xl lg:text-2xl font-bold text-forestGreen break-words overflow-wrap-anywhere max-w-full">
-                        {formatCurrency(item.totalPrice ?? 0)}
+                        {formatCurrency(item?.totalPrice ?? 0)}
                       </p>
                     </div>
                   </div>

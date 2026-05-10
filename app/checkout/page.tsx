@@ -40,13 +40,13 @@ export default function CheckoutPage() {
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || 'Failed to initialize payment');
+          throw new Error(data?.error || 'Failed to initialize payment');
         }
 
-        setClientSecret(data.clientSecret);
+        setClientSecret(data?.clientSecret || '');
       }
     } catch (err: any) {
-      setError(err.message || 'Failed to initialize payment');
+      setError(err?.message || 'Failed to initialize payment');
     } finally {
       setIsLoading(false);
     }
@@ -60,14 +60,18 @@ export default function CheckoutPage() {
 
   const handlePaymentSuccess = async () => {
     try {
-      // Save order to Supabase
+      // Save order to Supabase with modifier details
       const { error: dbError } = await supabase.from('orders').insert({
-        order_total: totalPrice,
-        items: items,
-        status: 'success',
-        // In a real app, you'd get these from a form or auth
-        customer_email: 'customer@example.com', 
-        customer_name: 'Guest Customer'
+        total_amount: totalPrice,
+        items: items.map(item => ({
+          name: item?.name,
+          base_price: item?.base_price,
+          quantity: item?.quantity,
+          numberOfPeople: item?.numberOfPeople,
+          selected_modifiers: item?.selected_modifiers ?? [],
+          totalPrice: item?.totalPrice,
+        })),
+        status: 'pending',
       });
 
       if (dbError) {
@@ -82,7 +86,7 @@ export default function CheckoutPage() {
   };
 
   const handlePaymentError = (errorMessage: string) => {
-    setError(errorMessage);
+    setError(errorMessage || 'Payment failed');
   };
 
   if (items.length === 0) {
@@ -110,17 +114,30 @@ export default function CheckoutPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Order Summary</h2>
             <div className="bg-white rounded-xl p-6 shadow-md space-y-4">
               {items.map((item) => (
-                <div key={item.id} className="flex gap-4 pb-4 border-b border-gray-200 last:border-0">
+                <div key={item?.id || Math.random()} className="flex gap-4 pb-4 border-b border-gray-200 last:border-0">
                   <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gradient-to-br from-forestGreen/20 to-classicRed/20 flex items-center justify-center">
-                    <div className="text-2xl">{item.image_url}</div>
+                    <div className="text-2xl">{item?.image_url || '🍕'}</div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900">{item.name}</h3>
+                    <h3 className="font-semibold text-gray-900">{item?.name || 'Item'}</h3>
                     <p className="text-sm text-gray-500">
-                      {item.numberOfPeople} people × {item.quantity} qty
+                      {item?.numberOfPeople || 1} people × {item?.quantity || 1} qty
                     </p>
+
+                    {/* Show selected modifiers in checkout summary */}
+                    {Array.isArray(item?.selected_modifiers) && item.selected_modifiers.length > 0 && (
+                      <div className="mt-1.5 flex flex-wrap gap-1">
+                        {item.selected_modifiers.map((mod, i) => (
+                          <span key={i} className="text-xs bg-forestGreen/10 text-forestGreen px-2 py-0.5 rounded-full">
+                            {mod?.modifier_name || 'Extra'}
+                            {Number(mod?.price) > 0 && ` +$${Number(mod.price).toFixed(2)}`}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     <p className="text-sm font-bold text-forestGreen mt-1">
-                      {formatCurrency(item.totalPrice ?? 0)}
+                      {formatCurrency(item?.totalPrice ?? 0)}
                     </p>
                   </div>
                 </div>
