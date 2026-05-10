@@ -1,17 +1,7 @@
 import { supabase } from '@/lib/supabase';
-import nextDynamic from 'next/dynamic';
+import ProductDetailClient from '@/components/ProductDetailClient';
 import { MenuItem, ModifierGroup } from '@/types/menu';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-
-const ProductDetailClient = nextDynamic(() => import('@/components/ProductDetailClient'), {
-  ssr: false,
-  loading: () => (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-forestGreen"></div>
-    </div>
-  ),
-});
 
 export const dynamic = 'force-dynamic';
 
