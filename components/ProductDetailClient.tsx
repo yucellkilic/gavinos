@@ -217,27 +217,7 @@ function ProductDetailClientInner({
   const modifierNames = new Set(
     safeModifierGroups.flatMap(g => (g?.modifiers ?? []).map(m => m?.name?.toLowerCase()))
   );
-  if (!isMounted) {
-    return (
-      <div className="min-h-screen bg-gray-50 py-6">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-6 w-32 bg-gray-200 rounded animate-pulse mb-4"></div>
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 h-[600px] flex">
-            <div className="w-1/2 bg-gray-100 animate-pulse"></div>
-            <div className="w-1/2 p-8 flex flex-col gap-6">
-              <div className="h-10 w-3/4 bg-gray-200 rounded animate-pulse"></div>
-              <div className="h-8 w-1/4 bg-gray-200 rounded animate-pulse"></div>
-              <div className="space-y-3 mt-8">
-                <div className="h-12 w-full bg-gray-100 rounded animate-pulse"></div>
-                <div className="h-12 w-full bg-gray-100 rounded animate-pulse"></div>
-                <div className="h-12 w-full bg-gray-100 rounded animate-pulse"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const filteredChoices = safeChoices.filter(c => c?.name && !modifierNames.has(c.name.toLowerCase()));
 
   return (
     <div className="min-h-screen bg-gray-50 py-6">
@@ -281,7 +261,7 @@ function ProductDetailClientInner({
                 </div>
 
                 {/* ─── NEW: Customize Your Order (Modifier Groups from new tables) ─── */}
-                {safeModifierGroups.length > 0 && (
+                {isMounted && safeModifierGroups.length > 0 && (
                   <div className="space-y-3">
                     <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide flex items-center gap-2">
                       <Sparkles size={16} className="text-amber-500" />
@@ -371,7 +351,7 @@ function ProductDetailClientInner({
                 )}
 
                 {/* ─── LEGACY: Add-ons (from old choices table, no overlap with modifiers) ─── */}
-                {filteredChoices.length > 0 && (
+                {isMounted && filteredChoices.length > 0 && (
                   <div className="space-y-3">
                     <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
                       Add-ons
@@ -407,7 +387,7 @@ function ProductDetailClientInner({
                 )}
 
                 {/* Optional Drinks */}
-                {safeBeverages.length > 0 && (
+                {isMounted && safeBeverages.length > 0 && (
                   <div className="space-y-3 pt-4 border-t border-gray-100">
                     <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide flex items-center gap-2">
                       <Coffee size={16} className="text-classicRed" /> 
