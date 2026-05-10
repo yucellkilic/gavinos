@@ -219,8 +219,6 @@ function ProductDetailClientInner({
   );
   const filteredChoices = safeChoices.filter(c => c?.name && !modifierNames.has(c.name.toLowerCase()));
 
-  if (!isMounted) return null;
-
   return (
     <div className="min-h-screen bg-gray-50 py-6">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -264,13 +262,19 @@ function ProductDetailClientInner({
 
                 {/* ─── NEW: Customize Your Order (Modifier Groups from new tables) ─── */}
                 {safeModifierGroups.length > 0 && (
-                  <div className="space-y-3">
+                  <div className="space-y-3" suppressHydrationWarning={true}>
                     <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide flex items-center gap-2">
                       <Sparkles size={16} className="text-amber-500" />
                       Customize Your Order
                     </h3>
-                    <div className="space-y-2">
-                      {safeModifierGroups.map((group) => {
+                    {!isMounted ? (
+                      <div className="animate-pulse space-y-3">
+                        <div className="h-12 bg-gray-200 rounded-2xl w-full"></div>
+                        <div className="h-12 bg-gray-200 rounded-2xl w-full"></div>
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        {safeModifierGroups.map((group) => {
                         if (!group?.id || !group?.name) return null;
                         const isExpanded = expandedGroups.has(group.id);
                         const groupModifiers = Array.isArray(group.modifiers) ? group.modifiers : [];
@@ -349,23 +353,27 @@ function ProductDetailClientInner({
                         );
                       })}
                     </div>
+                    )}
                   </div>
                 )}
 
                 {/* ─── LEGACY: Add-ons (from old choices table, no overlap with modifiers) ─── */}
                 {filteredChoices.length > 0 && (
-                  <div className="space-y-3">
+                  <div className="space-y-3" suppressHydrationWarning={true}>
                     <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
                       Add-ons
                     </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {(!filteredChoices || !Array.isArray(filteredChoices)) ? null : filteredChoices.map((choice, idx) => {
+                    {!isMounted ? (
+                      <div className="animate-pulse h-10 bg-gray-200 rounded-full w-3/4"></div>
+                    ) : (
+                      <div className="flex flex-wrap gap-2">
+                        {(!filteredChoices || !Array.isArray(filteredChoices)) ? null : filteredChoices.map((choice, idx) => {
                         if (!choice?.name) return null;
                         const isSelected = selectedChoices.some(c => c.name === choice.name);
                         return (
                           <button
                             type="button"
-                            key={`choice-${idx}`}
+                            key={choice.name || `choice-${idx}`}
                             onClick={(e) => toggleChoice(e, choice)}
                             style={{ WebkitTapHighlightColor: 'transparent' }}
                             className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
@@ -384,19 +392,26 @@ function ProductDetailClientInner({
                           </button>
                         );
                       })}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 )}
 
                 {/* Optional Drinks */}
                 {safeBeverages.length > 0 && (
-                  <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <div className="space-y-3 pt-4 border-t border-gray-100" suppressHydrationWarning={true}>
                     <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide flex items-center gap-2">
                       <Coffee size={16} className="text-classicRed" /> 
                       Need a drink? (Optional)
                     </h3>
-                    <div className="grid grid-cols-2 gap-3">
-                      {(!safeBeverages || !Array.isArray(safeBeverages)) ? null : safeBeverages.map((bev) => {
+                    {!isMounted ? (
+                      <div className="grid grid-cols-2 gap-3 animate-pulse">
+                        <div className="h-16 bg-gray-200 rounded-xl w-full"></div>
+                        <div className="h-16 bg-gray-200 rounded-xl w-full"></div>
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-2 gap-3">
+                        {(!safeBeverages || !Array.isArray(safeBeverages)) ? null : safeBeverages.map((bev) => {
                         if (!bev?.id) return null;
                         const isSelected = selectedBeverage?.id === bev.id;
                         const bevPrice = Number(bev?.base_price) || Number(bev?.item_price) || 0;
@@ -427,7 +442,8 @@ function ProductDetailClientInner({
                           </button>
                         );
                       })}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
