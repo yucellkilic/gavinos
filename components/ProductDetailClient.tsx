@@ -37,9 +37,11 @@ export default function ProductDetailClient({
   const [selectedModifiers, setSelectedModifiers] = useState<SelectedModifier[]>([]);
   const [selectedBeverage, setSelectedBeverage] = useState<MenuItem | null>(null);
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
+  const [isMounted, setIsMounted] = useState(false);
 
   // Scroll to top on mount
   useEffect(() => {
+    setIsMounted(true);
     window.scrollTo(0, 0);
   }, []);
 
@@ -65,9 +67,7 @@ export default function ProductDetailClient({
   const unitPrice = numPrice + modifiersTotal + choicesTotal + Number(beverageTotal);
   const totalPrice = unitPrice * quantity;
 
-  const toggleChoice = useCallback((e: React.MouseEvent, choice: Choice) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const toggleChoice = useCallback((choice: Choice) => {
     if (!choice?.name) return;
     setSelectedChoices(prev => 
       prev.some(c => c.name === choice.name)
@@ -76,9 +76,7 @@ export default function ProductDetailClient({
     );
   }, []);
 
-  const toggleModifier = useCallback((e: React.MouseEvent, group: ModifierGroup, modifier: Modifier) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const toggleModifier = useCallback((group: ModifierGroup, modifier: Modifier) => {
     if (!modifier?.name || !group?.name) return;
     
     setSelectedModifiers(prev => {
@@ -104,9 +102,7 @@ export default function ProductDetailClient({
     });
   }, []);
 
-  const toggleGroup = useCallback((e: React.MouseEvent, groupId: string) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const toggleGroup = useCallback((groupId: string) => {
     setExpandedGroups(prev => {
       const next = new Set(prev);
       if (next.has(groupId)) next.delete(groupId);
@@ -121,9 +117,7 @@ export default function ProductDetailClient({
     );
   }, [selectedModifiers]);
 
-  const handleAddToCart = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleAddToCart = useCallback(() => {
     try {
       // Collect legacy options text
       const options = [
@@ -168,6 +162,8 @@ export default function ProductDetailClient({
     safeModifierGroups.flatMap(g => (g?.modifiers ?? []).map(m => m?.name?.toLowerCase()))
   );
   const filteredChoices = safeChoices.filter(c => c?.name && !modifierNames.has(c.name.toLowerCase()));
+
+  if (!isMounted) return null;
 
   return (
     <div className="min-h-screen bg-gray-50 py-6">
@@ -232,7 +228,7 @@ export default function ProductDetailClient({
                           >
                             {/* Group Header */}
                             <button
-                              onClick={(e) => toggleGroup(e, group.id)}
+                              onClick={() => toggleGroup(group.id)}
                               style={{ WebkitTapHighlightColor: 'transparent' }}
                               className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors touch-action-manipulation cursor-pointer select-none"
                             >
@@ -263,13 +259,13 @@ export default function ProductDetailClient({
                                 className="px-4 py-3"
                               >
                                 <div className="flex flex-wrap gap-2">
-                                  {groupModifiers.map((mod) => {
+                                  {(!groupModifiers || !Array.isArray(groupModifiers)) ? null : groupModifiers.map((mod) => {
                                     if (!mod?.id || !mod?.name) return null;
                                     const isSelected = isModifierSelected(group.name, mod.name);
                                     return (
                                       <button
                                         key={mod.id}
-                                        onClick={(e) => toggleModifier(e, group, mod)}
+                                        onClick={() => toggleModifier(group, mod)}
                                         style={{ WebkitTapHighlightColor: 'transparent' }}
                                         className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
                                           isSelected
@@ -304,13 +300,13 @@ export default function ProductDetailClient({
                       Add-ons
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {filteredChoices.map((choice, idx) => {
+                      {(!filteredChoices || !Array.isArray(filteredChoices)) ? null : filteredChoices.map((choice, idx) => {
                         if (!choice?.name) return null;
                         const isSelected = selectedChoices.some(c => c.name === choice.name);
                         return (
                           <button
                             key={`choice-${idx}`}
-                            onClick={(e) => toggleChoice(e, choice)}
+                            onClick={() => toggleChoice(choice)}
                             style={{ WebkitTapHighlightColor: 'transparent' }}
                             className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
                               isSelected 
@@ -340,14 +336,14 @@ export default function ProductDetailClient({
                       Need a drink? (Optional)
                     </h3>
                     <div className="grid grid-cols-2 gap-3">
-                      {safeBeverages.map((bev) => {
+                      {(!safeBeverages || !Array.isArray(safeBeverages)) ? null : safeBeverages.map((bev) => {
                         if (!bev?.id) return null;
                         const isSelected = selectedBeverage?.id === bev.id;
                         const bevPrice = Number(bev?.base_price) || Number(bev?.item_price) || 0;
                         return (
                           <button
                             key={bev.id}
-                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setSelectedBeverage(isSelected ? null : bev); }}
+                            onClick={() => setSelectedBeverage(isSelected ? null : bev)}
                             style={{ WebkitTapHighlightColor: 'transparent' }}
                             className={`p-3 rounded-xl border text-left transition-all touch-action-manipulation cursor-pointer select-none ${
                               isSelected 
@@ -405,7 +401,7 @@ export default function ProductDetailClient({
                   <span className="text-sm font-bold text-gray-900">Quantity</span>
                   <div className="flex items-center gap-3 bg-gray-50 p-1.5 rounded-xl border border-gray-200">
                     <button
-                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuantity(prev => Math.max(1, prev - 1)); }}
+                      onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
                       style={{ WebkitTapHighlightColor: 'transparent' }}
                       className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all touch-action-manipulation cursor-pointer select-none"
                     >
@@ -413,7 +409,7 @@ export default function ProductDetailClient({
                     </button>
                     <span className="w-8 text-center font-bold text-lg">{quantity}</span>
                     <button
-                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuantity(prev => prev + 1); }}
+                      onClick={() => setQuantity(prev => prev + 1)}
                       style={{ WebkitTapHighlightColor: 'transparent' }}
                       className="p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all touch-action-manipulation cursor-pointer select-none"
                     >
