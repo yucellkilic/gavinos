@@ -54,7 +54,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 
   signUp: async (email, password, fullName) => {
     try {
-      const { error } = await supabaseBrowser.auth.signUp({
+      const { data, error } = await supabaseBrowser.auth.signUp({
         email,
         password,
         options: {
@@ -62,6 +62,12 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         },
       });
       if (error) return { error: error.message };
+      
+      // If session exists, user is already logged in (auto-confirm is ON)
+      if (data.session) {
+        set({ user: data.user, session: data.session });
+      }
+      
       return { error: null };
     } catch (err: any) {
       return { error: err?.message || 'Registration failed' };

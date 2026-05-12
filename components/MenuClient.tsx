@@ -88,91 +88,64 @@ export default function MenuClient({
   }
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7] pb-24 lg:pb-8">
-      <div className="ez-container py-6">
-        {/* Page Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
-            <span>Our Menu</span>
-          </h1>
-          <p className="text-sm text-gray-500">
-            <span>Browse and order from our full catering menu</span>
-          </p>
-        </div>
-
-        {/* Search Bar */}
-        <div className="mb-6">
-          <form onSubmit={handleSearchSubmit} className="relative max-w-lg">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search menu items..."
-              className="ez-input pl-10 pr-10"
-            />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-            {searchTerm && (
+    <div className="min-h-screen bg-white">
+      {/* Sticky Category Bar */}
+      <div className="sticky top-16 z-30 bg-white border-b border-gray-100 shadow-sm overflow-x-auto scrollbar-hide">
+        <div className="ez-container">
+          <nav className="flex items-center gap-1 py-3 whitespace-nowrap">
+            <button
+              onClick={() => handleCategoryChange('all')}
+              className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${
+                activeCategory === 'all'
+                  ? 'bg-[var(--ez-green)] text-white'
+                  : 'text-[var(--ez-gray-600)] hover:bg-[var(--ez-gray-50)]'
+              }`}
+            >
+              <span>All Items</span>
+            </button>
+            {categories.map((cat) => (
               <button
-                type="button"
-                onClick={() => { setSearchTerm(''); updateFilters(activeCategory, ''); }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                key={cat.id}
+                onClick={() => handleCategoryChange(cat.name)}
+                className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${
+                  activeCategory === cat.name
+                    ? 'bg-[var(--ez-green)] text-white'
+                    : 'text-[var(--ez-gray-600)] hover:bg-[var(--ez-gray-50)]'
+                }`}
               >
-                <X size={16} />
+                <span>{cat.name}</span>
               </button>
-            )}
-          </form>
+            ))}
+          </nav>
         </div>
+      </div>
 
-        {/* Mobile Category Toggle */}
-        <div className="lg:hidden mb-4">
-          <button
-            onClick={() => setShowMobileCategories(!showMobileCategories)}
-            className="ez-btn ez-btn-secondary ez-btn-sm w-full"
-          >
-            <Filter size={16} />
-            <span>{activeCategory === 'all' ? 'All Categories' : activeCategory}</span>
-          </button>
-        </div>
-
-        {/* Main Layout: Sidebar + Content + Cart */}
-        <div className="flex gap-6">
-          {/* Left: Category Sidebar (Desktop) */}
-          <aside className="hidden lg:block w-56 flex-shrink-0">
-            <div className="sticky top-20">
-              <div className="ez-card p-3">
-                <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-2 mb-2">
-                  <span>Categories</span>
-                </h3>
-                <nav className="space-y-0.5">
-                  <button
-                    onClick={() => handleCategoryChange('all')}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-all text-left ${
-                      activeCategory === 'all'
-                        ? 'bg-ezGreen text-white'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-ezGreen'
-                    }`}
-                  >
-                    <span className="text-base">🍽️</span>
-                    <span>All Items</span>
-                  </button>
-                  {categories.map((cat) => (
-                    <button
-                      key={cat.id}
-                      onClick={() => handleCategoryChange(cat.name)}
-                      className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-all text-left ${
-                        activeCategory === cat.name
-                          ? 'bg-ezGreen text-white'
-                          : 'text-gray-600 hover:bg-gray-50 hover:text-ezGreen'
-                      }`}
-                    >
-                      <span className="text-base">{cat.icon || '🍽️'}</span>
-                      <span className="truncate">{cat.name}</span>
-                    </button>
-                  ))}
-                </nav>
+      <div className="ez-container py-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left: Content */}
+          <div className="flex-1 min-w-0">
+            {/* Page Title & Search */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+              <div>
+                <h1 className="text-3xl font-black text-[var(--ez-gray-900)] tracking-tight mb-1">
+                  <span>Catering Menu</span>
+                </h1>
+                <p className="text-[13px] text-[var(--ez-gray-600)] font-medium">
+                  <span>{items.length} items available in {activeCategory === 'all' ? 'all categories' : activeCategory}</span>
+                </p>
               </div>
+
+              <form onSubmit={handleSearchSubmit} className="relative w-full md:w-72">
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search products..."
+                  className="ez-input pl-10 pr-4 py-2"
+                />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--ez-gray-200)]" size={18} />
+              </form>
             </div>
-          </aside>
 
           {/* Mobile Category Dropdown */}
           <AnimatePresence>

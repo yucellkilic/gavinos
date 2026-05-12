@@ -49,47 +49,78 @@ body {
 
 /* ===================== HEADER ===================== */
 .ez-header {
-  background: var(--ez-white);
-  border-bottom: 1px solid var(--ez-border);
-  box-shadow: var(--ez-shadow-sm);
+@layer base {
+  :root {
+    --ez-green: #004b32;
+    --ez-green-hover: #003624;
+    --ez-green-light: #e6f5f0;
+    --ez-orange: #ff6900;
+    --ez-gray-50: #f8f9f9;
+    --ez-gray-100: #edf0f0;
+    --ez-gray-200: #d1d5d5;
+    --ez-gray-600: #5d6666;
+    --ez-gray-900: #1a1c1c;
+    
+    --radius-ez: 8px;
+    --shadow-ez: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  body {
+    @apply bg-white text-[var(--ez-gray-900)] font-inter antialiased;
+  }
+}
+
+@layer components {
+  .ez-container {
+    @apply max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .ez-card {
+    @apply bg-white rounded-[var(--radius-ez)] border border-[var(--ez-gray-100)] shadow-[var(--shadow-ez)] overflow-hidden transition-all;
+  }
+
+  .ez-card-interactive {
+    @apply hover:shadow-md hover:border-[var(--ez-gray-200)];
+  }
+
+  .ez-btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-[var(--radius-ez)] transition-all active:scale-[0.98] disabled:pointer-events-none;
+  }
+
+  .ez-btn-primary {
+    @apply bg-[var(--ez-green)] text-white hover:bg-[var(--ez-green-hover)] px-5 py-2.5;
+  }
+
+  .ez-btn-secondary {
+    @apply bg-white border border-[var(--ez-gray-200)] text-[var(--ez-gray-900)] hover:bg-[var(--ez-gray-50)] px-4 py-2;
+  }
+
+  .ez-input {
+    @apply w-full bg-white border border-[var(--ez-gray-200)] rounded-[var(--radius-ez)] px-4 py-2.5 text-sm focus:border-[var(--ez-green)] focus:ring-1 focus:ring-[var(--ez-green)] outline-none transition-all placeholder:text-[var(--ez-gray-200)];
+  }
+
+  .ez-sidebar-cart {
+    @apply sticky top-20 bg-white border border-[var(--ez-gray-100)] rounded-[var(--radius-ez)] shadow-[var(--shadow-ez)] flex flex-col h-[calc(100vh-120px)];
+  }
+
+  .ez-cart-items {
+    @apply flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200;
+  }
+
+  .ez-cart-footer {
+    @apply mt-auto p-4 border-t border-[var(--ez-gray-100)] bg-white rounded-b-[var(--radius-ez)];
+  }
+
+  .ez-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider;
+  }
+
+  .ez-badge-green {
+    @apply bg-[var(--ez-green-light)] text-[var(--ez-green)];
+  }
 }
 
 /* ===================== BUTTONS ===================== */
-.ez-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1;
-  padding: 10px 20px;
-  border-radius: var(--ez-radius);
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
-
-.ez-btn-primary {
-  background: var(--ez-green);
-  color: white;
-  box-shadow: var(--ez-shadow-sm);
-}
-.ez-btn-primary:hover {
-  background: var(--ez-green-dark);
-  box-shadow: var(--ez-shadow);
-}
-
-.ez-btn-secondary {
-  background: var(--ez-white);
-  color: var(--ez-green);
-  border: 1.5px solid var(--ez-green);
-}
-.ez-btn-secondary:hover {
-  background: var(--ez-green-light);
-}
-
 .ez-btn-ghost {
   background: transparent;
   color: var(--ez-text-secondary);

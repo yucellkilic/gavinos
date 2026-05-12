@@ -97,120 +97,59 @@ export default function MenuCard({ item }: MenuCardProps) {
   };
 
   return (
-    <div className="ez-card ez-card-interactive group relative flex flex-col h-full">
-      {/* Favorite Button */}
-      {isMounted && user && (
-        <button
-          onClick={handleFavorite}
-          className={`ez-heart absolute top-3 right-3 z-10 ${isFavorite(item.id) ? 'active' : ''}`}
-          aria-label="Toggle favorite"
-        >
-          <Heart size={18} fill={isFavorite(item.id) ? '#ef4444' : 'none'} />
-        </button>
-      )}
-
-      <Link href={`/menu/${item.id}`} className="flex flex-col h-full">
-        {/* Image/Icon Area */}
-        <div className="relative h-36 bg-gradient-to-br from-ezGreen-light to-green-50 flex items-center justify-center overflow-hidden rounded-t-ez-lg">
-          <span className="text-5xl drop-shadow-sm">{icon}</span>
-          {category && (
-            <div className="absolute bottom-2 left-2">
-              <span className="ez-badge ez-badge-green">
-                <span>{category}</span>
-              </span>
+    <div className="ez-card ez-card-interactive group relative flex flex-col h-[180px] sm:h-[160px]">
+      <Link href={`/menu/${item.id}`} className="flex flex-row h-full">
+        {/* Content Section (Left) */}
+        <div className="flex-1 p-4 flex flex-col min-w-0">
+          <div className="mb-auto">
+            {/* Badges/Tags */}
+            <div className="flex flex-wrap gap-1 mb-1.5">
+              {item.is_active && (
+                <span className="ez-badge ez-badge-green">
+                  <span>Most ordered</span>
+                </span>
+              )}
             </div>
-          )}
-        </div>
-
-        {/* Content */}
-        <div className="p-4 flex-1 flex flex-col">
-          <h3 className="text-sm font-semibold text-gray-900 mb-1 line-clamp-2 leading-snug">
-            <span>{displayName}</span>
-          </h3>
-
-          {item.choice_name && (
-            <p className="text-xs text-gray-500 mb-2 truncate">
-              <span>{'Option: '}</span><span>{item.choice_name}</span>
+            
+            <h3 className="text-[15px] font-bold text-[var(--ez-gray-900)] mb-1 line-clamp-1">
+              <span>{displayName}</span>
+            </h3>
+            
+            <p className="text-[13px] text-[var(--ez-gray-600)] line-clamp-2 leading-snug">
+              <span>{item.description || 'Includes fresh ingredients prepared daily for your event.'}</span>
             </p>
-          )}
+          </div>
 
-          <div className="mt-auto pt-3">
-            <div className="flex items-center justify-between">
-              <span className="text-lg font-bold text-ezGreen">
+          <div className="flex items-center justify-between mt-2">
+            <div className="flex flex-col">
+              <span className="text-[15px] font-bold text-[var(--ez-gray-900)]">
                 {hasPrice ? (
                   <span>${typeof price === 'number' ? price.toFixed(2) : Number(price).toFixed(2)}</span>
                 ) : (
-                  <span className="text-sm text-gray-500 font-medium">Market Price</span>
+                  <span className="text-[13px] text-[var(--ez-gray-600)] font-medium">Market Price</span>
                 )}
               </span>
+              <span className="text-[11px] text-[var(--ez-gray-600)]">
+                <span>Serves 10</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Image/Action Section (Right) */}
+        <div className="w-[120px] h-full relative overflow-hidden bg-[var(--ez-gray-50)] border-l border-[var(--ez-gray-100)] flex-shrink-0">
+          <div className="absolute inset-0 flex items-center justify-center text-4xl grayscale opacity-10">
+            <span>{icon}</span>
+          </div>
+          
+          {/* Bottom Right Add Button */}
+          <div className="absolute bottom-3 right-3">
+            <div className="w-8 h-8 rounded-full bg-white border border-[var(--ez-gray-200)] shadow-sm flex items-center justify-center text-[var(--ez-green)] group-hover:bg-[var(--ez-green)] group-hover:text-white group-hover:border-[var(--ez-green)] transition-all">
+              <Plus size={20} />
             </div>
           </div>
         </div>
       </Link>
-
-      {/* Quick Add Section */}
-      {hasPrice && isMounted && (
-        <div className="px-4 pb-4 space-y-2">
-          {/* Instructions Toggle */}
-          <button
-            onClick={(e) => { e.preventDefault(); setShowInstructions(!showInstructions); }}
-            className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-ezGreen transition-colors"
-          >
-            <MessageSquare size={12} />
-            <span>Special Instructions</span>
-          </button>
-
-          {showInstructions && (
-            <textarea
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
-              placeholder="E.g., no onions, extra sauce..."
-              className="ez-textarea text-xs"
-              rows={2}
-              onClick={(e) => e.preventDefault()}
-            />
-          )}
-
-          {/* Quantity + Add to Cart */}
-          <div className="flex items-center gap-2">
-            <div className="ez-stepper">
-              <button
-                onClick={(e) => { e.preventDefault(); setQuantity(Math.max(1, quantity - 1)); }}
-                disabled={quantity <= 1}
-                aria-label="Decrease quantity"
-              >
-                <Minus size={14} />
-              </button>
-              <span className="ez-stepper-value"><span>{quantity}</span></span>
-              <button
-                onClick={(e) => { e.preventDefault(); setQuantity(quantity + 1); }}
-                aria-label="Increase quantity"
-              >
-                <Plus size={14} />
-              </button>
-            </div>
-
-            <button
-              onClick={handleQuickAdd}
-              disabled={addedFeedback}
-              className={`flex-1 ez-btn ez-btn-sm transition-all ${
-                addedFeedback
-                  ? 'bg-green-500 text-white'
-                  : 'ez-btn-primary'
-              }`}
-            >
-              {addedFeedback ? (
-                <span>✓ Added!</span>
-              ) : (
-                <>
-                  <Plus size={14} />
-                  <span>Add ${(price * quantity).toFixed(2)}</span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

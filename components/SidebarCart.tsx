@@ -16,12 +16,12 @@ export default function SidebarCart() {
   if (!isMounted) return null;
 
   return (
-    <div className="ez-sidebar-cart">
+    <div className="ez-sidebar-cart overflow-hidden">
       {/* Header */}
-      <div className="p-4 border-b border-gray-100">
+      <div className="p-4 border-b border-gray-100 flex-shrink-0">
         <div className="flex items-center gap-2">
-          <ShoppingBag size={20} className="text-ezGreen" />
-          <h2 className="text-base font-bold text-gray-900">
+          <ShoppingBag size={18} className="text-[var(--ez-green)]" />
+          <h2 className="text-sm font-bold text-[var(--ez-gray-900)] uppercase tracking-tight">
             <span>Your Order</span>
           </h2>
           {items.length > 0 && (
@@ -32,58 +32,61 @@ export default function SidebarCart() {
         </div>
       </div>
 
-      {/* Empty State */}
-      {items.length === 0 ? (
-        <div className="p-8 text-center">
-          <div className="text-4xl mb-3">🛒</div>
-          <p className="text-sm text-gray-500 mb-1">
-            <span>Your cart is empty</span>
-          </p>
-          <p className="text-xs text-gray-400">
-            <span>Add items from the menu to get started</span>
-          </p>
-        </div>
-      ) : (
-        <>
-          {/* Items List */}
-          <div className="divide-y divide-gray-50 max-h-[400px] overflow-y-auto">
-            <AnimatePresence mode="popLayout">
-              {items.map((item) => (
-                <CartLineItem
-                  key={item.id}
-                  item={item}
-                  onRemove={removeItem}
-                  onUpdateQuantity={updateItemQuantity}
-                  onUpdateInstructions={updateItemInstructions}
-                />
-              ))}
-            </AnimatePresence>
+      {/* Main Content Area */}
+      <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+        {items.length === 0 ? (
+          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-[var(--ez-gray-50)]">
+            <div className="text-4xl mb-4 grayscale opacity-50">🛒</div>
+            <p className="text-sm font-semibold text-[var(--ez-gray-900)] mb-1">
+              <span>Your cart is empty</span>
+            </p>
+            <p className="text-xs text-[var(--ez-gray-600)]">
+              <span>Add items from the menu to get started</span>
+            </p>
           </div>
-
-          {/* Footer */}
-          <div className="p-4 border-t border-gray-100 space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-medium text-gray-600"><span>Subtotal</span></span>
-              <span className="text-lg font-bold text-gray-900">
-                <span>{formatCurrency(totalPrice ?? 0)}</span>
-              </span>
+        ) : (
+          <div className="flex-1 overflow-y-auto px-1">
+            <div className="divide-y divide-gray-100">
+              <AnimatePresence mode="popLayout">
+                {items.map((item) => (
+                  <CartLineItem
+                    key={item.id}
+                    item={item}
+                    onRemove={removeItem}
+                    onUpdateQuantity={updateItemQuantity}
+                    onUpdateInstructions={updateItemInstructions}
+                  />
+                ))}
+              </AnimatePresence>
             </div>
-
-            <Link
-              href="/cart"
-              className="ez-btn ez-btn-primary w-full ez-btn-lg"
-            >
-              <span>View Cart & Checkout</span>
-            </Link>
-
-            <button
-              onClick={clearCart}
-              className="w-full text-center text-xs text-gray-400 hover:text-red-500 transition-colors py-1"
-            >
-              <span>Clear Cart</span>
-            </button>
           </div>
-        </>
+        )}
+      </div>
+
+      {/* Sticky Footer */}
+      {items.length > 0 && (
+        <div className="ez-cart-footer shadow-[0_-4px_12px_rgba(0,0,0,0.05)] flex-shrink-0">
+          <div className="flex justify-between items-center mb-4">
+            <span className="text-sm font-semibold text-[var(--ez-gray-600)] uppercase tracking-wide">Subtotal</span>
+            <span className="text-lg font-bold text-[var(--ez-gray-900)]">
+              <span>{formatCurrency(totalPrice ?? 0)}</span>
+            </span>
+          </div>
+
+          <Link
+            href="/cart"
+            className="ez-btn ez-btn-primary w-full py-3 text-sm"
+          >
+            <span>Checkout</span>
+          </Link>
+
+          <button
+            onClick={clearCart}
+            className="w-full text-center text-[11px] text-[var(--ez-gray-600)] hover:text-red-500 transition-colors mt-3 py-1 font-medium"
+          >
+            <span>Clear Entire Cart</span>
+          </button>
+        </div>
       )}
     </div>
   );

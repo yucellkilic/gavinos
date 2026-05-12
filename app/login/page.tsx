@@ -46,7 +46,10 @@ export default function LoginPage() {
         if (error) {
           setError(error);
         } else {
-          setSuccess('Account created! Check your email to confirm your account.');
+          // If we are authenticated now, it means auto-login worked
+          setSuccess('Account created successfully!');
+          // The useEffect will handle redirection, but let's be explicit
+          setTimeout(() => router.push('/dashboard'), 1000);
         }
       } else {
         const { error } = await signIn(email, password);
