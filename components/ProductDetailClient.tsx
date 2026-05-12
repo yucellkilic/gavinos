@@ -253,10 +253,10 @@ function ProductDetailClientInner({
               <div className="space-y-6">
                 <div>
                   <h1 className="text-3xl font-black text-gray-900 leading-tight mb-2">
-                    {displayName}
+                    <span>{displayName}</span>
                   </h1>
                   <p className="text-2xl font-bold text-forestGreen">
-                    ${numPrice.toFixed(2)}
+                    <span>${numPrice.toFixed(2)}</span>
                   </p>
                 </div>
 
@@ -289,16 +289,22 @@ function ProductDetailClientInner({
                               className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors touch-action-manipulation cursor-pointer select-none"
                             >
                               <div className="flex items-center gap-2">
-                                <span className="font-bold text-sm text-gray-800">{group.name}</span>
-                                {selectedCount > 0 && (
+                                <span className="font-bold text-sm text-gray-800">
+                                  <span>{group.name}</span>
+                                </span>
+                                {selectedCount > 0 ? (
                                   <span className="bg-forestGreen text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                                    {selectedCount}
+                                    <span>{selectedCount}</span>
                                   </span>
+                                ) : (
+                                  <span className="hidden" />
                                 )}
                               </div>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-2" suppressHydrationWarning={true}>
                                 <span className="text-xs text-gray-400">
-                                  {group.min_select > 0 ? `Min ${group.min_select}` : 'Optional'} · Max {group.max_select || 10}
+                                  <span>
+                                    {group.min_select > 0 ? `Min ${group.min_select}` : 'Optional'} · Max {group.max_select || 10}
+                                  </span>
                                 </span>
                                 <ChevronDown
                                   size={16}
@@ -321,7 +327,7 @@ function ProductDetailClientInner({
                                     return (
                                       <button
                                         type="button"
-                                        key={mod.id}
+                                        key={`mod-${mod.id}`}
                                         onClick={(e) => toggleModifier(e, group, mod)}
                                         style={{ WebkitTapHighlightColor: 'transparent' }}
                                         className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
@@ -331,11 +337,13 @@ function ProductDetailClientInner({
                                         }`}
                                       >
                                         {isSelected && <Check size={14} />}
-                                        {mod.name}
-                                        {Number(mod.price) > 0 && (
+                                        <span>{mod.name}</span>
+                                        {Number(mod.price) > 0 ? (
                                           <span className={isSelected ? 'text-white/80' : 'text-gray-400'}>
-                                            +${Number(mod.price).toFixed(2)}
+                                            <span>+${Number(mod.price).toFixed(2)}</span>
                                           </span>
+                                        ) : (
+                                          <span className="hidden" />
                                         )}
                                       </button>
                                     );
@@ -363,7 +371,7 @@ function ProductDetailClientInner({
                         return (
                           <button
                             type="button"
-                            key={choice.name || `choice-${idx}`}
+                            key={`choice-${choice.name}`}
                             onClick={(e) => toggleChoice(e, choice)}
                             style={{ WebkitTapHighlightColor: 'transparent' }}
                             className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-2 touch-action-manipulation cursor-pointer select-none ${
@@ -373,11 +381,13 @@ function ProductDetailClientInner({
                             }`}
                           >
                             {isSelected && <Check size={14} />}
-                            {choice.name}
-                            {Number(choice.price) > 0 && (
+                            <span>{choice.name}</span>
+                            {Number(choice.price) > 0 ? (
                               <span className={isSelected ? 'text-white/80' : 'text-gray-400'}>
-                                +${Number(choice.price).toFixed(2)}
+                                <span>+${Number(choice.price).toFixed(2)}</span>
                               </span>
+                            ) : (
+                              <span className="hidden" />
                             )}
                           </button>
                         );
@@ -401,7 +411,7 @@ function ProductDetailClientInner({
                         return (
                           <button
                             type="button"
-                            key={bev.id}
+                            key={`bev-${bev.id}`}
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
@@ -418,9 +428,11 @@ function ProductDetailClientInner({
                                 : 'bg-white border-gray-200 hover:border-classicRed/50'
                             }`}
                           >
-                            <div className="font-semibold text-sm truncate">{bev?.name || bev?.item_name || 'Drink'}</div>
+                            <div className="font-semibold text-sm truncate">
+                              <span>{bev?.name || bev?.item_name || 'Drink'}</span>
+                            </div>
                             <div className="text-xs mt-1 font-bold">
-                              +${bevPrice.toFixed(2)}
+                              <span>+${bevPrice.toFixed(2)}</span>
                             </div>
                           </button>
                         );
@@ -439,23 +451,29 @@ function ProductDetailClientInner({
                       <span>Base</span>
                       <span>${numPrice.toFixed(2)}</span>
                     </div>
-                    {modifiersTotal > 0 && (
+                    {modifiersTotal > 0 ? (
                       <div className="flex justify-between text-gray-600">
                         <span>Toppings</span>
                         <span>+${modifiersTotal.toFixed(2)}</span>
                       </div>
+                    ) : (
+                      <span className="hidden" />
                     )}
-                    {choicesTotal > 0 && (
+                    {choicesTotal > 0 ? (
                       <div className="flex justify-between text-gray-600">
                         <span>Add-ons</span>
                         <span>+${choicesTotal.toFixed(2)}</span>
                       </div>
+                    ) : (
+                      <span className="hidden" />
                     )}
-                    {beverageTotal > 0 && (
+                    {beverageTotal > 0 ? (
                       <div className="flex justify-between text-gray-600">
                         <span>Drink</span>
                         <span>+${Number(beverageTotal).toFixed(2)}</span>
                       </div>
+                    ) : (
+                      <span className="hidden" />
                     )}
                     <div className="flex justify-between font-bold text-forestGreen pt-1 border-t border-forestGreen/20">
                       <span>Unit Total</span>
@@ -483,7 +501,9 @@ function ProductDetailClientInner({
                     >
                       <Minus size={16} />
                     </button>
-                    <span className="w-8 text-center font-bold text-lg">{quantity}</span>
+                    <span className="w-8 text-center font-bold text-lg">
+                      <span>{quantity}</span>
+                    </span>
                     <button
                       type="button"
                       onClick={(e) => { 
@@ -511,7 +531,7 @@ function ProductDetailClientInner({
                 >
                   <span className="flex items-center gap-2">
                     <ShoppingCart size={20} className="group-hover:scale-110 transition-transform" />
-                    Add to Cart
+                    <span>Add to Cart</span>
                   </span>
                   <span>${totalPrice.toFixed(2)}</span>
                 </button>
