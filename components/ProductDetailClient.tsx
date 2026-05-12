@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, Component, ErrorInfo, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Plus, Minus, ShoppingCart, Coffee, Check, Sparkles, ChevronDown, X } from 'lucide-react';
+import { Plus, Minus, ShoppingCart, Check, ChevronDown, X } from 'lucide-react';
 import { MenuItem, ModifierGroup, Modifier } from '@/types/menu';
 import { SelectedModifier } from '@/types/cart';
 import { useCartStore } from '@/stores/cartStore';
@@ -179,7 +179,7 @@ function ProductDetailClientInner({
 
         {/* Modifiers */}
         <div className="space-y-10">
-          {modifierGroups.map((group) => (
+          {modifierGroups?.map((group) => (
             <div key={group.id} className="border-t border-gray-100 pt-8">
               <div className="mb-4">
                 <h3 className="text-[16px] font-bold text-[var(--ez-gray-900)] mb-1"><span>{group.name}</span></h3>
@@ -196,8 +196,8 @@ function ProductDetailClientInner({
                 </div>
               </div>
               <div className="space-y-1">
-                {group.modifiers.map((mod) => {
-                  const isSelected = selectedModifiers.some(m => m.modifier_name === mod.name && m.group_name === group.name);
+                {group.modifiers?.map((mod) => {
+                  const isSelected = selectedModifiers?.some(m => m.modifier_name === mod.name && m.group_name === group.name);
                   return (
                     <button
                       key={mod.id}
@@ -211,11 +211,11 @@ function ProductDetailClientInner({
                           {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
                         </div>
                         <span className={`text-[14px] ${isSelected ? 'font-bold text-[var(--ez-gray-900)]' : 'text-[var(--ez-gray-600)]'}`}>
-                          <span>{mod.name}</span>
+                          <span>{mod?.name}</span>
                         </span>
                       </div>
-                      {Number(mod.price) > 0 && (
-                        <span className="text-[13px] text-gray-400 font-medium"><span>+${Number(mod.price).toFixed(2)}</span></span>
+                      {Number(mod?.price) > 0 && (
+                        <span className="text-[13px] text-gray-400 font-medium"><span>+${Number(mod?.price).toFixed(2)}</span></span>
                       )}
                     </button>
                   );

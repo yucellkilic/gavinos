@@ -94,7 +94,7 @@ export default function MenuClient({
             >
               <span>All Items</span>
             </button>
-            {categories.map((cat) => (
+            {categories?.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.name)}
@@ -140,7 +140,7 @@ export default function MenuClient({
 
             {/* Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {items.map((item) => (
+              {items?.map((item) => (
                 <MenuCard key={item.id} item={item} />
               ))}
             </div>
