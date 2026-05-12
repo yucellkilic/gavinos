@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import MenuCard from '@/components/MenuCard';
 import SidebarCart from '@/components/SidebarCart';
 import { MenuItem, Category } from '@/types/menu';
-import { Search, X, Filter } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 interface MenuClientProps {
   initialItems: MenuItem[];
@@ -30,11 +30,9 @@ export default function MenuClient({
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [items, setItems] = useState<MenuItem[]>(initialItems);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const [showMobileCategories, setShowMobileCategories] = useState(false);
 
   useEffect(() => { setIsMounted(true); }, []);
 
-  // Sync items state with server data
   useEffect(() => {
     const offset = parseInt(searchParams.get('offset') || '0');
     if (offset === 0) {
@@ -61,7 +59,6 @@ export default function MenuClient({
   const handleCategoryChange = (id: string) => {
     setActiveCategory(id);
     updateFilters(id, searchTerm);
-    setShowMobileCategories(false);
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -79,13 +76,7 @@ export default function MenuClient({
 
   const hasMore = items.length < totalItems;
 
-  if (!isMounted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="ez-spinner" style={{ width: 40, height: 40 }} />
-      </div>
-    );
-  }
+  if (!isMounted) return null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -121,142 +112,74 @@ export default function MenuClient({
       </div>
 
       <div className="ez-container py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left: Content */}
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Main Content */}
           <div className="flex-1 min-w-0">
-            {/* Page Title & Search */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            {/* Header Area */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
               <div>
-                <h1 className="text-3xl font-black text-[var(--ez-gray-900)] tracking-tight mb-1">
+                <h1 className="text-3xl font-black text-[var(--ez-gray-900)] tracking-tight mb-2">
                   <span>Catering Menu</span>
                 </h1>
-                <p className="text-[13px] text-[var(--ez-gray-600)] font-medium">
+                <p className="text-[14px] text-[var(--ez-gray-600)]">
                   <span>{items.length} items available in {activeCategory === 'all' ? 'all categories' : activeCategory}</span>
                 </p>
               </div>
 
-              <form onSubmit={handleSearchSubmit} className="relative w-full md:w-72">
+              <form onSubmit={handleSearchSubmit} className="relative w-full md:w-80">
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search products..."
-                  className="ez-input pl-10 pr-4 py-2"
+                  placeholder="Search menu..."
+                  className="w-full bg-white border border-gray-200 rounded-[var(--radius-ez)] pl-10 pr-4 py-2.5 text-[14px] focus:border-[var(--ez-green)] outline-none transition-colors"
                 />
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--ez-gray-200)]" size={18} />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
               </form>
             </div>
 
-          {/* Mobile Category Dropdown */}
-          <AnimatePresence>
-            {showMobileCategories && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="lg:hidden fixed inset-0 z-40 bg-black/50"
-                onClick={() => setShowMobileCategories(false)}
-              >
-                <motion.div
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  exit={{ y: '100%' }}
-                  transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                  className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-[70vh] overflow-y-auto p-4"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="w-8 h-1 bg-gray-300 rounded-full mx-auto mb-4" />
-                  <h3 className="text-sm font-bold text-gray-900 mb-3"><span>Categories</span></h3>
-                  <div className="flex flex-wrap gap-2">
-                    <button
-                      onClick={() => handleCategoryChange('all')}
-                      className={`ez-pill ${activeCategory === 'all' ? 'ez-pill-active' : ''}`}
-                    >
-                      <span>🍽️</span><span>All Items</span>
-                    </button>
-                    {categories.map((cat) => (
-                      <button
-                        key={cat.id}
-                        onClick={() => handleCategoryChange(cat.name)}
-                        className={`ez-pill ${activeCategory === cat.name ? 'ez-pill-active' : ''}`}
-                      >
-                        <span>{cat.icon || '🍽️'}</span><span>{cat.name}</span>
-                      </button>
-                    ))}
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Center: Menu Grid */}
-          <div className="flex-1 min-w-0">
-            {/* Results Count */}
-            <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm text-gray-500">
-                <span>{'Showing '}</span>
-                <span className="font-semibold text-gray-900">{items.length}</span>
-                <span>{' of '}</span>
-                <span className="font-semibold text-gray-900">{totalItems}</span>
-                <span>{' items'}</span>
-              </p>
+            {/* Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {items.map((item) => (
+                <MenuCard key={item.id} item={item} />
+              ))}
             </div>
 
-            {/* Grid */}
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                layout
-                className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"
-              >
-                {items.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    layout
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <MenuCard item={item} />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
+            {/* Empty State */}
+            {items.length === 0 && !isLoadingMore && (
+              <div className="text-center py-20">
+                <div className="text-5xl mb-4">🔍</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">No items found</h3>
+                <p className="text-gray-500">Try adjusting your search or filters.</p>
+              </div>
+            )}
 
             {/* Load More */}
             {hasMore && (
-              <div className="mt-8 text-center">
+              <div className="mt-12 text-center">
                 <button
                   onClick={handleLoadMore}
                   disabled={isLoadingMore}
-                  className="ez-btn ez-btn-secondary ez-btn-lg"
+                  className="ez-btn ez-btn-secondary px-8 py-3"
                 >
                   {isLoadingMore ? (
-                    <span className="flex items-center gap-2">
-                      <div className="ez-spinner" />
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
                       <span>Loading...</span>
-                    </span>
+                    </div>
                   ) : (
-                    <span>{`Load More (${totalItems - items.length} remaining)`}</span>
+                    <span>Load More</span>
                   )}
                 </button>
               </div>
             )}
-
-            {/* No Results */}
-            {items.length === 0 && !isLoadingMore && (
-              <div className="text-center py-16">
-                <div className="text-5xl mb-3">🔍</div>
-                <p className="text-base text-gray-500 font-medium">
-                  <span>No items found matching your criteria.</span>
-                </p>
-              </div>
-            )}
           </div>
 
-          {/* Right: Sidebar Cart (Desktop only) */}
-          <aside className="hidden lg:block w-80 flex-shrink-0">
-            <SidebarCart />
+          {/* Sidebar Cart */}
+          <aside className="hidden lg:block w-[340px] flex-shrink-0">
+            <div className="sticky top-40">
+              <SidebarCart />
+            </div>
           </aside>
         </div>
       </div>
