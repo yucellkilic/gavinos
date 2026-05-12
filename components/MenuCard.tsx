@@ -116,7 +116,7 @@ export default function MenuCard({ item }: MenuCardProps) {
             </h3>
             
             <p className="text-[13px] text-[var(--ez-gray-600)] line-clamp-2 leading-snug">
-              <span>{item.description || 'Includes fresh ingredients prepared daily for your event.'}</span>
+              <span>Includes fresh ingredients prepared daily for your event. Perfect for your group gathering.</span>
             </p>
           </div>
 

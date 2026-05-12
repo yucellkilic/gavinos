@@ -155,7 +155,7 @@ function ProductDetailClientInner({
         {/* Description */}
         <div className="mb-8">
           <p className="text-[14px] text-[var(--ez-gray-600)] leading-relaxed">
-            <span>{menuItem.description || 'Includes fresh ingredients prepared daily for your event. Perfect for meetings, gatherings, and celebrations.'}</span>
+            <span>Includes fresh ingredients prepared daily for your event. Perfect for meetings, gatherings, and celebrations.</span>
           </p>
         </div>
 

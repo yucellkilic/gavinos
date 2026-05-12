@@ -16,9 +16,9 @@ export interface MenuItem {
   item_price3: number | null;
   choice_price2: number | null;
   choice_price3: number | null;
-  // Mapped fields for UI compatibility
   name?: string;
   base_price?: number | null;
+  description?: string | null;
 }
 
 // New modifier system types (category-based)
