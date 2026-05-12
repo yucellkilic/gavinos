@@ -2,16 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, Menu, X, User, ChevronDown, Package } from 'lucide-react';
+import { ShoppingCart, Menu, X, User, ChevronDown, Package, Lock } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 import { useAuth } from '@/hooks/useAuth';
+import { useAuthStore } from '@/stores/authStore';
 
 export default function Header() {
   const [isMounted, setIsMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const items = useCartStore((state) => state.items);
+  const { profile, isAuthenticated } = useAuth();
   const pathname = usePathname();
   const isAdminPath = pathname?.startsWith('/admin');
 
