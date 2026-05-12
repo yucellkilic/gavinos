@@ -82,9 +82,11 @@ export default function MenuClient({
     <div className="min-h-screen bg-white">
       {/* Sticky Category Bar */}
       <div className="sticky top-16 z-30 bg-white border-b border-gray-100 shadow-sm">
-        <div className="ez-container relative">
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
-          <nav className="flex items-center gap-2 py-3 overflow-x-auto scrollbar-hide snap-x">
+        <div className="ez-container relative flex items-center">
+          <nav 
+            id="category-nav"
+            className="flex items-center gap-2 py-3 overflow-x-auto scrollbar-hide snap-x flex-1 scroll-smooth"
+          >
             <button
               onClick={() => handleCategoryChange('all')}
               className={`px-5 py-2 rounded-full text-[13px] font-bold transition-all flex-shrink-0 snap-start ${
@@ -97,9 +99,11 @@ export default function MenuClient({
             </button>
             {/* Sort categories to put Breakfast first if it exists */}
             {[...(categories || [])].sort((a, b) => {
-              if (a.name === 'Breakfast') return -1;
-              if (b.name === 'Breakfast') return 1;
-              return 0;
+              const nameA = a.name?.toLowerCase() || '';
+              const nameB = b.name?.toLowerCase() || '';
+              if (nameA === 'breakfast') return -1;
+              if (nameB === 'breakfast') return 1;
+              return nameA.localeCompare(nameB);
             }).map((cat) => (
               <button
                 key={cat.id}
@@ -114,6 +118,19 @@ export default function MenuClient({
               </button>
             ))}
           </nav>
+          
+          {/* Scroll Right Button (Desktop Only) */}
+          <div className="hidden lg:flex items-center pl-2 bg-gradient-to-l from-white via-white to-transparent h-full">
+            <button 
+              onClick={() => {
+                const nav = document.getElementById('category-nav');
+                if (nav) nav.scrollBy({ left: 200, behavior: 'smooth' });
+              }}
+              className="p-2 bg-white border border-gray-200 rounded-full shadow-sm hover:bg-gray-50 text-gray-400 hover:text-[var(--ez-green)] transition-all"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
         </div>
       </div>
 

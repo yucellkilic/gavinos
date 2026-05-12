@@ -205,18 +205,27 @@ function ProductDetailClientInner({
         <div className="space-y-10">
           {modifierGroups?.map((group) => (
             <div key={group.id} className="border-t border-gray-100 pt-8">
-              <div className="mb-4">
-                <h3 className="text-[16px] font-bold text-[var(--ez-gray-900)] mb-1"><span>{group.name}</span></h3>
-                <div className="flex items-center gap-2">
-                  <span className={`text-[12px] font-bold flex items-center gap-1 ${group.min_select > 0 ? 'text-[var(--ez-green)]' : 'text-gray-400'}`}>
+              <div className="mb-4 flex items-center justify-between">
+                <div>
+                  <h3 className="text-[16px] font-bold text-[var(--ez-gray-900)] mb-1"><span>{group.name}</span></h3>
+                  <p className="text-[12px] text-gray-500">
                     {group.min_select > 0 ? (
-                      <><Check size={14} /> Required</>
+                      <span className="text-[var(--ez-orange)] font-bold italic uppercase tracking-wider">Required</span>
                     ) : (
-                      'Optional'
+                      <span>Add: Optional</span>
                     )}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter ${
+                    (selectedModifiers?.filter(m => m.group_name === group.name).length ?? 0) >= (group.min_select ?? 0)
+                      ? 'bg-[var(--ez-green-light)] text-[var(--ez-green)]'
+                      : 'bg-gray-100 text-gray-400'
+                  }`}>
+                    <span>{selectedModifiers?.filter(m => m.group_name === group.name).length ?? 0}</span>
+                    <span> / </span>
+                    <span>{group.max_select || '∞'}</span>
                   </span>
-                  <span className="text-gray-300">·</span>
-                  <span className="text-[12px] text-gray-400">{group.max_select || 1} option</span>
                 </div>
               </div>
               <div className="space-y-1">
@@ -275,10 +284,18 @@ function ProductDetailClientInner({
 
       {/* Sticky Bottom Bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.08)] safe-area-bottom">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto flex flex-col gap-2">
+          {/* Validation Warning */}
+          {modifierGroups?.some(group => (selectedModifiers?.filter(m => m.group_name === group.name).length ?? 0) < (group.min_select ?? 0)) && (
+            <p className="text-[11px] text-[var(--ez-orange)] font-bold text-center animate-pulse">
+              <span>Required selections remaining</span>
+            </p>
+          )}
+          
           <button
             onClick={handleAddToCart}
-            className="w-full bg-[var(--ez-green)] text-white py-4 rounded-[var(--radius-ez)] font-bold text-[16px] hover:bg-[var(--ez-green-hover)] transition-all flex items-center justify-between px-8"
+            disabled={modifierGroups?.some(group => (selectedModifiers?.filter(m => m.group_name === group.name).length ?? 0) < (group.min_select ?? 0))}
+            className="w-full bg-[var(--ez-green)] text-white py-4 rounded-[var(--radius-ez)] font-bold text-[16px] hover:bg-[var(--ez-green-hover)] transition-all flex items-center justify-between px-8 disabled:opacity-50 disabled:grayscale"
           >
             <span>Add to Cart</span>
             <div className="flex flex-col items-end">
