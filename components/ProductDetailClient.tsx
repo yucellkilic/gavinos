@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, Component, ErrorInfo, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Plus, Minus, ShoppingCart, Coffee, Check, Sparkles, ChevronDown } from 'lucide-react';
+import { ArrowLeft, Plus, Minus, ShoppingCart, Coffee, Check, Sparkles, ChevronDown, X } from 'lucide-react';
 import { MenuItem, ModifierGroup, Modifier } from '@/types/menu';
 import { SelectedModifier } from '@/types/cart';
 import { useCartStore } from '@/stores/cartStore';
