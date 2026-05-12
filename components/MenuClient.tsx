@@ -4,41 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import MenuCard from '@/components/MenuCard';
-import { MenuItem } from '@/types/menu';
-import { Search, X } from 'lucide-react';
-
-// Category icon mapping for visual polish
-const CATEGORY_ICONS: Record<string, string> = {
-  'Beverages': '🥤',
-  'Breakfast': '🍳',
-  'Catering Packages': '📦',
-  'Create-Your-Own Pizza': '🍕',
-  'Croissants': '🥐',
-  'Desserts': '🍰',
-  'Gluten Free Pizza': '🌾',
-  'Gourmet Pizza': '🍕',
-  'Gyro': '🥙',
-  'Hoagies': '🥪',
-  'Italian Panino Tray': '🧺',
-  'Mediterranean Mains & Sides': '🥗',
-  'Miscellaneous': '🍴',
-  'Ottoman Kebabs': '🍢',
-  'Panini Sandwiches': '🥪',
-  'Pasta Dinner': '🍝',
-  'Quesadillas': '🌮',
-  'Salad': '🥗',
-  'Sides': '🍟',
-  'Starters': '🥗',
-  'Sub Sandwiches': '🥪',
-  'Vegan Pizza': '🌱',
-  'Wings': '🍗',
-  'Wraps': '🌯',
-};
+import SidebarCart from '@/components/SidebarCart';
+import { MenuItem, Category } from '@/types/menu';
+import { Search, X, Filter } from 'lucide-react';
 
 interface MenuClientProps {
   initialItems: MenuItem[];
   totalItems: number;
-  categories: string[];
+  categories: Category[];
   initialCategory: string;
   initialSearch: string;
 }
@@ -52,19 +25,21 @@ export default function MenuClient({
 }: MenuClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isMounted, setIsMounted] = useState(false);
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [items, setItems] = useState<MenuItem[]>(initialItems);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [showMobileCategories, setShowMobileCategories] = useState(false);
+
+  useEffect(() => { setIsMounted(true); }, []);
 
   // Sync items state with server data
   useEffect(() => {
     const offset = parseInt(searchParams.get('offset') || '0');
     if (offset === 0) {
-      // Fresh load (category/search changed)
       setItems(initialItems);
     } else {
-      // Append only new items
       const existingIds = new Set(items.map(i => i.id));
       const newItems = initialItems.filter(i => !existingIds.has(i.id));
       if (newItems.length > 0) {
@@ -74,20 +49,19 @@ export default function MenuClient({
     setIsLoadingMore(false);
   }, [initialItems, searchParams]);
 
-  // Update URL when filters change (resets offset to 0)
   const updateFilters = (category: string, search: string) => {
     setIsLoadingMore(true);
-    setItems([]); // Clear for fresh load UI
+    setItems([]);
     const params = new URLSearchParams();
     if (category && category !== 'all') params.set('category', category);
     if (search) params.set('search', search);
-    // Always reset to 0 offset on new filter (default is 0)
     router.push(`/menu?${params.toString()}`, { scroll: false });
   };
 
   const handleCategoryChange = (id: string) => {
     setActiveCategory(id);
     updateFilters(id, searchTerm);
+    setShowMobileCategories(false);
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -105,156 +79,213 @@ export default function MenuClient({
 
   const hasMore = items.length < totalItems;
 
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="ez-spinner" style={{ width: 40, height: 40 }} />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f7f7f7] pb-24 lg:pb-8">
+      <div className="ez-container py-6">
         {/* Page Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl lg:text-6xl font-black text-forestGreen mb-4">
-            Our Menu
+        <div className="mb-6">
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
+            <span>Our Menu</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-semibold">
-            Discover our selection of premium Italian-inspired dishes.
+          <p className="text-sm text-gray-500">
+            <span>Browse and order from our full catering menu</span>
           </p>
-        </motion.div>
+        </div>
 
         {/* Search Bar */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="max-w-xl mx-auto mb-10"
-        >
-          <form onSubmit={handleSearchSubmit} className="relative group">
+        <div className="mb-6">
+          <form onSubmit={handleSearchSubmit} className="relative max-w-lg">
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search menu items..."
-              className="w-full pl-12 pr-12 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:border-forestGreen focus:ring-4 focus:ring-forestGreen/10 transition-all outline-none text-lg"
+              className="ez-input pl-10 pr-10"
             />
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-forestGreen transition-colors" size={24} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             {searchTerm && (
               <button
                 type="button"
                 onClick={() => { setSearchTerm(''); updateFilters(activeCategory, ''); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
-                <X size={20} />
+                <X size={16} />
               </button>
             )}
           </form>
-        </motion.div>
+        </div>
 
-        {/* Category Buttons — dynamically generated from Supabase */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="mb-12"
-        >
-          <div className="flex flex-wrap justify-center gap-3">
-            {/* All Items button */}
-            <button
-              onClick={() => handleCategoryChange('all')}
-              className={`category-button px-5 py-2.5 rounded-full text-sm flex items-center gap-2 transition-all ${
-                activeCategory === 'all'
-                  ? 'bg-forestGreen text-white shadow-lg scale-105'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              <span className="text-lg">🍽️</span>
-              <span>All Items</span>
-            </button>
-
-            {/* Dynamic category buttons from database */}
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleCategoryChange(cat)}
-                className={`category-button px-5 py-2.5 rounded-full text-sm flex items-center gap-2 transition-all ${
-                  activeCategory === cat
-                    ? 'bg-forestGreen text-white shadow-lg scale-105'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                <span className="text-lg">{CATEGORY_ICONS[cat] || (cat.toLowerCase().includes('pizza') ? '🍕' : '🍴')}</span>
-                <span>{cat}</span>
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Results Count */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center mb-8"
-        >
-          <p className="text-gray-600 font-semibold">
-            Showing <span className="text-forestGreen font-black">{items.length}</span> of{' '}
-            <span className="text-forestGreen font-black">{totalItems}</span> items
-          </p>
-        </motion.div>
-
-        {/* Menu Grid */}
-        <AnimatePresence mode="popLayout">
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        {/* Mobile Category Toggle */}
+        <div className="lg:hidden mb-4">
+          <button
+            onClick={() => setShowMobileCategories(!showMobileCategories)}
+            className="ez-btn ez-btn-secondary ez-btn-sm w-full"
           >
-            {items.map((item) => (
+            <Filter size={16} />
+            <span>{activeCategory === 'all' ? 'All Categories' : activeCategory}</span>
+          </button>
+        </div>
+
+        {/* Main Layout: Sidebar + Content + Cart */}
+        <div className="flex gap-6">
+          {/* Left: Category Sidebar (Desktop) */}
+          <aside className="hidden lg:block w-56 flex-shrink-0">
+            <div className="sticky top-20">
+              <div className="ez-card p-3">
+                <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-2 mb-2">
+                  <span>Categories</span>
+                </h3>
+                <nav className="space-y-0.5">
+                  <button
+                    onClick={() => handleCategoryChange('all')}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-all text-left ${
+                      activeCategory === 'all'
+                        ? 'bg-ezGreen text-white'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-ezGreen'
+                    }`}
+                  >
+                    <span className="text-base">🍽️</span>
+                    <span>All Items</span>
+                  </button>
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => handleCategoryChange(cat.name)}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-all text-left ${
+                        activeCategory === cat.name
+                          ? 'bg-ezGreen text-white'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-ezGreen'
+                      }`}
+                    >
+                      <span className="text-base">{cat.icon || '🍽️'}</span>
+                      <span className="truncate">{cat.name}</span>
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            </div>
+          </aside>
+
+          {/* Mobile Category Dropdown */}
+          <AnimatePresence>
+            {showMobileCategories && (
               <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="lg:hidden fixed inset-0 z-40 bg-black/50"
+                onClick={() => setShowMobileCategories(false)}
               >
-                <MenuCard item={item} />
+                <motion.div
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  exit={{ y: '100%' }}
+                  transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                  className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-[70vh] overflow-y-auto p-4"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="w-8 h-1 bg-gray-300 rounded-full mx-auto mb-4" />
+                  <h3 className="text-sm font-bold text-gray-900 mb-3"><span>Categories</span></h3>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => handleCategoryChange('all')}
+                      className={`ez-pill ${activeCategory === 'all' ? 'ez-pill-active' : ''}`}
+                    >
+                      <span>🍽️</span><span>All Items</span>
+                    </button>
+                    {categories.map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => handleCategoryChange(cat.name)}
+                        className={`ez-pill ${activeCategory === cat.name ? 'ez-pill-active' : ''}`}
+                      >
+                        <span>{cat.icon || '🍽️'}</span><span>{cat.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
               </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+            )}
+          </AnimatePresence>
 
-        {/* Load More Button */}
-        {hasMore && (
-          <div className="mt-12 text-center">
-            <button
-              onClick={handleLoadMore}
-              disabled={isLoadingMore}
-              className="px-10 py-4 bg-forestGreen text-white font-bold rounded-2xl shadow-lg hover:bg-forestGreen/90 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-wait"
-            >
-              {isLoadingMore ? (
-                <span className="flex items-center gap-2">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                  Loading...
-                </span>
-              ) : (
-                `Load More (${totalItems - items.length} remaining)`
-              )}
-            </button>
+          {/* Center: Menu Grid */}
+          <div className="flex-1 min-w-0">
+            {/* Results Count */}
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-sm text-gray-500">
+                <span>{'Showing '}</span>
+                <span className="font-semibold text-gray-900">{items.length}</span>
+                <span>{' of '}</span>
+                <span className="font-semibold text-gray-900">{totalItems}</span>
+                <span>{' items'}</span>
+              </p>
+            </div>
+
+            {/* Grid */}
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                layout
+                className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"
+              >
+                {items.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <MenuCard item={item} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Load More */}
+            {hasMore && (
+              <div className="mt-8 text-center">
+                <button
+                  onClick={handleLoadMore}
+                  disabled={isLoadingMore}
+                  className="ez-btn ez-btn-secondary ez-btn-lg"
+                >
+                  {isLoadingMore ? (
+                    <span className="flex items-center gap-2">
+                      <div className="ez-spinner" />
+                      <span>Loading...</span>
+                    </span>
+                  ) : (
+                    <span>{`Load More (${totalItems - items.length} remaining)`}</span>
+                  )}
+                </button>
+              </div>
+            )}
+
+            {/* No Results */}
+            {items.length === 0 && !isLoadingMore && (
+              <div className="text-center py-16">
+                <div className="text-5xl mb-3">🔍</div>
+                <p className="text-base text-gray-500 font-medium">
+                  <span>No items found matching your criteria.</span>
+                </p>
+              </div>
+            )}
           </div>
-        )}
 
-        {/* No Results */}
-        {items.length === 0 && !isLoadingMore && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-20"
-          >
-            <div className="text-6xl mb-4">🔍</div>
-            <p className="text-xl text-gray-500 font-semibold">
-              No items found matching your criteria.
-            </p>
-          </motion.div>
-        )}
+          {/* Right: Sidebar Cart (Desktop only) */}
+          <aside className="hidden lg:block w-80 flex-shrink-0">
+            <SidebarCart />
+          </aside>
+        </div>
       </div>
     </div>
   );

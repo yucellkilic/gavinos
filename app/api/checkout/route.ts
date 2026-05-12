@@ -2,12 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { supabase } from '@/lib/supabase';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-03-25.dahlia',
-});
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error('STRIPE_SECRET_KEY is not configured');
+  return new Stripe(key, { apiVersion: '2026-03-25.dahlia' });
+}
 
 export async function POST(request: NextRequest) {
   try {
+    const stripe = getStripe();
     const { items } = await request.json();
 
     if (!items || !Array.isArray(items) || items.length === 0) {

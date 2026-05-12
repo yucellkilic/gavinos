@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
+import AuthProvider from "@/components/AuthProvider";
+import MobileCartBar from "@/components/MobileCartBar";
 
 export const metadata: Metadata = {
   title: "GAVINO'S PIZZA - Premium Italian Catering",
@@ -17,12 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
-      <body>
-        <div id="root-content">
-          <Header />
-          <main>{children}</main>
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <AuthProvider>
+          <div id="root-content">
+            <Header />
+            <main>{children}</main>
+            <MobileCartBar />
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );

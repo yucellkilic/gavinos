@@ -1,40 +1,25 @@
 import { Suspense } from 'react';
 import { supabase } from '@/lib/supabase';
 import MenuClient from '@/components/MenuClient';
-import { MenuItem } from '@/types/menu';
+import { MenuItem, Category } from '@/types/menu';
 
 export const dynamic = 'force-dynamic';
 
-// Fetch unique categories directly from Supabase
-async function getCategories(): Promise<string[]> {
+// Fetch categories from the new categories table
+async function getCategories(): Promise<Category[]> {
   try {
     const { data, error } = await supabase
-      .from('menu_items')
-      .select('category_name')
-      .not('category_name', 'is', null);
+      .from('categories')
+      .select('*')
+      .eq('is_active', true)
+      .order('display_order', { ascending: true });
 
     if (error) {
       console.error('Supabase getCategories Error:', JSON.stringify(error, null, 2));
       return [];
     }
 
-    const uniqueCategories = Array.from(new Set((data || []).map((item: any) => item.category_name as string)));
-    
-    // Sort categories: Priority items first, Beverages last, rest alphabetical
-    const priorityCategories = ['Pizza', 'Gourmet Pizza', 'Pasta Dinner', 'Entrées', 'Mediterranean Mains & Sides'];
-    return uniqueCategories.sort((a, b) => {
-      if (a === 'Beverages') return 1;
-      if (b === 'Beverages') return -1;
-      
-      const aPriority = priorityCategories.findIndex(p => a.includes(p));
-      const bPriority = priorityCategories.findIndex(p => b.includes(p));
-      
-      if (aPriority !== -1 && bPriority !== -1) return aPriority - bPriority;
-      if (aPriority !== -1) return -1;
-      if (bPriority !== -1) return 1;
-      
-      return a.localeCompare(b);
-    });
+    return (data || []) as Category[];
   } catch (err) {
     console.error('Exception in getCategories:', err);
     return [];
@@ -53,8 +38,6 @@ async function getMenuItems(category?: string, search?: string, offset = 0, limi
       query = query.ilike('item_name', `%${search}%`);
     }
 
-    // We don't range on DB because of denormalized choices (multiple rows per item_name).
-    // Fetch all matching, deduplicate in JS, then paginate.
     const { data, error } = await query.order('item_name');
 
     if (error) {
@@ -65,33 +48,30 @@ async function getMenuItems(category?: string, search?: string, offset = 0, limi
     // Deduplicate by item_name
     const uniqueItemsMap = new Map<string, any>();
     (data || []).forEach((item: any) => {
-      // If we already have the item, prefer the one where choice_name is null (main item row)
       if (uniqueItemsMap.has(item.item_name)) {
         const existing = uniqueItemsMap.get(item.item_name);
         if (existing.choice_name !== null && item.choice_name === null) {
           uniqueItemsMap.set(item.item_name, item);
         }
       } else {
-        // Only include items that have a price (skip purely garnish rows with no price)
         if (item.item_price !== null && item.item_price > 0) {
-           uniqueItemsMap.set(item.item_name, item);
+          uniqueItemsMap.set(item.item_name, item);
         }
       }
     });
 
     const deduplicatedData = Array.from(uniqueItemsMap.values());
-    
-    // Custom sort for "All" view: Priority categories first, Beverages last
+
+    // Custom sort for "All" view
     if (!category || category === 'all') {
       deduplicatedData.sort((a, b) => {
         if (a.category_name === 'Beverages' && b.category_name !== 'Beverages') return 1;
         if (a.category_name !== 'Beverages' && b.category_name === 'Beverages') return -1;
-        
-        // Priority categories (Pizza, Pasta etc) should be relatively mixed but top-heavy
+
         const priorityCategories = ['Pizza', 'Pasta', 'Entrées', 'Mediterranean'];
         const aPri = priorityCategories.findIndex(p => a.category_name?.includes(p));
         const bPri = priorityCategories.findIndex(p => b.category_name?.includes(p));
-        
+
         if (aPri !== -1 && bPri !== -1) return aPri - bPri;
         if (aPri !== -1) return -1;
         if (bPri !== -1) return 1;
@@ -101,11 +81,8 @@ async function getMenuItems(category?: string, search?: string, offset = 0, limi
     }
 
     const total = deduplicatedData.length;
-    
-    // In-memory pagination
     const paginatedData = deduplicatedData.slice(offset, offset + limit);
 
-    // Map database column names to UI-friendly aliases
     const items: MenuItem[] = paginatedData.map((item: any) => ({
       ...item,
       name: item.item_name || 'Unnamed Item',
@@ -118,7 +95,6 @@ async function getMenuItems(category?: string, search?: string, offset = 0, limi
     return { items: [] as MenuItem[], total: 0 };
   }
 }
-
 
 export default async function MenuPage({
   searchParams,
@@ -139,7 +115,7 @@ export default async function MenuPage({
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-forestGreen"></div>
+        <div className="ez-spinner" style={{ width: 40, height: 40 }} />
       </div>
     }>
       <MenuClient

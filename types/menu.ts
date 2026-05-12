@@ -44,3 +44,71 @@ export interface Modifier {
   display_order: number;
   created_at: string;
 }
+
+// Category with hierarchy
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  icon: string;
+  parent_id: string | null;
+  display_order: number;
+  is_active: boolean;
+  created_at: string;
+  children?: Category[];
+}
+
+// User profile
+export interface Profile {
+  id: string;
+  full_name: string | null;
+  phone: string | null;
+  address: string | null;
+  avatar_url: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+// Order
+export interface Order {
+  id: string;
+  user_id: string | null;
+  total_amount: number;
+  status: string;
+  items: any;
+  delivery_type: string;
+  delivery_address: string | null;
+  delivery_date: string | null;
+  delivery_time: string | null;
+  phone: string | null;
+  special_instructions: string | null;
+  cancelled_at: string | null;
+  cancel_reason: string | null;
+  created_at: string;
+  updated_at: string;
+  order_items?: OrderItem[];
+}
+
+// Order item (normalized)
+export interface OrderItem {
+  id: string;
+  order_id: string;
+  menu_item_id: string | null;
+  item_name: string;
+  base_price: number;
+  quantity: number;
+  number_of_people: number;
+  selected_modifiers: any[];
+  special_instructions: string | null;
+  line_total: number;
+  created_at: string;
+}
+
+// Favorite
+export interface Favorite {
+  id: string;
+  user_id: string;
+  menu_item_id: string;
+  created_at: string;
+  menu_items?: MenuItem;
+}

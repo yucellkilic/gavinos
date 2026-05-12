@@ -21,6 +21,8 @@ export interface CartItem {
   selected_modifiers: SelectedModifier[];
   totalPrice: number | null;
   image_url: string;
+  category_name?: string;
+  special_instructions?: string;
 }
 
 export interface Cart {

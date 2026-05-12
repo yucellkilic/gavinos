@@ -16,9 +16,11 @@ interface CartStore extends Cart {
   removeItem: (itemId: string) => void;
   updateItemQuantity: (itemId: string, quantity: number) => void;
   updateItemPeople: (itemId: string, numberOfPeople: number) => void;
+  updateItemInstructions: (itemId: string, instructions: string) => void;
   setDeliveryDetails: (details: DeliveryDetails) => void;
   clearCart: () => void;
   getCartTotal: () => number;
+  getItemCount: () => number;
 }
 
 /**
@@ -51,6 +53,7 @@ export const useCartStore = create<CartStore>()(
         const safeItem: CartItem = {
           ...item,
           selected_modifiers: item.selected_modifiers ?? [],
+          special_instructions: item.special_instructions ?? '',
           configuration: item.configuration ?? {
             requiredOptions: {},
             optionalOptions: [],
@@ -101,6 +104,14 @@ export const useCartStore = create<CartStore>()(
         });
       },
 
+      updateItemInstructions: (itemId: string, instructions: string) => {
+        set((state) => ({
+          items: state.items.map((item) =>
+            item.id === itemId ? { ...item, special_instructions: instructions } : item
+          ),
+        }));
+      },
+
       clearCart: () => {
         set({ items: [], totalPrice: 0, deliveryDetails: null });
       },
@@ -111,6 +122,10 @@ export const useCartStore = create<CartStore>()(
 
       getCartTotal: () => {
         return get().totalPrice ?? 0;
+      },
+
+      getItemCount: () => {
+        return get().items.reduce((sum, item) => sum + (item.quantity || 1), 0);
       },
     }),
     {

@@ -9,26 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        forestGreen: "#2d8659",
+        // ezCater-inspired palette
+        ezGreen: {
+          DEFAULT: '#00854d',
+          dark: '#006b3e',
+          light: '#e6f5ee',
+          hover: '#007544',
+          50: '#f0fdf6',
+          100: '#dcfce9',
+          500: '#00854d',
+          600: '#006b3e',
+          700: '#005a34',
+        },
+        ezOrange: {
+          DEFAULT: '#ff6900',
+          light: '#fff3e6',
+        },
+        // Legacy compatibility
+        forestGreen: "#00854d",
         classicRed: "#e53935",
-        neonRed: "#FF0040",
-        neonGreen: "#00FF41",
-        gold: "#FFD700",
-        deepBlack: "#0a0a0a",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
-      backgroundImage: {
-        'paper-grain': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E\")",
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
-      transitionDuration: {
-        '200': '200ms',
+      borderRadius: {
+        'ez': '8px',
+        'ez-lg': '12px',
+        'ez-xl': '16px',
       },
-      transitionTimingFunction: {
-        'ease-in-out': 'ease-in-out',
+      boxShadow: {
+        'ez-sm': '0 1px 2px rgba(0,0,0,0.05)',
+        'ez': '0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)',
+        'ez-md': '0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06)',
+        'ez-lg': '0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05)',
       },
     },
   },

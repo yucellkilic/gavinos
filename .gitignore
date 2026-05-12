@@ -44,3 +44,6 @@ node_modules/
 .next/
 out/
 build/
+supabase
+supabase/
+/supabase
