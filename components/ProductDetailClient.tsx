@@ -8,6 +8,7 @@ import { MenuItem, ModifierGroup, Modifier } from '@/types/menu';
 import { SelectedModifier } from '@/types/cart';
 import { useCartStore } from '@/stores/cartStore';
 import MenuCard from '@/components/MenuCard';
+import { supabaseBrowser } from '@/lib/supabase-browser';
 
 interface Choice {
   name: string;
@@ -60,7 +61,7 @@ export default function ProductDetailClient(props: ProductDetailClientProps) {
 function ProductDetailClientInner({ 
   menuItem, 
   relatedItems = [],
-  modifierGroups = [],
+  modifierGroups: initialModifierGroups = [],
 }: ProductDetailClientProps) {
   const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
@@ -69,12 +70,35 @@ function ProductDetailClientInner({
   const [selectedModifiers, setSelectedModifiers] = useState<SelectedModifier[]>([]);
   const [instructions, setInstructions] = useState('');
   const [showInstructions, setShowInstructions] = useState(false);
+  const [modifierGroups, setModifierGroups] = useState<ModifierGroup[]>(initialModifierGroups);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
     window.scrollTo(0, 0);
-  }, []);
+
+    // Fetch modifiers for this category if not provided
+    if (!initialModifierGroups || initialModifierGroups.length === 0) {
+      const fetchModifiers = async () => {
+        const catName = menuItem?.category_name;
+        if (!catName) return;
+
+        const { data, error } = await supabaseBrowser
+          .from('modifier_groups')
+          .select('*, modifiers(*)')
+          .eq('category_name', catName)
+          .eq('is_active', true)
+          .order('display_order', { ascending: true });
+
+        if (!error && data) {
+          setModifierGroups(data);
+        }
+      };
+      fetchModifiers();
+    } else {
+      setModifierGroups(initialModifierGroups);
+    }
+  }, [menuItem?.category_name, initialModifierGroups]);
 
   const basePrice = menuItem?.base_price ?? menuItem?.item_price ?? 0;
   const numPrice = typeof basePrice === 'number' ? basePrice : Number(basePrice) || 0;
@@ -250,7 +274,7 @@ function ProductDetailClientInner({
       </div>
 
       {/* Sticky Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.08)] safe-area-bottom">
         <div className="max-w-2xl mx-auto">
           <button
             onClick={handleAddToCart}

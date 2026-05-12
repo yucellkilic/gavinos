@@ -81,27 +81,33 @@ export default function MenuClient({
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Category Bar */}
-      <div className="sticky top-16 z-30 bg-white border-b border-gray-100 shadow-sm overflow-x-auto scrollbar-hide">
-        <div className="ez-container">
-          <nav className="flex items-center gap-1 py-3 whitespace-nowrap">
+      <div className="sticky top-16 z-30 bg-white border-b border-gray-100 shadow-sm">
+        <div className="ez-container relative">
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+          <nav className="flex items-center gap-2 py-3 overflow-x-auto scrollbar-hide snap-x">
             <button
               onClick={() => handleCategoryChange('all')}
-              className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${
+              className={`px-5 py-2 rounded-full text-[13px] font-bold transition-all flex-shrink-0 snap-start ${
                 activeCategory === 'all'
-                  ? 'bg-[var(--ez-green)] text-white'
-                  : 'text-[var(--ez-gray-600)] hover:bg-[var(--ez-gray-50)]'
+                  ? 'bg-[var(--ez-green)] text-white shadow-md'
+                  : 'text-[var(--ez-gray-600)] hover:bg-[var(--ez-gray-50)] border border-transparent'
               }`}
             >
               <span>All Items</span>
             </button>
-            {categories?.map((cat) => (
+            {/* Sort categories to put Breakfast first if it exists */}
+            {[...(categories || [])].sort((a, b) => {
+              if (a.name === 'Breakfast') return -1;
+              if (b.name === 'Breakfast') return 1;
+              return 0;
+            }).map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.name)}
-                className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${
+                className={`px-5 py-2 rounded-full text-[13px] font-bold transition-all flex-shrink-0 snap-start ${
                   activeCategory === cat.name
-                    ? 'bg-[var(--ez-green)] text-white'
-                    : 'text-[var(--ez-gray-600)] hover:bg-[var(--ez-gray-50)]'
+                    ? 'bg-[var(--ez-green)] text-white shadow-md'
+                    : 'text-[var(--ez-gray-600)] hover:bg-[var(--ez-gray-50)] border border-transparent'
                 }`}
               >
                 <span>{cat.name}</span>

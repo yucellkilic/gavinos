@@ -362,9 +362,12 @@ function DashboardContent() {
 
             {/* PROFILE TAB */}
             {activeTab === 'profile' && (
-              <div className="max-w-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="ez-card p-6">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4"><span>Edit Profile</span></h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <User size={18} className="text-ezGreen" />
+                    <span>Personal Information</span>
+                  </h3>
 
                   {profileMsg && (
                     <div className={`px-4 py-3 rounded-lg mb-4 text-sm ${
@@ -395,16 +398,6 @@ function DashboardContent() {
                         placeholder="(555) 123-4567"
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5"><span>Default Address</span></label>
-                      <textarea
-                        value={editAddress}
-                        onChange={(e) => setEditAddress(e.target.value)}
-                        className="ez-textarea"
-                        placeholder="123 Main St, City, State"
-                        rows={3}
-                      />
-                    </div>
                     <button
                       type="submit"
                       disabled={profileSaving}
@@ -420,6 +413,52 @@ function DashboardContent() {
                       )}
                     </button>
                   </form>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="ez-card p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <MapPin size={18} className="text-ezGreen" />
+                      <span>My Addresses</span>
+                    </h3>
+                    <div className="space-y-3">
+                      <div className="p-4 rounded-xl border border-ezGreen bg-ezGreen-light/30">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <span className="text-[10px] font-bold text-ezGreen uppercase tracking-wider mb-1 block">Default Address</span>
+                            <p className="text-sm text-gray-700 font-medium">{editAddress || 'No address set'}</p>
+                          </div>
+                          <button className="text-xs text-ezGreen font-bold hover:underline">Edit</button>
+                        </div>
+                      </div>
+                      <button className="w-full py-3 border-2 border-dashed border-gray-200 rounded-xl text-sm font-bold text-gray-400 hover:border-ezGreen hover:text-ezGreen transition-all">
+                        + Add New Address
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="ez-card p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <Phone size={18} className="text-ezGreen" />
+                      <span>Communication Settings</span>
+                    </h3>
+                    <div className="space-y-4">
+                      {[
+                        { id: 'orders', label: 'Order Updates', desc: 'SMS & Email alerts for your order status' },
+                        { id: 'promos', label: 'Catering Offers', desc: 'Exclusive deals and seasonal menu alerts' }
+                      ].map(pref => (
+                        <div key={pref.id} className="flex items-center justify-between gap-4">
+                          <div>
+                            <p className="text-sm font-bold text-gray-900">{pref.label}</p>
+                            <p className="text-xs text-gray-500">{pref.desc}</p>
+                          </div>
+                          <div className="w-10 h-6 bg-ezGreen rounded-full relative">
+                            <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm" />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

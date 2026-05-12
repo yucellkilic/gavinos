@@ -38,25 +38,39 @@ export default function Header() {
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[var(--ez-green)] rounded-lg flex items-center justify-center text-white font-black text-xl">G</div>
-              <span className="text-xl font-black text-[var(--ez-gray-900)] tracking-tighter hidden sm:block">
-                <span>GAVINO'S</span>
-              </span>
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="w-9 h-9 bg-[var(--ez-green)] rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg group-hover:scale-105 transition-transform">G</div>
+              <div className="flex flex-col leading-none">
+                <span className="text-xl font-black text-[var(--ez-gray-900)] tracking-tighter">
+                  <span>GAVINO'S</span>
+                </span>
+                <span className="text-[10px] font-bold text-[var(--ez-green)] tracking-[0.2em]">CATERING</span>
+              </div>
             </Link>
           </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8 flex-1 ml-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[14px] font-bold text-[var(--ez-gray-900)] hover:text-[var(--ez-green)] transition-colors"
-              >
-                <span>{link.label}</span>
-              </Link>
-            ))}
+          {/* Desktop Nav & Group Order */}
+          <div className="hidden lg:flex items-center gap-6 flex-1 ml-10">
+            <nav className="flex items-center gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 py-2 text-[14px] font-bold text-[var(--ez-gray-900)] hover:text-[var(--ez-green)] transition-colors"
+                >
+                  <span>{link.label}</span>
+                </Link>
+              ))}
+            </nav>
+            
+            <div className="h-6 w-px bg-gray-200 mx-2" />
+            
+            <button className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[var(--ez-green)] text-[var(--ez-green)] font-bold text-[13px] hover:bg-[var(--ez-green)] hover:text-white transition-all shadow-sm active:scale-95">
+              <div className="w-5 h-5 bg-[var(--ez-green-light)] rounded-full flex items-center justify-center group-hover:bg-white/20">
+                <User size={12} className="text-[var(--ez-green)]" />
+              </div>
+              <span>Start Group Order</span>
+            </button>
           </div>
 
           {/* Right Section */}
