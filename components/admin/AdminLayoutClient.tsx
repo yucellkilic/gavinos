@@ -45,7 +45,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
         .eq('id', session.user.id)
         .single();
 
-      if (profile && !profile.is_admin) {
+      if (!profile || !profile.is_admin) {
         router.push('/');
         return;
       }

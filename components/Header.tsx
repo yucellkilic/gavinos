@@ -105,7 +105,7 @@ export default function Header() {
                       <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 font-medium">
                         <Package size={16} /> Dashboard
                       </Link>
-                      {profile?.is_admin && (
+                      {(profile?.is_admin || profile?.role === 'admin') && (
                         <Link href="/admin" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 font-medium">
                           <Lock size={16} /> Admin Panel
                         </Link>

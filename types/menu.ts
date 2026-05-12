@@ -65,6 +65,8 @@ export interface Profile {
   phone: string | null;
   address: string | null;
   avatar_url: string | null;
+  is_admin?: boolean;
+  role?: string;
   created_at: string;
   updated_at: string;
 }
