@@ -13,6 +13,9 @@ import { useAuth } from '@/hooks/useAuth';
 import { supabaseBrowser } from '@/lib/supabase-browser';
 import { formatCurrency } from '@/lib/utils';
 import { Order, Favorite, MenuItem } from '@/types/menu';
+import { Suspense } from 'react';
+
+export const dynamic = 'force-dynamic';
 
 type TabType = 'orders' | 'favorites' | 'profile';
 
@@ -27,6 +30,18 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: any }>
 };
 
 export default function DashboardPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="ez-spinner" style={{ width: 40, height: 40 }} />
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
+  );
+}
+
+function DashboardContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, profile, isAuthenticated, isLoading: authLoading, updateProfile } = useAuth();
